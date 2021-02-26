@@ -1,4 +1,4 @@
-# Formulario de ventas inbound
+# Gestore de tiempos
 
 Para poder utilizar este proyecto, debes tener los siguientes requisitos:
 
