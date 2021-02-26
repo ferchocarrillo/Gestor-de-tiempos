@@ -1,4 +1,4 @@
-# Gestore de tiempos
+# Gestor de tiempos
 
 Para poder utilizar este proyecto, debes tener los siguientes requisitos:
 
