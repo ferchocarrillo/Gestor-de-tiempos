@@ -1,0 +1,53 @@
+{
+	"folders": [
+		{
+			"name": "Gestor-de-Tiempos",
+			"path": "."
+		},
+		{
+			"name": "app",
+			"path": "..\\app"
+		},
+		{
+			"name": "bootstrap",
+			"path": "..\\bootstrap"
+		},
+		{
+			"name": "config",
+			"path": "..\\config"
+		},
+		{
+			"name": "database",
+			"path": "..\\database"
+		},
+		{
+			"name": "public",
+			"path": "..\\public"
+		},
+		{
+			"name": "resources",
+			"path": "..\\resources"
+		},
+		{
+			"name": "routes",
+			"path": "..\\routes"
+		},
+		{
+			"name": "storage",
+			"path": "..\\storage"
+		},
+		{
+			"name": "stubs",
+			"path": "..\\stubs"
+		},
+		{
+			"name": "tests",
+			"path": "..\\tests"
+		},
+		{
+			"name": "vendor",
+			"path": "..\\vendor"
+		}
+	],
+	"settings": {}
+}
