@@ -89,7 +89,7 @@ Swal.fire(
 @section('js')
 <script>
 Swal.fire(
-'UPGRADE DIGITAL',
+'REGISTRO DE TIEMPOS',
 'Lista de registros',
 'success'
 )

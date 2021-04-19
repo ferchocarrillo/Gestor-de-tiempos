@@ -20,6 +20,11 @@ class RegistroController extends Controller
 
 
 {
+
+    public function __construct()
+    {
+        Carbon::setLocale('co');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -69,7 +74,7 @@ class RegistroController extends Controller
         $user_ced = Auth::user()->cedula;
         $user_id = Auth::user()->id;
         $user_nombre = Auth::user()->name;
-     
+
        $registro = new Registro();
        $registro->id_user = $user_id;
        $registro->cedula = $user_ced;
@@ -80,7 +85,7 @@ class RegistroController extends Controller
 
        $registro->save();
         return response()->json($registro);
-      
+
       // return back();
     }
 
