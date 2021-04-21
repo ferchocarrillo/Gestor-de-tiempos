@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\optime;
+use App\Panel2;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
-class OptimeController extends Controller
+class Panel2Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +25,11 @@ class OptimeController extends Controller
      */
     public function create()
     {
-        //
+     
+        $hoy = Carbon::now()->format('d-m-Y');
+        $hora = Carbon::now()->format('h:m:i A');
+
+        
     }
 
     /**
@@ -41,10 +46,10 @@ class OptimeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\optime  $optime
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function show(optime $optime)
+    public function show(Panel2 $panel2)
     {
         //
     }
@@ -52,10 +57,10 @@ class OptimeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\optime  $optime
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function edit(optime $optime)
+    public function edit(Panel2 $panel2)
     {
         //
     }
@@ -64,10 +69,10 @@ class OptimeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\optime  $optime
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, optime $optime)
+    public function update(Request $request, Panel2 $panel2)
     {
         //
     }
@@ -75,10 +80,10 @@ class OptimeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\optime  $optime
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function destroy(optime $optime)
+    public function destroy(Panel2 $panel2)
     {
         //
     }

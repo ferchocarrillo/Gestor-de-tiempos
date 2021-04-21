@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => 'Gestor de Ventas Movistar',
+    'title_postfix' => 'Registro de Tiempos',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,13 +45,13 @@ return [
     |
     */
 
-    'logo' => '<b>Gestor</b> de </b>Ventas',
+    'logo' => '<b>Registro</b> de </b>Tiempos',
     /*'logo_img' => 'theme\images\icon\icon-navidad.png',*///solo aplica para navidad
     'logo_img' => 'theme\images\icon\logo-mini.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Gestor de Ventas',
+    'logo_img_alt' => 'Registro de Tiempos',
 
     /*
     |--------------------------------------------------------------------------
@@ -253,9 +253,9 @@ return [
             'icon' => 'fas fa-hourglass-half',
         ],*/
         [
-            'text' => 'Dashboard',
-            'url'  => 'home',
-            'icon' => 'fas fa-chart-line',
+            'text' => 'TIEMPOS A REGISTRAR',
+            'url'  => 'panel/create',
+            'icon' => 'fas fa-user-clock',
 
         ],
 

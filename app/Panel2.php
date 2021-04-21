@@ -4,9 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Planventa extends Model
+class Panel2 extends Model
 {
     //
-    protected $table='planventa';
-
 }

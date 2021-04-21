@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Panel;
 use Illuminate\Http\Request;
 use Carbon\carbon;
 
 class PanelController extends Controller
 {
-
-    public function __construct()
-    {
-        Carbon::setLocale('co');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -29,10 +25,9 @@ class PanelController extends Controller
      */
     public function create()
     {
-
-
-
-        return view ('panel.create');
+        $hoy = Carbon::now()->format('d-m-Y');
+        $hora = Carbon::now()->format('h:m:i A');
+        return view('panel/create',compact('hoy','hora'));
     }
 
     /**
@@ -49,10 +44,10 @@ class PanelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Panel $panel)
     {
         //
     }
@@ -60,10 +55,10 @@ class PanelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Panel $panel)
     {
         //
     }
@@ -72,10 +67,10 @@ class PanelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Panel $panel)
     {
         //
     }
@@ -83,10 +78,10 @@ class PanelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Panel $panel)
     {
         //
     }

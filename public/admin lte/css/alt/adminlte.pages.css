@@ -5,6 +5,7 @@
  *   Website: AdminLTE.io <http://adminlte.io>
  *   License: Open source - MIT <http://opensource.org/licenses/MIT>
  */
+
 .close, .mailbox-attachment-close {
   float: right;
   font-size: 1.5rem;
@@ -441,5 +442,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 .projects .project-state {
   text-align: center;
 }
+
+
 
 /*# sourceMappingURL=adminlte.pages.css.map */
