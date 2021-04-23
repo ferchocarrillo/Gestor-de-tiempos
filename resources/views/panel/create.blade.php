@@ -155,7 +155,7 @@
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
                       {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="70px" height="74px"></center>
+                      <center><img src="\theme\images\capacitacion.png" alt=""  width="70px" height="80px"></center>
 
 <div class="card-boton">
     <div class="row">
@@ -195,7 +195,7 @@
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
 <br>
-                        <center><img src="\theme\images\dañado.png" alt=""  width="66px" height="58px" ></center>
+                        <center><img src="\theme\images\dañado.png" alt=""  width="70px" height="80px" ></center>
 
                         <div class="card-boton">
                             <div class="row">
@@ -211,8 +211,9 @@
 
 
                         <strong><p class="card-text">Evaluación</p></strong>
+                        <br>
 
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="80px" height="78px" margin></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="70px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
@@ -230,8 +231,8 @@
 
 
                         <strong><p class="card-text">Retroalimentación</p></strong>
-
-                        <center><img src="\theme\images\retroa.png" alt=""  width="66px" height="78px" margin></center>
+                        <br>
+                        <center><img src="\theme\images\retroa.png" alt=""  width="70px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
@@ -246,8 +247,8 @@
 
 
                         <strong><p class="card-text">Reunión</p></strong>
-
-                        <center><img src="\theme\images\REUNION.png" alt=""  width="66px" height="78px" margin></center>
+                        <br>
+                        <center><img src="\theme\images\REUNION.png" alt=""  width="70px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
