@@ -361,6 +361,9 @@ template {
   display: none !important;
 }
 
+
+
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
@@ -31218,4 +31221,6 @@ a.text-muted:hover {
 [class*="accent-"] a.btn-dark {
   color: #ffffff;
 }
+
+
 /*# sourceMappingURL=adminlte.css.map */

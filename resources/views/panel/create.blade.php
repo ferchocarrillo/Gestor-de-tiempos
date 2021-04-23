@@ -5,6 +5,51 @@
     <div class="col-md-12">
         <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
         </body>
+
+<style>
+
+
+.botones{
+        border-radius: 0.75rem;
+        width: 7rem;
+        background-color: #51abba;
+        border: #36738c;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+.botones:hover{
+    background-color: #36738c;
+    color:#ebf2f3;
+    border: #51abba;
+
+}
+.botonesinactivos{
+    border-radius: 0.75rem;
+    width: 7rem;
+    background-color: #51abba;
+    border: #36738c;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.botonpeque{
+
+        border-radius: 0.75rem;
+        width: 3.5rem;
+        background-color: #51abba;
+        border: #36738c;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+.card-boton{
+
+    background-color: transparent;
+
+}
+
+
+
+</style>
+
+
         {{--  <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">  --}}
             {{csrf_field()}}
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -53,10 +98,10 @@
 <br>
 
                     {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                    <input type='submit' class="btn btn-primary" style="border-radius: 0.75rem" name='boton1' value='INGRESO' style="width: 6rem;" >
+                    <input type='submit' class="botones" id= "turnoin" name='turnoin' value='INGRESO'  >
                     <br>
                     <br>
-                    <input type='submit' class="btn btn-primary"  style="border-radius: 0.75rem" name='boton1' value='SALIDA' style="width: 6rem;" >
+                    <input type='submit' class="botones" name='turnoout' value='SALIDA' disabled >
 
 
 
@@ -74,10 +119,10 @@
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
                     <br>
                       {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                      <input type='submit' class="btn btn-primary" style="border-radius: 0.75rem" name='boton1' value='IN' style="width: 7rem;"disabled >
+                      <input type='submit' class="botonesinactivos" name='breakin' value='IN' style="width: 7rem;"disabled >
                       <br>
                       <br>
-                      <input type='submit' class="btn btn-primary" style="border-radius: 0.75rem" name='boton1' value='OUT' style="width: 7rem;" disabled>
+                      <input type='submit' class="botonesinactivos" name='breakout' value='OUT' style="width: 7rem;" disabled>
 
 
 
@@ -93,10 +138,10 @@
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
 
                       <br>
-                      <input type='submit' class="btn btn-primary" style="border-radius: 0.75rem" name='boton1' value='IN' style="width: 7rem;"disabled >
+                      <input type='submit' class="botonesinactivos" name='lunchin' value='IN' style="width: 7rem;"disabled >
                       <br>
                       <br>
-                      <input type='submit' class="btn btn-primary" style="border-radius: 0.75rem" name='boton1' value='OUT' style="width: 7rem;" disabled>
+                      <input type='submit' class="botonesinactivos" name='lunchout' value='OUT' style="width: 7rem;" disabled>
 
 
 
@@ -110,13 +155,22 @@
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
                       {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="70px" height="60px"></center>
-                      <div class="row">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <center>  <input type='submit' class="btn btn-primary" name='boton1' value='Inicio' style="width: 4rem;" disabled >
-              <input type='submit' class="btn btn-primary" name='boton1' value='Fin' style="width: 4rem;" disabled >
-    </center>
-                    </div>
+                      <center><img src="\theme\images\capacitacion.png" alt=""  width="70px" height="74px"></center>
+
+<div class="card-boton">
+    <div class="row">
+        <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+        &nbsp;&nbsp;
+        <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+    </div>
+</div>
+    {{-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <center>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </center> --}}
+
 
                   </div>
                   <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
@@ -125,11 +179,12 @@
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
                     <center><img src="\theme\images\pausas.png" alt=""  width="70px" height="80px"></center>
-                    <div class="row">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <center>  <input type='submit' class="btn btn-primary" name='boton1' value='Inicio' style="width: 4rem;" disabled >
-                                  <input type='submit' class="btn btn-primary" name='boton1' value='Fin' style="width: 4rem;" disabled >
-                        </center>
+                    <div class="card-boton">
+                        <div class="row">
+                            <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                            &nbsp;&nbsp;
+                            <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                        </div>
                     </div>
                 </div>
                   </div>
@@ -139,48 +194,70 @@
 
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
+<br>
+                        <center><img src="\theme\images\dañado.png" alt=""  width="66px" height="58px" ></center>
 
-                        <center><img src="\theme\images\dañado.png" alt=""  width="66px" height="78px" margin></center>
-                        <div class="row">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <center>  <input type='submit' class="btn btn-primary" name='boton1' value='Inicio' style="width: 4rem;" disabled >
-                                      <input type='submit' class="btn btn-primary" name='boton1' value='Fin' style="width: 4rem;" disabled >
-                            </center>
+                        <div class="card-boton">
+                            <div class="row">
+                                <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                                &nbsp;&nbsp;
+                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                            </div>
                         </div>
                     </div>
                   <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
-                    <strong><p class="card-text">Registre Aqui el regreso del almuerzo</p></strong>
-                    <br>
-                    {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                    <input type='submit' class="btn btn-primary" name='boton1' value='Almuerzo Out' style="width: 8rem;"disabled >
 
 
 
-                </div>
+                        <strong><p class="card-text">Evaluación</p></strong>
+
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="80px" height="78px" margin></center>
+                        <div class="card-boton">
+                            <div class="row">
+                                <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                                &nbsp;&nbsp;
+                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                            </div>
+                        </div>
+                    </div>
+
+
                   </div>
                   <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
                     <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
-                      <strong><p class="card-text">Registre Aqui su salida de turno</p></strong>
-                      <br>
-                      {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                      <input type='submit' class="btn btn-primary" name='boton1' value='SALIDA' style="width: 6rem;" disabled >
 
+                        <strong><p class="card-text">Retroalimentación</p></strong>
 
-
-                  </div>
+                        <center><img src="\theme\images\retroa.png" alt=""  width="66px" height="78px" margin></center>
+                        <div class="card-boton">
+                            <div class="row">
+                                <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                                &nbsp;&nbsp;
+                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                            </div>
+                        </div>
+                    </div>
                   <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
-                    <strong><p class="card-text">Registre Aqui el regreso del almuerzo</p></strong>
-                    <br>
-                    {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                    <input type='submit' class="btn btn-primary" name='boton1' value='Almuerzo Out' style="width: 8rem;"disabled >
 
 
 
-                </div>
+                        <strong><p class="card-text">Reunión</p></strong>
+
+                        <center><img src="\theme\images\REUNION.png" alt=""  width="66px" height="78px" margin></center>
+                        <div class="card-boton">
+                            <div class="row">
+                                <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                                &nbsp;&nbsp;
+                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                            </div>
+                        </div>
+                    </div>
+
+
                   </div>
 
 
