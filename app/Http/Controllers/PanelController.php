@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Panel;
 use Illuminate\Http\Request;
 use Carbon\carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PanelController extends Controller
 {
@@ -36,9 +37,32 @@ class PanelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Panel $paneles)
     {
-        //
+        $user_id = Auth::user()->cedula;
+        $user_nombre = Auth::user()->name;
+
+        $paneles = new Panel();
+
+        $paneles->nombre            = $request->nombre;
+        $paneles->cedula            = $request->cedula;
+        $paneles->fecha             = $request->fecha;
+        $paneles->ingreso           = $request->ingreso;
+        $paneles->breakin           = $request->breakin;
+        $paneles->breakout          = $request->breakout;
+        $paneles->almuerzoin        = $request->almuerzoin;
+        $paneles->almuerzoout       = $request->almuerzoout;
+        $paneles->capacitacion      = $request->capacitacion;
+        $paneles->pausas            = $request->pausas;
+        $paneles->daño              = $request->daño;
+        $paneles->evaluacion        = $request->evaluacion;
+        $paneles->retro             = $request->retro;
+        $paneles->reunion           = $request->reunion;
+        $paneles->total             = $request->total;
+
+        $paneles->save();
+        return back();
+
     }
 
     /**
