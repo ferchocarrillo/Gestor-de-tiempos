@@ -26,9 +26,13 @@ class PanelController extends Controller
      */
     public function create()
     {
+        $user_id = Auth::user()->cedula;
+        $user_nombre = Auth::user()->name;
+        $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('d-m-Y');
         $hora = Carbon::now()->format('h:m:i A');
-        return view('panel/create',compact('hoy','hora'));
+        $llave = $user_cedula. $hoy;
+        return view('panel/create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave'));
     }
 
     /**
@@ -41,13 +45,22 @@ class PanelController extends Controller
     {
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
+        $user_cedula = Auth::user()->cedula;
+        $hoy = Carbon::now()->format('Y-m-d');
+        $hora = Carbon::now()->format('h:m:i');
+
+        $llave = $user_cedula. $hoy;
+
+        $request->validate([
+            'llave'          => 'required|unique:panel,llave',
+        ]);
 
         $paneles = new Panel();
 
-        $paneles->nombre            = $request->nombre;
-        $paneles->cedula            = $request->cedula;
-        $paneles->fecha             = $request->fecha;
-        $paneles->ingreso           = $request->ingreso;
+        $paneles->nombre            = $user_nombre;
+        $paneles->cedula            = $user_cedula;
+        $paneles->fecha             = $hoy;
+        $paneles->ingreso           = $hora;
         $paneles->breakin           = $request->breakin;
         $paneles->breakout          = $request->breakout;
         $paneles->almuerzoin        = $request->almuerzoin;
@@ -59,9 +72,10 @@ class PanelController extends Controller
         $paneles->retro             = $request->retro;
         $paneles->reunion           = $request->reunion;
         $paneles->total             = $request->total;
+        $paneles->llave             = $llave;
 
         $paneles->save();
-        return back();
+        return view('panel/create',compact('hoy','hora','llave','user_nombre','user_cedula'));
 
     }
 

@@ -45,6 +45,21 @@
 
 }
 
+.card-bodyNew{
+    border: #060707 3px solid;
+    border-radius:0.75rem;
+    background-image: linear-gradient(#EAF2F8, #AAB7B8)
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.card-bodyNew:hover{
+    background-image: linear-gradient(#53a7b0, #AAB7B8);
+
+}
+
 
 
 </style>
@@ -59,8 +74,6 @@
         </center>
         <div class="row">
         <div class="card" style="background-color: transparent; width:100%" >
-
-
                 <center>  <body input type ="time" style="font-size: 20px;  border-radius:0.75rem;" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)" >
                   <div id="contenedor_reloj" style="width: 400px; font-size:30px; font-family: Lucida Console, Courier New , monospace; text-align:center; margin-left:0;"></div>
                     <link rel="shortcut icon" href="">
@@ -77,9 +90,21 @@
             </div>
             <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
             <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
+            <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+            <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
+            <div><input type="hidden" name="breakin" id="breakin"></div>
+            <div><input type="hidden" name="breakout" id="breakout"></div>
+            <div><input type="hidden" name="almuerzoin" id="almuerzoin"></div>
+            <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
+            <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
+            <div><input type="hidden" name="pausas" id="pausas"></div>
+            <div><input type="hidden" name="daño" id="daño"></div>
+            <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
+            <div><input type="hidden" name="retro" id="retro"></div>
+            <div><input type="hidden" name="reunion" id="reunion"></div>
+            <div><input type="hidden" name="reunion" id="reunion" value="{{ $llave }}"></div>
+
     </body>
-
-
     <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{csrf_field()}}
         <center>
@@ -87,13 +112,8 @@
             <div class="card-group" >
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
-                  <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#53a7b0, #AAB7B8);)">
-
-
+                  <div class="card-bodyNew">
                     <strong><p class="card-text" >Turno</p></strong>
-
-
-
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
 <br>
 
@@ -101,20 +121,12 @@
                     <input type='submit' class="botones" id= "turnoin" name='turnoin' value='INGRESO'  >
                     <br>
                     <br>
-                    <input type='submit' class="botones" name='turnoout' value='SALIDA' disabled >
-
-
-
+                    <input type='submit' class="botonesinactivos" name='turnoout' value='SALIDA' disabled >
                 </div>
                 </div>
-
-
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
                     <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
-
                       <strong><p class="card-text">Break</p></strong>
-
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
                     <br>
@@ -123,9 +135,6 @@
                       <br>
                       <br>
                       <input type='submit' class="botonesinactivos" name='breakout' value='OUT' style="width: 7rem;" disabled>
-
-
-
                   </div>
                   </div>
 
@@ -142,10 +151,7 @@
                       <br>
                       <br>
                       <input type='submit' class="botonesinactivos" name='lunchout' value='OUT' style="width: 7rem;" disabled>
-
-
-
-                  </div>
+                </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
@@ -155,7 +161,7 @@
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
                       {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="70px" height="80px"></center>
+                      <center><img src="\theme\images\capacitacion.png" alt=""  width="85px" height="80px"></center>
 
 <div class="card-boton">
     <div class="row">
@@ -164,13 +170,6 @@
         <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
     </div>
 </div>
-    {{-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <center>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </center> --}}
-
 
                   </div>
                   <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
@@ -213,7 +212,7 @@
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
 
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="70px" height="80px" margin></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="85px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
@@ -232,7 +231,7 @@
 
                         <strong><p class="card-text">Retroalimentación</p></strong>
                         <br>
-                        <center><img src="\theme\images\retroa.png" alt=""  width="70px" height="80px" margin></center>
+                        <center><img src="\theme\images\retroa.png" alt=""  width="85px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
