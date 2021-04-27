@@ -3,20 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use PhpParser\Node\Stmt\Break_;
-use App\Porta;
-use App\Upgrade;
-use App\Fija;
-use App\fijaDigital;
+use App\Panel;
 use App\JhonatanPermission\Models\Registro;
 use Illuminate\Support\Facades\Auth;
-use App\PortaDigital;
-use App\Prepost;
-use App\prepostDigital;
-use App\upgradeDigital;
-use App\lineaNueva;
-use App\phoenix;
 use App\User;
 use Carbon\Carbon;
 use Carbon\Traits\IntervalStep;
@@ -35,7 +24,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        Carbon::setlocale('es');
+        Carbon::setlocale('co');
     }
     /**
      * Show the application dashboard.
@@ -54,10 +43,10 @@ class HomeController extends Controller
         $user_nombre = Auth::user()->name;
         // $horaRegistro['ingreso'] = Registro::where('fecha','=',$hoy);
 
+        $paneles = Panel::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->paginate(10);
 
 
-
-        return view('registro.create', compact('hoy','hora','ago', 'registro'));
+        return view('panel.index', compact('hoy','hora','ago', 'registro', 'paneles'));
 
 
          }
@@ -104,7 +93,7 @@ class HomeController extends Controller
 
        $registro->save();
         return response()->json($registro);
-      
+
       // return back();
     }
 

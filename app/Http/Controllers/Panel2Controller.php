@@ -35,9 +35,10 @@ class Panel2Controller extends Controller
         $hoy = Carbon::now()->format('d-m-Y');
         $hora = Carbon::now()->format('h:m:i A');
         $llave = $user_cedula. $hoy;
+        $panels = Panel::where('name','=', $user_nombre)->where('fecha','=', $hoy)->first();
 
 
-        return view('panel2/create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave'));
+        return view('panel2/create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','panels'));
 
 
     }
@@ -78,12 +79,12 @@ class Panel2Controller extends Controller
         $hoy = Carbon::now()->format('d-m-Y');
         $hora = Carbon::now()->format('h:m:i A');
         $llave = $user_cedula. $hoy;
-        $panels = Panel::where('llave', Panel::findOrFail($llave)->llave)->first();
+        $panels = Panel::findOrFail($id);
 
 
 
 
-        return view('panel2/edit',compact('hoy','hora','user_id','user_nombre','user_cedula','llave'));
+        return view('panel2/create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','panels'));
     }
 
     /**

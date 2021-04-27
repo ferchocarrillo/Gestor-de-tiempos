@@ -42,8 +42,7 @@ use Illuminate\Support\Facades\Gate;
         'create','store']])->names('user');
 
 
-     Route::resource('optime', OpTimeController::class);
-     Route::resource('stafftime', StaffTimeController::class);
+
 
 
     Route::resource('Registro',      RegistroController::class);

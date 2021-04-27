@@ -16,7 +16,10 @@ class PanelController extends Controller
      */
     public function index()
     {
-        //
+        $user_nombre = Auth::user()->name;
+
+        $paneles = Panel::orderBy('name', 'asc')->where('name','=', $user_nombre)->paginate(10);
+        return view('panel.create',compact('paneles','user_nombre'));
     }
 
     /**
@@ -32,7 +35,8 @@ class PanelController extends Controller
         $hoy = Carbon::now()->format('d-m-Y');
         $hora = Carbon::now()->format('h:m:i A');
         $llave = $user_cedula. $hoy;
-        return view('panel/create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave'));
+
+        return view('panel.create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave'));
     }
 
     /**
@@ -51,8 +55,8 @@ class PanelController extends Controller
 
         $llave = $user_cedula. $hoy;
 
-        $request->validate([
-            'llave'          => 'required|unique:panel,llave',
+        $validatedData = $request->validate([
+            'llave'          => ['required|unique:panels,llave'],
         ]);
 
         $paneles = new Panel();
@@ -75,14 +79,14 @@ class PanelController extends Controller
         $paneles->llave             = $llave;
 
         $paneles->save();
-        return view('panel/create',compact('hoy','hora','llave','user_nombre','user_cedula'));
+        return view('panel2.create',compact('hoy','hora','llave','user_nombre','user_cedula'));
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Panel2  $panel2
+     * @param  \App\Panel  $panel2
      * @return \Illuminate\Http\Response
      */
     public function show(Panel $panel)
@@ -96,9 +100,17 @@ class PanelController extends Controller
      * @param  \App\Panel2  $panel2
      * @return \Illuminate\Http\Response
      */
-    public function edit(Panel $panel)
+    public function edit($id)
     {
-        //
+        $user_id = Auth::user()->cedula;
+        $user_nombre = Auth::user()->name;
+        $user_cedula = Auth::user()->cedula;
+        $hoy = Carbon::now()->format('Y-m-d');
+        $hora = Carbon::now()->format('h:m:i');
+        $llave = $user_cedula. $hoy;
+        $paneles = Panel::findOrFail($id);
+
+        return view('panel.edit' ,compact('paneles','hoy','hora','llave','user_nombre','user_cedula'));
     }
 
     /**

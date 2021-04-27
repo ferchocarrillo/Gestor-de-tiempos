@@ -105,6 +105,18 @@
             <div><input type="hidden" name="reunion" id="reunion" value="{{ $llave }}"></div>
 
     </body>
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li> {{ $error }} </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
     <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{csrf_field()}}
         <center>
