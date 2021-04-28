@@ -46,10 +46,8 @@
                 <div id="contenedor_reloj"></div>
                 &nbsp;&nbsp;&nbsp;
                 <link rel="shortcut icon" href="" >
-
                 </body>
             </div>
-
                 <div class="row">
 <input type="hidden"  id="hoy"  name="hoy" value="{{ $hoy }}">
 <input type="hidden"  id="hora"  name="hora" value="{{ $hora}}">
@@ -60,14 +58,7 @@
 
     <p><button style="height: 155px" >Registrar Ingreso</button></p>
 </div>
-
-
-
 </form>
-
-
-
-
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
@@ -80,7 +71,6 @@ Swal.fire(
 )
 </script>
 @stop
-
 <script src="{{asset('js/app.js')}}"></script>
 </body>
 @section('css')
@@ -95,12 +85,6 @@ Swal.fire(
 )
 </script>
 @stop
-
-
-
-
-
-
 @endsection
 
 

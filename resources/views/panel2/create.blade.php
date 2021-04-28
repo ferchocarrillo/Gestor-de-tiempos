@@ -15,6 +15,7 @@
         background-color: #51abba;
         border: #36738c;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: bold;
 
 }
 .botones:hover{
@@ -33,6 +34,23 @@
 
 .botonpeque{
 
+    border-radius: 0.75rem;
+    width: 3.5rem;
+    background-color: #51abba;
+    border: #36738c;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    }
+
+.botonpeque:hover{
+        background-color: #36738c;
+        color:#ebf2f3;
+        border: #51abba;
+
+    }
+
+    .botonpequeinactivo{
+
         border-radius: 0.75rem;
         width: 3.5rem;
         background-color: #51abba;
@@ -40,11 +58,11 @@
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 
-    .botonpeque:hover{
-        background-color: #36738c;
-        color:#ebf2f3;
-        border: #51abba;
-    }
+
+
+
+
+
 
 .card-boton{
 
@@ -66,16 +84,21 @@
     background-image: linear-gradient(#53a7b0, #AAB7B8);
 
 }
+img:hover {
+    transform: scaleX(-1);
+  }
+  .imglogo{
+    float: center;
+    height: 40;
+    width: 140;
+  }
 
 
 
 </style>
 
-
-        {{--  <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">  --}}
-            {{csrf_field()}}
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-            <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
+            <img  class="imglogo" src="\theme\images\isotipo-slogan.png"  >
             <h1 style="font-weight: bold; text-aline:center;">Registro Tiempos Laborales</h1>
             <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">BIENVENIDO {{ Auth::user()->name }}</h3>
         </center>
@@ -99,12 +122,6 @@
             <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
             <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
             <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-
-            {{-- @foreach ($panels as $panel)
-            <div><input type="text" id= "ingreso" name="ingreso" value=" {{$panel->ingreso}}"></div>
-
-            @endforeach --}}
-
             <div><input type="hidden" name="breakin" id="breakin"></div>
             <div><input type="hidden" name="breakout" id="breakout"></div>
             <div><input type="hidden" name="almuerzoin" id="almuerzoin"></div>
@@ -118,8 +135,21 @@
             <div><input type="hidden" name="reunion" id="reunion" value="{{ $llave }}"></div>
 
     </body>
-    <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li> {{ $error }} </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
+    <form action="{{url('/panel/'.$panel->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         {{csrf_field()}}
+        @method('PATCH')
         <center>
 
             <div class="card-group" >
@@ -128,17 +158,17 @@
                   <div class="card-bodyNew">
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-<br>
-
+                    <br>
                     {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                    <input type='submit' class="botonesinactivos" id= "turnoin" name='turnoin' value='INGRESO' disabled >
+                    <input type='submit' class="botonesinactivos" id= "turnoin" name='turnoin' value='INGRESO'disabled  >
+        </form>
                     <br>
                     <br>
-                    <input type='submit' class="botones" name='turnoout' value='SALIDA'  >
+                    <input type='submit' class="botones" name='salida' value='SALIDA'>
                 </div>
                 </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-                    <div class="card-bodyNew">
+                    <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
@@ -147,13 +177,13 @@
                       <input type='submit' class="botones" name='breakin' value='IN' style="width: 7rem;" >
                       <br>
                       <br>
-                      <input type='submit' class="botones" name='breakout' value='OUT' style="width: 7rem;" >
+                      <input type='submit' class="botonesinactivos" name='breakout' value='OUT' style="width: 7rem;" disabled>
                   </div>
                   </div>
 
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
 
-                    <div class="card-bodyNew">
+                    <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
@@ -163,12 +193,12 @@
                       <input type='submit' class="botones" name='lunchin' value='IN' style="width: 7rem;" >
                       <br>
                       <br>
-                      <input type='submit' class="botones" name='lunchout' value='OUT' style="width: 7rem;" >
+                      <input type='submit' class="botonesinactivos" name='lunchout' value='OUT' style="width: 7rem;" disabled>
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
-                    <div class="card-bodyNew">
+                    <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
 
                       <strong><p class="card-text">Capacitación</p></strong>
@@ -180,29 +210,28 @@
     <div class="row">
         <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
         &nbsp;&nbsp;
-        <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+        <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
     </div>
 </div>
 
                   </div>
-                  <div class="card-bodyNew">
+                  <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
 
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
                     <center><img src="\theme\images\pausas.png" alt=""  width="70px" height="80px"></center>
                     <div class="card-boton">
-                        <div class="row">
-                            <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
+                        <div class="row">                            <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                             &nbsp;&nbsp;
-                            <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                            <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                         </div>
                     </div>
                 </div>
                   </div>
                   <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
-                    <div class="card-bodyNew">
+                    <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
@@ -213,11 +242,11 @@
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                             </div>
                         </div>
                     </div>
-                  <div class="card-bodyNew">
+                  <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
 
 
@@ -230,7 +259,7 @@
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                             </div>
                         </div>
                     </div>
@@ -239,7 +268,7 @@
                   </div>
                   <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
-                    <div class="card-bodyNew">
+                    <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
 
                         <strong><p class="card-text">Retroalimentación</p></strong>
@@ -249,11 +278,11 @@
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                             </div>
                         </div>
                     </div>
-                  <div class="card-bodyNew">
+                  <div class="card-body" style="border: #060707 3px solid; border-radius:0.75rem; background-image: linear-gradient(#EAF2F8, #AAB7B8);)">
 
 
 
@@ -265,7 +294,7 @@
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                             </div>
                         </div>
                     </div>

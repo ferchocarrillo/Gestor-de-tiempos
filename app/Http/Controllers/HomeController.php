@@ -46,7 +46,7 @@ class HomeController extends Controller
         $paneles = Panel::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->paginate(10);
 
 
-        return view('panel.index', compact('hoy','hora','ago', 'registro', 'paneles'));
+        return view('panel.index', compact('hoy','hora','ago', 'registro', 'paneles','user_id','user_nombre'));
 
 
          }
@@ -65,7 +65,7 @@ class HomeController extends Controller
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
 
-        return view('registro.create', compact('hoy','hora','ago'));
+        return view('registro.create', compact('hoy','hora','ago','user_id','user_nombre'));
 
 
          }

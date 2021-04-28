@@ -31,6 +31,14 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.pequeinactivos{
+    border-radius: 0.75rem;
+    width: 3.5rem;
+    background-color: #51abba;
+    border: #36738c;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .botonpeque{
 
         border-radius: 0.75rem;
@@ -67,6 +75,19 @@
 
 }
 
+.text-muted2{
+color: #060707;
+
+
+img:hover {
+    transform: scaleX(-1);
+  }
+  .imglogo{
+    float: center;
+    height: 40;
+    width: 140;
+  }
+
 
 
 </style>
@@ -100,10 +121,10 @@
             <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
             <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
 
-            @foreach ($panels as $panel)
+            {{--  @foreach ($panels as $panel)
             <div><input type="text" id= "ingreso" name="ingreso" value=" {{$panel->ingreso}}"></div>
 
-            @endforeach
+            @endforeach  --}}
 
             <div><input type="hidden" name="breakin" id="breakin"></div>
             <div><input type="hidden" name="breakout" id="breakout"></div>
@@ -128,13 +149,18 @@
                   <div class="card-bodyNew">
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-<br>
-
-                    {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
+                    <br>
+                    <p class="card-text"><small class="text-muted2">Ultimo registro  {{ old('ingreso', $paneles->ingreso)}} </small></p>
                     <input type='submit' class="botonesinactivos" id= "turnoin" name='turnoin' value='INGRESO' disabled >
                     <br>
                     <br>
-                    <input type='submit' class="botones" name='turnoout' value='SALIDA'  >
+
+                    </form>
+                <form action="{{ url('/panel2/'.$paneles->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                      {{csrf_field()}}
+                    @method('PATCH')
+                    <input type='submit' class="botones" name='turnoout' value='SALIDA'>
+                </form>
                 </div>
                 </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -144,10 +170,10 @@
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
                     <br>
                       {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
-                      <input type='submit' class="botones" name='breakin' value='IN' style="width: 7rem;" >
+                      <input type='submit' class="botones" name='breakin' value='Inicio' style="width: 7rem;" >
                       <br>
                       <br>
-                      <input type='submit' class="botones" name='breakout' value='OUT' style="width: 7rem;" >
+                      <input type='submit' class="botonesinactivos" name='breakout' value='Fin' style="width: 7rem;" disabled >
                   </div>
                   </div>
 
@@ -160,10 +186,10 @@
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
 
                       <br>
-                      <input type='submit' class="botones" name='lunchin' value='IN' style="width: 7rem;" >
+                      <input type='submit' class="botones" name='lunchin' value='Inicio' style="width: 7rem;" >
                       <br>
                       <br>
-                      <input type='submit' class="botones" name='lunchout' value='OUT' style="width: 7rem;" >
+                      <input type='submit' class="botonesinactivos" name='lunchout' value='Fin' style="width: 7rem;" disabled>
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -179,8 +205,8 @@
 <div class="card-boton">
     <div class="row">
         <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
-        &nbsp;&nbsp;
-        <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  disabled>
     </div>
 </div>
 
@@ -194,8 +220,8 @@
                     <div class="card-boton">
                         <div class="row">
                             <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
-                            &nbsp;&nbsp;
-                            <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  disabled>
                         </div>
                     </div>
                 </div>
@@ -212,8 +238,8 @@
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
-                                &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                             </div>
                         </div>
                     </div>
@@ -229,8 +255,8 @@
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
-                                &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"disabled  >
                             </div>
                         </div>
                     </div>
@@ -248,8 +274,8 @@
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
-                                &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                             </div>
                         </div>
                     </div>
@@ -264,8 +290,8 @@
                         <div class="card-boton">
                             <div class="row">
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
-                                &nbsp;&nbsp;
-                                <input type='submit' class="botonpeque" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
                             </div>
                         </div>
                     </div>

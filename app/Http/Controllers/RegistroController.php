@@ -68,13 +68,12 @@ class RegistroController extends Controller
     public function store(EntradaStoreRequest $request)
     {
 
-        $hoy = Carbon::today();
-        $hora = Carbon::now()->format('H:i:s');
-        // $ago = Carbon::now()->diffForHumans('contenedor_reloj');
-        $user_ced = Auth::user()->cedula;
-        $user_id = Auth::user()->id;
-        $user_nombre = Auth::user()->name;
-
+       $hoy = Carbon::today();
+       $hora = Carbon::now()->format('H:i:s');
+       // $ago = Carbon::now()->diffForHumans('contenedor_reloj');
+       $user_ced = Auth::user()->cedula;
+       $user_id = Auth::user()->id;
+       $user_nombre = Auth::user()->name;
        $registro = new Registro();
        $registro->id_user = $user_id;
        $registro->cedula = $user_ced;

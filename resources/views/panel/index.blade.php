@@ -109,7 +109,7 @@ box-shadow:5px  10px #1c4c64;
 
 
 
-                    <button class="botonIndex"><a href="/panel/create" target="_blank">Nuevo Registro</a></button>
+                    <button class="botonIndex"><a href=" {{ 'panel' }} " target="_blank">Nuevo Registro</a></button>
 
             </div>
         @endcan

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Panel;
 use Illuminate\Http\Request;
 use Carbon\carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Panel;
 
-class PanelController extends Controller
+class SalidaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +16,7 @@ class PanelController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->cedula;
-        $user_nombre = Auth::user()->name;
-        $user_cedula = Auth::user()->cedula;
-        $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
-        $llave = $user_cedula. $hoy;
-
-
-        $paneles = Panel::orderBy('name', 'asc')->where('name','=', $user_nombre)->paginate(10);
-        return view('panel.create',compact('paneles','user_nombre','hoy','hora','user_id','user_cedula','llave'));
+        //
     }
 
     /**
@@ -35,15 +26,7 @@ class PanelController extends Controller
      */
     public function create()
     {
-        $user_id = Auth::user()->cedula;
-        $user_nombre = Auth::user()->name;
-        $user_cedula = Auth::user()->cedula;
-        $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
-        $llave = $user_cedula. $hoy;
-        $paneles  = Panel::where('name','=', $user_nombre)->where('fecha','=', $hoy)->first();
-
-        return view('panel.create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','paneles'));
+        //
     }
 
     /**
@@ -52,13 +35,17 @@ class PanelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Panel $paneles)
+    public function store(Request $request, $id)
     {
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:m:i');
+        $this->authorize('haveaccess','panel2.edit');
+        $paneles = Panel::findOrFail($id);
+
+
 
         $llave = $user_cedula. $hoy;
 
@@ -71,8 +58,8 @@ class PanelController extends Controller
         $paneles->nombre            = $user_nombre;
         $paneles->cedula            = $user_cedula;
         $paneles->fecha             = $hoy;
-        $paneles->ingreso           = $hora;
-        $paneles->salida            = $request->salida;
+        $paneles->ingreso           = $request->turnoin;
+        $paneles->salida            = $request->$hora;
         $paneles->breakin           = $request->breakin;
         $paneles->breakout          = $request->breakout;
         $paneles->almuerzoin        = $request->almuerzoin;
@@ -87,17 +74,16 @@ class PanelController extends Controller
         $paneles->llave             = $llave;
 
         $paneles->save();
-        return view('panel2.create',compact('hoy','hora','llave','user_nombre','user_cedula'));
-
+        return view('panel2.edit',compact('hoy','hora','llave','user_nombre','user_cedula','paneles'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Panel  $panel2
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Panel $panel)
+    public function show($id)
     {
         //
     }
@@ -105,7 +91,7 @@ class PanelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Panel2  $panel2
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -125,30 +111,21 @@ class PanelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Panel2  $panel2
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $user_id = Auth::user()->cedula;
-        $user_nombre = Auth::user()->name;
-        $user_cedula = Auth::user()->cedula;
-        $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:m:i');
-        $llave = $user_cedula. $hoy;
-        $datosSalida=request()->except(['_token','_method']);
-        Panel::where('id','=',$id)->update($datosSalida);
-        $salida=Panel::findOrFail($id);
-        return view('panel.edit',compact('salida', 'usuarios','revisadoses','hoy','hora','llave'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Panel2  $panel2
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Panel $panel)
+    public function destroy($id)
     {
         //
     }

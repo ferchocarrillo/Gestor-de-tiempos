@@ -35,10 +35,12 @@ class Panel2Controller extends Controller
         $hoy = Carbon::now()->format('d-m-Y');
         $hora = Carbon::now()->format('h:m:i A');
         $llave = $user_cedula. $hoy;
-        $panels = Panel::where('name','=', $user_nombre)->where('fecha','=', $hoy)->first();
+        $paneles  = Panel::all();
+
+        // $paneles = Panel::findorFail($id);
 
 
-        return view('panel2/create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','panels'));
+        return view('panel2.create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','paneles'));
 
 
     }
@@ -73,18 +75,22 @@ class Panel2Controller extends Controller
      */
     public function edit($id)
     {
+
+        $paneles = Panel::all();
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('d-m-Y');
         $hora = Carbon::now()->format('h:m:i A');
         $llave = $user_cedula. $hoy;
-        $panels = Panel::findOrFail($id);
+        $this->authorize('haveaccess','panel2.edit');
+        // $paneles  = Panel::where('name','=', $user_nombre)->where('fecha','=', $hoy)->first();
+        $paneles = Panel::findOrFail($id);
 
 
 
 
-        return view('panel2/create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','panels'));
+        return view('panel2.edit',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','paneles'));
     }
 
     /**
