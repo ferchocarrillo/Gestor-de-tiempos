@@ -17,7 +17,15 @@ class Panel2Controller extends Controller
      */
     public function index()
     {
-        //
+                // $user_id = Auth::user()->cedula;
+                $user_nombre = Auth::user()->name;
+                // $user_cedula = Auth::user()->cedula;
+                // $hoy = Carbon::now()->format('d-m-Y');
+                // $hora = Carbon::now()->format('h:m:i A');
+                // $llave = $user_cedula. $hoy;
+                $panels = Panel::orderBy('name', 'asc')->where('name','=', $user_nombre)->paginate(10);
+
+                return view('panel.create',compact('panels'));
     }
 
     // /**
@@ -53,7 +61,7 @@ class Panel2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -76,7 +84,7 @@ class Panel2Controller extends Controller
     public function edit($id)
     {
 
-        $paneles = Panel::all();
+        $panels = Panel::all();
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -85,7 +93,7 @@ class Panel2Controller extends Controller
         $llave = $user_cedula. $hoy;
         $this->authorize('haveaccess','panel2.edit');
         // $paneles  = Panel::where('name','=', $user_nombre)->where('fecha','=', $hoy)->first();
-        $panel = Panel::findOrFail($id);
+        $panels = Panel::findOrFail($id);
 
 
 

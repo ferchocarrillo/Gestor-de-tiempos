@@ -113,24 +113,41 @@ box-shadow:5px  10px #1c4c64;
 
                 </body>
 
-                @can('haveaccess','panel.create')
-                <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+               @can('haveaccess','ciclo.create')
+                <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                     {{csrf_field()}}
                <div class="card-boton">
 
-                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO'  >
-                {{-- <a href="{{route('panel.create')}}"
+                 <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO NUEVO'  >
+                 {{--<a href="{{route('ciclo.create')}}"
                   class="botonIndex"
                   >Registrar Nuevo Ingreso
-                </a> --}}
-                <br><br>
+                </a>
+                <br><br> --}}
             </div>
         </form>
             @endcan
 
 
+            <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+            <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
+            <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+            <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
+            <div><input type="hidden" name="breakin" id="breakin"></div>
+            <div><input type="hidden" name="breakout" id="breakout"></div>
+            <div><input type="hidden" name="almuerzoin" id="almuerzoin"></div>
+            <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
+            <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
+            <div><input type="hidden" name="pausas" id="pausas"></div>
+            <div><input type="hidden" name="daño" id="daño"></div>
+            <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
+            <div><input type="hidden" name="retro" id="retro"></div>
+            <div><input type="hidden" name="reunion" id="reunion"></div>
+            <div><input type="hidden" name="reunion" id="reunion" value="{{ $llave }}"></div>
 
-        <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+
+
+        <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
 
            <div class="container">
                <div class="pull-right">
@@ -150,19 +167,19 @@ box-shadow:5px  10px #1c4c64;
                    </tr>
            </thead>
            <tbody>
-           @foreach ($panels as $panel)
+           @foreach ($ciclosos as $ciclo)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$panel->fecha}}</td>
-                    <td>{{$panel->nombre}}</td>
-                    <td>{{$panel->ingreso}}</td>
-                    <td>{{$panel->salida}}</td>
-                    <td>{{$panel->total}}</td>
+                    <td>{{$ciclo->fecha}}</td>
+                    <td>{{$ciclo->nombre}}</td>
+                    <td>{{$ciclo->ingreso}}</td>
+                    <td>{{$ciclo->salida}}</td>
+                    <td>{{$ciclo->total}}</td>
                 <td>
-                <form action="{{url('/panel/'.$panel->id)}}" method="post">
+                <form action="{{url('/ciclo/'.$ciclo->id)}}" method="post">
                         @csrf
                         {{--  @method('DELETE')  --}}
-                <a href="{{url('/panel/'.$panel->id.'/edit')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
+                <a href="{{url('/ciclo/'.$ciclo->id.'/edit')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
                 {{--  <button class="btn btn-warning btn-sm" onclick="return confirm('Borrar?');" type="submit"aria-pressed="true">Borrar</button>  --}}
                 </form>
                             </td>

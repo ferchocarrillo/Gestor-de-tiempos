@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Gate;
     Route::resource('panel',      PanelController::class);
     Route::resource('panel2',      Panel2Controller::class);
     Route::resource('salida',      SalidaController::class);
-
+    Route::resource('ciclo',      CicloController::class);
 
     Route::get('porta-list-excel', 'PortaController@exportExcel')->name('porta.excel');
 

@@ -8,5 +8,5 @@ class Panel extends Model
 {
     protected $table='panels';
 
-    protected $fillable = ['id','llave'];
+    // protected $fillable = ['id','llave'];
 }
