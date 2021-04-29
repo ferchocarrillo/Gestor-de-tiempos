@@ -16,16 +16,15 @@ class PanelController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->cedula;
+        // $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
-        $user_cedula = Auth::user()->cedula;
-        $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
-        $llave = $user_cedula. $hoy;
-
-
+        // $user_cedula = Auth::user()->cedula;
+        // $hoy = Carbon::now()->format('d-m-Y');
+        // $hora = Carbon::now()->format('h:m:i A');
+        // $llave = $user_cedula. $hoy;
         $paneles = Panel::orderBy('name', 'asc')->where('name','=', $user_nombre)->paginate(10);
-        return view('panel.create',compact('paneles','user_nombre','hoy','hora','user_id','user_cedula','llave'));
+
+        return view('panel.create',compact('paneles'));
     }
 
     /**
@@ -35,13 +34,14 @@ class PanelController extends Controller
      */
     public function create()
     {
+
+        $hoy = Carbon::now()->format('d-m-Y');
+        $hora = Carbon::now()->format('h:m:i A');
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
-        $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
         $llave = $user_cedula. $hoy;
-        $paneles  = Panel::where('name','=', $user_nombre)->where('fecha','=', $hoy)->first();
+        $paneles  = Panel::all();
 
         return view('panel.create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','paneles'));
     }
@@ -87,7 +87,7 @@ class PanelController extends Controller
         $paneles->llave             = $llave;
 
         $paneles->save();
-        return view('panel2.create',compact('hoy','hora','llave','user_nombre','user_cedula'));
+        return back();
 
     }
 
@@ -138,8 +138,8 @@ class PanelController extends Controller
         $llave = $user_cedula. $hoy;
         $datosSalida=request()->except(['_token','_method']);
         Panel::where('id','=',$id)->update($datosSalida);
-        $salida=Panel::findOrFail($id);
-        return view('panel.edit',compact('salida', 'usuarios','revisadoses','hoy','hora','llave'));
+        $paneles=Panel::findOrFail($id);
+        return view('panel.edit',compact('paneles', 'usuarios','revisadoses','hoy','hora','llave'));
     }
 
     /**

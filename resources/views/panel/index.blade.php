@@ -42,13 +42,12 @@
                 <div id="contenedor_reloj"></div>
                 <link rel="shortcut icon" href="">
 
-
-                <style>
+ <style>
 .card-boton{
 
-    background-color:#73abbb;
+background-color:#73abbb;
 width: 20%;
-height: 90px;
+height: 70px;
 border-radius: 0.75rem;
 border: #1c4c64;
 border-style: solid;
@@ -58,39 +57,41 @@ box-shadow:5px  10px #1c4c64;
 opacity: 0.9;
 }
 
-.botonIndex {
+.a.botonIndex {
+
 background-attachment: fixed;
 background-color: #cfd0d0;
-margin-top: 0.7rem;
-width: 250px;
+margin-top: 3rem;
+width: 600px;
 height: 60px;
 border-radius: 0.5rem;
 border-style: solid;
 border-width: 1px;
 box-shadow:5px  10px #1c4c64;
 }
-.botonIndex[type=boton]{
+.a.botonIndex[type=boton]{
     background-attachment: fixed;
     background-color: #cfd0d0;
     margin-top: 0.7rem;
-    width: 250px;
+    width: 600px;
     height: 60px;
     border-radius: 0.5rem;
     border-style: solid;
     border-width: 1px;
     cursor: pointer;
     box-shadow:5px  10px #1c4c64;
-
-
-
 }
+
+
+
+
 .botonIndex:hover {
     background-attachment: fixed;
     background-color: #cfd0d0;
     box-shadow:5px  10px #1c4c64;
 
     margin-top: 0.7rem;
-    width: 250px;
+    width: 350px;
     height: 60px;
     border-radius: 1rem;
     color: #1c4c64;
@@ -103,16 +104,22 @@ box-shadow:5px  10px #1c4c64;
 
                 </body>
 
-        @can('haveaccess','panel.create')
-            <div class="card-boton" >
 
 
+                @can('haveaccess','panel.create')
 
+               <div class="card-boton">
+                <a href="{{route('panel.create')}}"
+                  class="botonIndex"
+                  >Registrar Nuevo Ingreso
+                </a>
 
-                    <button class="botonIndex"><a href=" {{ 'panel' }} " target="_blank">Nuevo Registro</a></button>
-
+                <br><br>
             </div>
-        @endcan
+            @endcan
+
+
+
         <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
 
            <div class="container">

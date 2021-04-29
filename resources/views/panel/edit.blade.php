@@ -1,6 +1,9 @@
 @extends('adminlte::page')
 
 @section('content')
+<link rel="stylesheet" href="css/simplyCountdown.theme.default.css"/>
+<script src="\js\simplyCountdown.min.js"></script>
+<script src="\js\countdown.js"></script>
 <div class="pull-right">
     <div class="col-md-12">
         <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -116,6 +119,7 @@ img:hover {
                     document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
                 </script>
             </div>
+
                 </body>
             </div>
             </div>
@@ -128,6 +132,7 @@ img:hover {
             <div><input type="text" id= "ingreso" name="ingreso" value=" {{$panel->ingreso}}"></div>
 
             @endforeach  --}}
+            <div><input type="hidden" name= "entrada" id="entrada" value="{{ old('ingreso', $paneles->ingreso)}}"></div>
 
             <div><input type="hidden" name="breakin" id="breakin"></div>
             <div><input type="hidden" name="breakout" id="breakout"></div>
@@ -139,11 +144,17 @@ img:hover {
             <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
             <div><input type="hidden" name="retro" id="retro"></div>
             <div><input type="hidden" name="reunion" id="reunion"></div>
-            <div><input type="hidden" name="reunion" id="reunion" value="{{ $llave }}"></div>
+            <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
+
+
 
     </body>
+
+
     <form action="{{ url('/panel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{csrf_field()}}
+
+        <div id="cuenta"></div>
         <center>
 
             <div class="card-group" >
@@ -153,7 +164,7 @@ img:hover {
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
                     <br>
-                    <p class="card-text"><small class="text-muted2">Ultimo registro  {{ old('ingreso', $paneles->ingreso)}} </small></p>
+                    <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $paneles->ingreso)}} </small></p>
                     <input type='submit' class="botonesinactivos" id= "turnoin" name='turnoin' value='INGRESO' disabled >
                     <br>
                     <br>
@@ -162,21 +173,27 @@ img:hover {
                 <form action="{{ url('/panel2/'.$paneles->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                       {{csrf_field()}}
                     @method('PATCH')
+                    <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $paneles->salida)}} </small></p>
                     <input type='submit' class="botones" name='turnoout' value='SALIDA'>
                 </form>
                 </div>
                 </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew">
+
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
                     <br>
-                      {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
+                    <br>
+                    <br>
+
                       <input type='submit' class="botones" name='breakin' value='Inicio' style="width: 7rem;" >
                       <br>
                       <br>
                       <input type='submit' class="botonesinactivos" name='breakout' value='Fin' style="width: 7rem;" disabled >
+
+                      <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $paneles->timebreak)}} minutos</small></p>
                   </div>
                   </div>
 
@@ -189,10 +206,13 @@ img:hover {
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
 
                       <br>
+                    <br>
+                    <br>
                       <input type='submit' class="botones" name='lunchin' value='Inicio' style="width: 7rem;" >
                       <br>
                       <br>
                       <input type='submit' class="botonesinactivos" name='lunchout' value='Fin' style="width: 7rem;" disabled>
+                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $paneles->timelunch)}} </small></p>
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -202,7 +222,7 @@ img:hover {
 
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
-                      {{-- <p class="card-text"><small class="text-muted">Ultimo registro  {{ $ago }} </small></p> --}}
+
                       <center><img src="\theme\images\capacitacion.png" alt=""  width="85px" height="80px"></center>
 
 <div class="card-boton">
@@ -210,6 +230,8 @@ img:hover {
         <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  disabled>
+
+        <p class="card-text"><small class="text-muted2">Tiempo de Capacitación {{ old('timecap', $paneles->timecap)}} </small></p>
     </div>
 </div>
 
@@ -225,6 +247,7 @@ img:hover {
                             <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  disabled>
+                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $paneles->timepau)}} </small></p>
                         </div>
                     </div>
                 </div>
@@ -243,6 +266,7 @@ img:hover {
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                                <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $paneles->timedaño)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -260,6 +284,7 @@ img:hover {
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"disabled  >
+                                <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $paneles->timeeva)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -279,6 +304,7 @@ img:hover {
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                                <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $paneles->timeretro)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -295,6 +321,7 @@ img:hover {
                                 <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+                                <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $paneles->timereunion)}} </small></p>
                             </div>
                         </div>
                     </div>

@@ -20,27 +20,27 @@ class Panel2Controller extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    public function create($id)
     {
 
 
-        $user_id = Auth::user()->cedula;
-        $user_nombre = Auth::user()->name;
-        $user_cedula = Auth::user()->cedula;
-        $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
-        $llave = $user_cedula. $hoy;
-        $paneles  = Panel::all();
+    //     $user_id = Auth::user()->cedula;
+    //     $user_nombre = Auth::user()->name;
+    //     $user_cedula = Auth::user()->cedula;
+    //     $hoy = Carbon::now()->format('d-m-Y');
+    //     $hora = Carbon::now()->format('h:m:i A');
+    //     $llave = $user_cedula. $hoy;
+    //     $panel  = Panel::all();
 
-        // $paneles = Panel::findorFail($id);
+     $paneles = Panel::findOrFail($id);
 
 
-        return view('panel2.create',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','paneles'));
+         return view('panel.edit',compact('paneles'));
 
 
     }
@@ -85,12 +85,12 @@ class Panel2Controller extends Controller
         $llave = $user_cedula. $hoy;
         $this->authorize('haveaccess','panel2.edit');
         // $paneles  = Panel::where('name','=', $user_nombre)->where('fecha','=', $hoy)->first();
-        $paneles = Panel::findOrFail($id);
+        $panel = Panel::findOrFail($id);
 
 
 
 
-        return view('panel2.edit',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','paneles'));
+        return view('panel2.edit',compact('hoy','hora','user_id','user_nombre','user_cedula','llave','panel'));
     }
 
     /**
