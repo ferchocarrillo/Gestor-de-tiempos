@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PanelController extends Controller
 {
+    public function __construct()
+    {
+        Carbon::setLocale('co');
+        date_default_timezone_set('America/Bogota');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +25,7 @@ class PanelController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
+        $hora = Carbon::now()->format('h:i:s A');
         $llave = $user_cedula. $hoy;
         $ciclos= Panel::orderBy('fecha', 'asc')->paginate(10);
         // $panels = Panel::orderBy('name', 'asc')->where('name','=', $user_nombre)->paginate(10);
@@ -36,7 +41,7 @@ class PanelController extends Controller
     public function create()
     {
         $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
+        $hora = Carbon::now()->format('h:i:s A');
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -58,7 +63,7 @@ class PanelController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:m:i');
+        $hora = Carbon::now()->format('h:i:s');
 
         $llave = $user_cedula. $hoy;
 
@@ -114,7 +119,7 @@ class PanelController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:m:i');
+        $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
         $panels = Panel::findOrFail($id);
 
@@ -134,7 +139,7 @@ class PanelController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:m:i');
+        $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
         $datosSalida=request()->except(['_token','_method']);
         Panel::where('id','=',$id)->update($datosSalida);

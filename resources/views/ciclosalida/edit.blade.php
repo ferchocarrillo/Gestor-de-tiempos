@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('content')
 <link rel="stylesheet" href="css/simplyCountdown.theme.default.css"/>
 <script src="\js\simplyCountdown.min.js"></script>
@@ -59,19 +58,11 @@
         border: #36738c;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
-
-
-
-
-
-
-
 .card-boton{
 
     background-color: transparent;
 
 }
-
 .card-bodyNew{
     border: #060707 3px solid;
     border-radius:0.75rem;
@@ -80,26 +71,29 @@
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
-}
-
+ }
 .card-bodyNew:hover{
     background-image: linear-gradient(#53a7b0, #AAB7B8);
-
-}
+ }
 img:hover {
     transform: scaleX(-1);
   }
-  .imglogo{
+.imglogo{
     float: center;
     height: 40;
     width: 140;
   }
+  .input-small{
+width: 30px;
+background-color: transparent;
+border: none;
 
 
+  }
 </style>
 
 
-<form action="{{url('/ciclo/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+<form action="{{url('/ciclosalida/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
             <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
@@ -129,11 +123,11 @@ img:hover {
             <div><input type="text" id= "ingreso" name="ingreso" value=" {{$ciclosos->ingreso}}"></div>
 
             @endforeach  --}}
-            <div><input type="hidden" name= "entrada" id="entrada" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
+            <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
 
             <div><input type="hidden" name="breakin" id="breakin"></div>
             <div><input type="hidden" name="breakout" id="breakout"></div>
-            <div><input type="hidden" name="almuerzoin" id="almuerzoin"></div>
+            <div><input type="hidden" name="almuerzo" id="almuerzo"></div>
             <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
             <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
             <div><input type="hidden" name="pausas" id="pausas"></div>
@@ -162,13 +156,15 @@ img:hover {
                     <br>
 
                     <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $ciclosos->ingreso)}} </small></p>
+
+
                     <input type='submit' class="botonesinactivos" id= "turnoin" name='turnoin' value='INGRESO' disabled >
                     <br>
                     <br>
 
 
 
-                <form action="{{ url('/cicloSalida/'.$ciclosos->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{ url('/ciclosalida/'.$ciclosos->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                       {{csrf_field()}}
                     @method('PATCH')
 
@@ -177,13 +173,21 @@ img:hover {
                     <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                     <div><input type="hidden" name="salida" id="salida" value="{{ $hora }}"></div>
+
+
+
+{{--  {!! !empty($ciclosos->salida) ? '<tr><td>price is not null</td></tr>' : '<tr><td>Empty</td</tr>' !!}  --}}
+
                     <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
-                    <input type='submit' class="botones" name='salida' value='SALIDA'>
+                    <input type='submit' class="botones" value='SALIDA' >
+                    <div><input type="text" class="input-small" name="total" id="total" value="{{ $ciclosos->total }} ">horas de conexión</div>
+
                 </form>
                 </div>
                 </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew">
+
 
                       <strong><p class="card-text">Break</p></strong>
                       <br>

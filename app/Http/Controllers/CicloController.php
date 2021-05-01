@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class CicloController extends Controller
 {
+
+
+    public function __construct()
+    {
+        Carbon::setLocale('co');
+        date_default_timezone_set('America/Bogota');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +28,10 @@ class CicloController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:m:i A');
+        $hora = Carbon::now()->format('h:i:s A');
         $llave = $user_cedula. $hoy;
-        $ciclosos = Ciclo::all();
+        $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->paginate(10);
+
 
         //return back();
         return view ('ciclo.index',compact('ciclosos','hoy','hora','user_id','user_nombre','user_cedula','llave'));
@@ -50,7 +59,7 @@ class CicloController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:m:i');
+        $hora = Carbon::now()->format('h:i:s');
 
         $llave = $user_cedula. $hoy;
 
@@ -106,7 +115,7 @@ class CicloController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:m:i');
+        $hora = Carbon::now()->format('h:i:s A');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
