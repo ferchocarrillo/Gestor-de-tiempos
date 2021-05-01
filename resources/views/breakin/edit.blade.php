@@ -155,20 +155,17 @@ img:hover {
 
 
 
-                <form action="{{ url('/ciclosalida/'.$ciclosos->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                      {{csrf_field()}}
-                    @method('PATCH')
+
                     <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                     <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                    <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-                    <div><input type="hidden" name="salida" id="salida" value="{{ $hora }}"></div>
-                    <div><input type="text" name="total" id="total" value="{{  $ciclosos->total }}"></div>
+
 
 
                     <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
                     <input type='submit' class="botones" value='SALIDA'  disabled>
-                </form>
+
                 </div>
                 </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -180,25 +177,26 @@ img:hover {
                     <br>
                     <br>
                     <br>
-                    <form action="{{ url('/ciclobreakin/'.$ciclosos->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{ url('/breakin/'.$ciclosos->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                       @method('PATCH')
 
-
+                      <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+                      <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
+                     <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+                      <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                       <div><input type="hidden" name= "breakin" id="breakin" value="{{ $hora }}"></div>
-                      <input type='submit' class="botones" name='breakin' value='Inicio' style="width: 7rem;" >
+                      <input type='submit' class="botones"  value='Inicio' style="width: 7rem;" >
                     </form>
                       <br>
                       <br>
 
-                      <form action="{{ url('/ciclobreakin/'.$ciclosos->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                        {{csrf_field()}}
-                      @method('PATCH')
-                    <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
+
+
                       <input type='submit' class="botonesinactivos" name='breakout' value='Fin' style="width: 7rem;"  >
                       <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
 
-                    </form>
+
 
                     </div>
                   </div>

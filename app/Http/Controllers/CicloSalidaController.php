@@ -10,6 +10,17 @@ use App\Ciclo;
 
 class CicloSalidaController extends Controller
 {
+        /**
+
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        Carbon::setlocale('co');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,30 +53,24 @@ class CicloSalidaController extends Controller
 
         date_default_timezone_set('America/Bogota');
 
-        Carbon::setLocale('es');
+        Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-
         $date2 = $request->input('ingreso');
         $date1 = $request->input('salida');
         $tiempoA = $hoy->floatDiffInRealDays($date1);
         $tiempoB = $hoy->floatDiffInRealDays($date2);
         $tiempo1 = $tiempoA - $tiempoB;
-
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
-
-
         // $validatedData = $request->validate([
         //     'salida'          => ['required|unique:ciclosos,salida'],
         // ]);
-
         $ciclosos = new Ciclo();
-
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
@@ -101,10 +106,9 @@ class CicloSalidaController extends Controller
 
         date_default_timezone_set('America/Bogota');
 
-        Carbon::setLocale('es');
+        Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-
         $date2 = $request->input('ingreso');
         $date1 = $request->input('salida');
         $tiempoA = $hoy->diffInMinutes($date1);

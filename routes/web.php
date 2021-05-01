@@ -52,6 +52,8 @@ use Illuminate\Support\Facades\Gate;
     Route::resource('ciclo',      CicloController::class);
     Route::resource('ciclosalida',CicloSalidaController::class);
     Route::resource('breakin',    CicloBreakinController::class);
+    Route::resource('breakout',   CicloBreakOutController::class);
+
 
     Route::get('porta-list-excel', 'PortaController@exportExcel')->name('porta.excel');
 

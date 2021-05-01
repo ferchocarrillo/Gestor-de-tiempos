@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Carbon\Carbon;
 use Carbon\Traits\IntervalStep;
+use App\Ciclo;
 
 
 //ventas//
@@ -41,12 +42,15 @@ class HomeController extends Controller
         $ago = Carbon::now()->diffForHumans();
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
+        $user_cedula = Auth::user()->cedula;
+        $llave = $user_cedula. $hoy;
+        $ciclosos= Ciclo::all();
         // $horaRegistro['ingreso'] = Registro::where('fecha','=',$hoy);
 
         $paneles = Panel::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->paginate(10);
 
 
-        return view('panel.index', compact('hoy','hora','ago', 'registro', 'paneles','user_id','user_nombre'));
+        return view('ciclo.index', compact('hoy','hora','ago', 'registro', 'paneles','user_id','user_nombre','user_cedula','llave','ciclosos'));
 
 
          }
@@ -64,8 +68,11 @@ class HomeController extends Controller
         $ago = Carbon::now()->diffForHumans();
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
+        $user_cedula = Auth::user()->cedula;
+        $llave = $user_cedula. $hoy;
+        $ciclosos= Ciclo::all();
 
-        return view('registro.create', compact('hoy','hora','ago','user_id','user_nombre'));
+        return view('ciclo..create', compact('hoy','hora','ago','user_id','user_nombre','user_cedula','llave','ciclosos'));
 
 
          }

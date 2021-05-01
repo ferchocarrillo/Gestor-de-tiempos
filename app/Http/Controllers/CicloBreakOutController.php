@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\CicloBreakin;
-use App\CicloSalida;
+use App\CicloBreakOut;
 use Carbon\carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Ciclo;
 
-class CicloBreakinController extends Controller
+class CicloBreakOutController extends Controller
 {
 
-        /**
+            /**
 
      * Create a new controller instance.
      *
@@ -57,7 +56,6 @@ class CicloBreakinController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -71,21 +69,20 @@ class CicloBreakinController extends Controller
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
-        $ciclosos->breakin           = $hora;
+        $ciclosos->breakout          = $hora;
         $ciclosos->llave             = $llave;
-
-
         $ciclosos->save();
         return back();
 
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\CicloBreakin  $cicloBreakin
+     * @param  \App\CicloBreakOut  $cicloBreakOut
      * @return \Illuminate\Http\Response
      */
-    public function show(CicloBreakin $cicloBreakin)
+    public function show(CicloBreakOut $cicloBreakOut)
     {
         //
     }
@@ -93,10 +90,10 @@ class CicloBreakinController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CicloBreakin  $cicloBreakin
+     * @param  \App\CicloBreakOut  $cicloBreakOut
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+   public function edit(Request $request, $id)
     {
 
         date_default_timezone_set('America/Bogota');
@@ -111,7 +108,7 @@ class CicloBreakinController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('breakout.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
         // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
         //return back();
     }
@@ -120,7 +117,7 @@ class CicloBreakinController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CicloBreakin  $cicloBreakin
+     * @param  \App\CicloBreakOut  $cicloBreakOut
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -145,17 +142,17 @@ class CicloBreakinController extends Controller
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);
-     return view('breakout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CicloBreakin  $cicloBreakin
+     * @param  \App\CicloBreakOut  $cicloBreakOut
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CicloBreakin $cicloBreakin)
+    public function destroy(CicloBreakOut $cicloBreakOut)
     {
         //
     }
