@@ -87,9 +87,10 @@ img:hover {
 width: 30px;
 background-color: transparent;
 border: none;
-
-
   }
+
+
+
 </style>
 
 
