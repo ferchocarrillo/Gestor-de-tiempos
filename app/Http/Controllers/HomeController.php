@@ -37,7 +37,8 @@ class HomeController extends Controller
     {
         $registro = Registro::all();
 
-        $hoy = Carbon::today()->format('d-m-Y');
+        $hoy = Carbon::now()->format('d-m-Y');
+        $today = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $ago = Carbon::now()->diffForHumans();
         $user_id = Auth::user()->cedula;
@@ -47,10 +48,10 @@ class HomeController extends Controller
         $ciclosos= Ciclo::all();
         // $horaRegistro['ingreso'] = Registro::where('fecha','=',$hoy);
 
-        $paneles = Panel::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->paginate(10);
+        $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->where('fecha','=', $today)->paginate(10);
 
 
-        return view('ciclo.index', compact('hoy','hora','ago', 'registro', 'paneles','user_id','user_nombre','user_cedula','llave','ciclosos'));
+        return view('ciclo.index', compact('hoy','hora','ago', 'registro', 'ciclosos','user_id','user_nombre','user_cedula','llave'));
 
 
          }
