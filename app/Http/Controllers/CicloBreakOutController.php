@@ -56,21 +56,31 @@ class CicloBreakOutController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+        $date4 = $request->input('breakin');
+        $date3 = $request->input('breakout');
+        $tiempoC = $hoy->floatDiffInRealDays($date3);
+        $tiempoD = $hoy->floatDiffInRealDays($date4);
+        $tiempo2 = $tiempoC - $tiempoD;
+        $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
-        // $validatedData = $request->validate([
-        //     'salida'          => ['required|unique:ciclosos,salida'],
-        // ]);
+        $validatedData = $request->validate([
+            'breakout'          => ['required|unique:ciclosos,breakout'],
+        ]);
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->breakout          = $hora;
+        $ciclosos->timebreak         = $tiempo3;
         $ciclosos->llave             = $llave;
+
+
+
         $ciclosos->save();
         return back();
 
@@ -100,6 +110,12 @@ class CicloBreakOutController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+        $date4 = $request->input('breakin');
+        $date3 = $request->input('breakout');
+        $tiempoC = $hoy->floatDiffInRealDays($date3);
+        $tiempoD = $hoy->floatDiffInRealDays($date4);
+        $tiempo2 = $tiempoC - $tiempoD;
+        $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -108,7 +124,7 @@ class CicloBreakOutController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('ciclobreakout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
         // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
         //return back();
     }
@@ -126,12 +142,12 @@ class CicloBreakOutController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        // $date4 = $request->input('breakin');
-        // $date3 = $request->input('breakout');
-        // $tiempoC = $hoy->floatDiffInRealDays($date3);
-        // $tiempoD = $hoy->floatDiffInRealDays($date4);
-        // $tiempo2 = $tiempoC - $tiempoD;
-        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        $date4 = $request->input('breakin');
+        $date3 = $request->input('breakout');
+        $tiempoC = $hoy->floatDiffInRealDays($date3);
+        $tiempoD = $hoy->floatDiffInRealDays($date4);
+        $tiempo2 = $tiempoC - $tiempoD;
+        $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -142,7 +158,7 @@ class CicloBreakOutController extends Controller
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);
-     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclobreakout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
      //return back();
     }
 

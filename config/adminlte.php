@@ -254,7 +254,7 @@ return [
         ],*/
         [
             'text' => 'TIEMPOS A REGISTRAR',
-            'url'  => 'panel/create',
+            'url'  => 'ciclo',
             'icon' => 'fas fa-user-clock',
 
         ],

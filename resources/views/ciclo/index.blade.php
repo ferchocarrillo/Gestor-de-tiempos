@@ -113,7 +113,7 @@ box-shadow:5px  10px #1c4c64;
 
                 </body>
 
-               @can('haveaccess','ciclo.create')
+               @can('haveaccess','ciclo.index')
                 <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                     {{csrf_field()}}
                <div class="card-boton">
@@ -129,7 +129,7 @@ box-shadow:5px  10px #1c4c64;
             @endcan
 
 
-            <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+            <div><input type="hidden" id="fecha" name"fecha" value="{{ $hoy }}"> </div>
             <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
             <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
             <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
@@ -176,10 +176,10 @@ box-shadow:5px  10px #1c4c64;
                     <td>{{$ciclo->salida}}</td>
                     <td>{{$ciclo->total}}</td>
                 <td>
-                <form action="{{url('/ciclo/'.$ciclo->id)}}" method="post">
+                <form action="{{url('/ciclosalida/'.$ciclo->id)}}" method="post">
                         @csrf
                         {{--  @method('DELETE')  --}}
-                <a href="{{url('/ciclo/'.$ciclo->id.'/edit')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
+                <a href="{{url('/ciclosalida/'.$ciclo->id.'/edit')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Mas</a>
                 {{--  <button class="btn btn-warning btn-sm" onclick="return confirm('Borrar?');" type="submit"aria-pressed="true">Borrar</button>  --}}
                 </form>
                             </td>

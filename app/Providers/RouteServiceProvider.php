@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/panel/create';
+    public const HOME = '/ciclo';
 
     /**
      * Define your route model bindings, pattern filters, etc.

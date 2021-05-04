@@ -64,16 +64,12 @@ class CicloBreakinController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
-        // $validatedData = $request->validate([
-        //     'salida'          => ['required|unique:ciclosos,salida'],
-        // ]);
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
-        $ciclosos->breakin           = $hora;
+        $ciclosos->breakin           = $request->breakin;
         $ciclosos->llave             = $llave;
-
 
         $ciclosos->save();
         return back();
@@ -96,7 +92,7 @@ class CicloBreakinController extends Controller
      * @param  \App\CicloBreakin  $cicloBreakin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
 
         date_default_timezone_set('America/Bogota');
@@ -111,9 +107,8 @@ class CicloBreakinController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('breakout.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
-        // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
-        //return back();
+        return view('ciclobreakin.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+
     }
 
     /**
@@ -142,10 +137,10 @@ class CicloBreakinController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
-        $datosCiclo =request()->except(['_token','_method']);
-        Ciclo::where('id','=',$id)->update($datosCiclo);
+        $datosBreakin = request()->except(['_token','_method']);
+        Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('breakout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclobreakin.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

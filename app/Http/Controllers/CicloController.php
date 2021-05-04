@@ -28,13 +28,14 @@ class CicloController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('d-m-Y');
+        $today= Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s A');
         $llave = $user_cedula. $hoy;
-        $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->paginate(10);
+        $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->where('fecha','=', $today)->paginate(10);
 
 
         //return back();
-        return view ('ciclo.index',compact('ciclosos','hoy','hora','user_id','user_nombre','user_cedula','llave'));
+        return view ('ciclo.index',compact('ciclosos','hoy','hora','user_id','user_nombre','user_cedula','llave','today'));
     }
 
     /**
@@ -64,7 +65,7 @@ class CicloController extends Controller
         $llave = $user_cedula. $hoy;
 
         $validatedData = $request->validate([
-            'llave'          => ['required|unique:ciclosos,llave'],
+            'llave'          => ['unique:ciclo,llave']
         ]);
 
         $ciclosos = new Ciclo();

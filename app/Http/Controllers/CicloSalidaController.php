@@ -67,9 +67,7 @@ class CicloSalidaController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
-        // $validatedData = $request->validate([
-        //     'salida'          => ['required|unique:ciclosos,salida'],
-        // ]);
+
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
@@ -126,8 +124,7 @@ class CicloSalidaController extends Controller
         return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1','tiempo3'));
     }
 
-
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -137,7 +134,7 @@ class CicloSalidaController extends Controller
     public function update(Request $request, $id)
     {   date_default_timezone_set('America/Bogota');
 
-        Carbon::setLocale('es');
+        Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
 
@@ -160,7 +157,7 @@ class CicloSalidaController extends Controller
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);
-     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1','tiempo3'));
+     return view('ciclo.index', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1','tiempo3'));
     }
 
     /**
