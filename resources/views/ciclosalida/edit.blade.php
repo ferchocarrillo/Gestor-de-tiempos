@@ -133,16 +133,7 @@ border: none;
             </div>
             </div>
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
-            <div><input type="hidden" name="breakin" id="breakin"></div>
-            <div><input type="hidden" name="breakout" id="breakout"></div>
-            <div><input type="hidden" name="almuerzo" id="almuerzo"></div>
-            <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
-            <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
-            <div><input type="hidden" name="pausas" id="pausas"></div>
-            <div><input type="hidden" name="daño" id="daño"></div>
-            <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
-            <div><input type="hidden" name="retro" id="retro"></div>
-            <div><input type="hidden" name="reunion" id="reunion"></div>
+
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
     </body>
         <div id="cuenta"></div>
@@ -165,8 +156,9 @@ border: none;
                 <br><br>
                     <input type='submit' class="botones" value='Registrar Salida' >
                     <br><br>
-                    <p class="card-text"><small class="text-muted2"><b>Hora Entrada: </b> <p class="datos">{{ old('ingreso', $ciclosos->ingreso)}}</p> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Hora Salida:  </b> <p class="datos">  {{ old('salida', $ciclosos->salida)}}</p> </small></p>
+                    <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+
 
                     {{--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --}}
                     <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
@@ -181,17 +173,16 @@ border: none;
 
 
 
-                      <strong><p class="card-text">Break</p></strong>
-                      <br>
+                    <strong><p class="card-text">Break</p></strong>
+                      <br>   <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-                    <br>
-                    <br>
-
-
+                    <br>    <br>
                     <button class="botones"><a href="{{url('/ciclobreakin/'.$ciclosos->id.'/edit')}}">Registrar break</a></button>
-                        <br>
-                        <br>
+                    <br> <br>
+
+                    <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+
                     <p class="card-text"><small class="text-muted2"><b>Tiempo de Break </b>  {{ old('timebreak', $ciclosos->timebreak)}} <b>minutos</b></small></p>
 
 
@@ -213,10 +204,11 @@ border: none;
                     <br>
 
                     <button class="botones"><a href="{{url('/ciclolunch/'.$ciclosos->id.'/edit')}}">Registrar Lunch</a></button>
-                    <br>
-                    <br>
 
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de almuerzo: </b> {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
+                   <br><br>
+                    <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de almuerzo: </b> {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">

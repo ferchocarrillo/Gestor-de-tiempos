@@ -111,6 +111,11 @@ border: none;
   .datos{
       text-align: right;
   }
+  e{
+      text-align: right;
+      margin-top: 2em;
+      margin-left: 5em;
+  }
 
 
 
@@ -120,7 +125,7 @@ border: none;
 
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
             <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
-            <h1 style="font-weight: bold; text-aline:center;">Registro Tiempos Laborales</h1>
+            <h1 style="font-weight: bold; text-aline:center;">Registro Tiempo de Descanso</h1>
             <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">BIENVENIDO {{ Auth::user()->name }}</h3>
         </center>
         <div class="row">
@@ -149,14 +154,6 @@ border: none;
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
 
 
-            <div><input type="hidden" name="almuerzo" id="almuerzo"></div>
-            <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
-            <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
-            <div><input type="hidden" name="pausas" id="pausas"></div>
-            <div><input type="hidden" name="daño" id="daño"></div>
-            <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
-            <div><input type="hidden" name="retro" id="retro"></div>
-            <div><input type="hidden" name="reunion" id="reunion"></div>
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
 
 
@@ -174,32 +171,18 @@ border: none;
 
                   <div class="card-bodyNew1">
                     <strong><p class="card-text" >Turno</p></strong>
+                    <br>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                    <br>
 
+                    <br>     <br>
                     <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $ciclosos->ingreso)}} </small></p>
-                    <input type='submit' class="botonesinactivos" id= "turnoin" name='turnoin' value='INGRESO' disabled >
-                    <br>
-                    <br>
-
-
-
-
                     <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                     <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                    <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-
-
-
                     <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
-                    <input type='submit' class="botonesinactivos" value='SALIDA'  disabled>
-
                 </div>
                 </div>
-
-
-
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew">
                         <form action="{{url('/ciclobreakin/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -212,34 +195,32 @@ border: none;
                     <br>
                     <br>
                     <br>
-
-
                       <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                       <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                      <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                       <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                       <div><input type="hidden" name= "breakin" id="breakin" value="{{ $hora }}"></div>
-
-
                       <input type='submit' class="botones"  value='Inicio' >
                     </form>
 
-                      <br>
-                      <br>
                       <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                         @method('PATCH')
-
-                      <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
-
+                        <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+                        <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
+                        <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+                        <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
+                        <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
                       <input type='submit' class="botones"  value='Fin' >
-                      <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
 
 
 
-                    </div>
-                  </div>
-                </form>
+                <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+                <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ $tiempo1 }} minutos</small></p>
+            </form>
+        </div>
+    </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
 
                     <div class="card-bodyNew1">
@@ -247,15 +228,11 @@ border: none;
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
+                      <br><br><br>
+                      <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
 
-                      <br>
-                    <br>
-                    <br>
-                      <input type='submit' class="botonesinactivos" name='lunchin' value='Inicio' disabled>
-                      <br>
-                      <br>
-                      <input type='submit' class="botonesinactivos" name='lunchout' value='Fin' disabled>
-                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
+
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -270,9 +247,9 @@ border: none;
 
 <div class="card-boton">
     <div class="row">
-        <input type='submit' class="botonpequeinactivo" value='Inicio' disabled >
+
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='submit' class="botonpequeinactivo" value='Fin'  disabled>
+
 
         <p class="card-text"><small class="text-muted2">Tiempo de Capacitación {{ old('timecap', $ciclosos->timecap)}} </small></p>
     </div>
@@ -287,9 +264,9 @@ border: none;
                     <center><img src="\theme\images\pausas.png" alt=""  width="70px" height="80px"></center>
                     <div class="card-boton">
                         <div class="row">
-                            <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  disabled>
+
                             <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
                         </div>
                     </div>
@@ -306,9 +283,9 @@ border: none;
 
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
                             </div>
                         </div>
@@ -324,9 +301,9 @@ border: none;
                         <center><img src="\theme\images\evalluaciones.png" alt=""  width="85px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled  >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"disabled  >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
                             </div>
                         </div>
@@ -344,9 +321,9 @@ border: none;
                         <center><img src="\theme\images\retroa.png" alt=""  width="85px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
                             </div>
                         </div>
@@ -361,9 +338,9 @@ border: none;
                         <center><img src="\theme\images\REUNION.png" alt=""  width="70px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
                         </div>
@@ -412,7 +389,7 @@ border: none;
       <script>
       Swal.fire(
         'UN MERECIDO DESCANSO',
-        'EL TIEMPO DE BREAK COMENZARA DANDO CLICK EL EL BOTON INICIO',
+        'EL TIEMPO DE BREAK COMENZARA DANDO CLICK EL EN BOTON INICIO',
         'success'
       )
       </script>

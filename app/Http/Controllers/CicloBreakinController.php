@@ -52,12 +52,21 @@ class CicloBreakinController extends Controller
     public function store(Request $request)
     {
 
-
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
 
+
+
+        $date4 = $request->input('breakin1')->format('h:i:s A');
+        $date3 = $request->input('breakout2')->format('h:i:s A');
+
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4);
+        // $tiempoC = $hoy->floatDiffInRealDays($date3);
+        // $tiempoD = $hoy->floatDiffInRealDays($date4);
+        // $tiempo1 = $tiempoC - $tiempoD;
+        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -92,13 +101,24 @@ class CicloBreakinController extends Controller
      * @param  \App\CicloBreakin  $cicloBreakin
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
 
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+
+
+        $date4 = $request->input('breakin1');
+        $date3 = $request->input('breakout2');
+
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
+
+        // $tiempoC = $hoy->floatDiffInRealDays($date3);
+        // $tiempoD = $hoy->floatDiffInRealDays($date4);
+        // $tiempo1 = $tiempoC - $tiempoD;
+        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -107,7 +127,7 @@ class CicloBreakinController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclobreakin.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('ciclobreakin.edit',compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo1'));
 
     }
 
@@ -124,23 +144,25 @@ class CicloBreakinController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        // $date4 = $request->input('breakin');
-        // $date3 = $request->input('breakout');
         // $tiempoC = $hoy->floatDiffInRealDays($date3);
         // $tiempoD = $hoy->floatDiffInRealDays($date4);
-        // $tiempo2 = $tiempoC - $tiempoD;
+        // $tiempo1 = $tiempoC - $tiempoD;
         // $tiempo3 = $hoy->diffInMinutes($date4)/60;
-        $ciclosos=Ciclo::findOrFail($id);
+        $date4 = $request->input('breakin1');
+        $date3 = $request->input('breakout2');
+
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
+        $ciclosos = Ciclo::findOrFail($id);
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclobreakin.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclobreakin.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo1'));
      //return back();
     }
 

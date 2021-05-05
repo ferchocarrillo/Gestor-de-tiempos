@@ -151,14 +151,7 @@ border: none;
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
 
 
-            <div><input type="hidden" name="almuerzo" id="almuerzo"></div>
-            <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
-            <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
-            <div><input type="hidden" name="pausas" id="pausas"></div>
-            <div><input type="hidden" name="daño" id="daño"></div>
-            <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
-            <div><input type="hidden" name="retro" id="retro"></div>
-            <div><input type="hidden" name="reunion" id="reunion"></div>
+
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
 
 

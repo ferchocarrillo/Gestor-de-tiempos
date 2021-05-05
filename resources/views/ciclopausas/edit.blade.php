@@ -150,14 +150,7 @@ border: none;
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
 
 
-            <div><input type="hidden" name="almuerzo" id="almuerzo"></div>
-            <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
-            <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
-            <div><input type="hidden" name="pausas" id="pausas"></div>
-            <div><input type="hidden" name="daño" id="daño"></div>
-            <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
-            <div><input type="hidden" name="retro" id="retro"></div>
-            <div><input type="hidden" name="reunion" id="reunion"></div>
+
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
 
 
@@ -244,7 +237,7 @@ border: none;
 
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
-                    <div class="card-bodyNew">
+                    <div class="card-bodyNew1">
 
 
                       <strong><p class="card-text">Capacitación</p></strong>
@@ -270,7 +263,7 @@ border: none;
 
 
                   </div>
-                  <div class="card-bodyNew1">
+                  <div class="card-bodyNew">
 
 
                     <strong><p class="card-text">Pausas Activas</p></strong>
@@ -421,8 +414,8 @@ border: none;
               @section('js')
       <script>
       Swal.fire(
-        'TIEMPO DE APRENDER',
-        'REGISTRE EL TIEMPO DE CAPACITACIÓN',
+        'ALGO DE ACTIVIDAD FISICA SIEMPRE CAERA BIEN',
+        'REGISTRE EL TIEMPO DE PAUSAS ACTIVAS, OPRIMIENDO EL BOTON INICIO, AL TERMNINAR OPRIME EL BOTON FIN',
         'success'
       )
       </script>

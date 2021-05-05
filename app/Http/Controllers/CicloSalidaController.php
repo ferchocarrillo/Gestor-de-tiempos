@@ -140,11 +140,9 @@ class CicloSalidaController extends Controller
 
         $date2 = $request->input('ingreso');
         $date1 = $request->input('salida');
-
         $tiempoA = $hoy->diffInMinutes($date1);
         $tiempoB = $hoy->diffInMinutes($date2);
         $tiempo1 = $tiempoA - $tiempoB;
-
         $tiempo3 = $hoy->diffInMinutes($date2)/60;
 
         $ciclosos=Ciclo::findOrFail($id);
