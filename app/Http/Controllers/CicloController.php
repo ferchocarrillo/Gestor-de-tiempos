@@ -29,13 +29,14 @@ class CicloController extends Controller
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('d-m-Y');
         $today= Carbon::now()->format('Y-m-d');
+        $fecha= Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s A');
         $llave = $user_cedula. $hoy;
-        $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->where('fecha','=', $today)->paginate(10);
+        $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->where('fecha','=', $fecha)->paginate(10);
 
 
         //return back();
-        return view ('ciclo.index',compact('ciclosos','hoy','hora','user_id','user_nombre','user_cedula','llave','today'));
+        return view ('ciclo.index',compact('ciclosos','hoy','hora','user_id','user_nombre','user_cedula','llave','today','fecha'));
     }
 
     /**
@@ -119,8 +120,9 @@ class CicloController extends Controller
         $hora = Carbon::now()->format('h:i:s A');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
+        $fecha = Carbon::now()->format('Y-m-d');
 
-        return view('ciclo.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','fecha'));
     }
 
     /**

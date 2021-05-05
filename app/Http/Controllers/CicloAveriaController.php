@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\CicloBreakOut;
+use App\CicloAveria;
+use App\CicloSalida;
 use Carbon\carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Ciclo;
 
-class CicloBreakOutController extends Controller
-{
+class CicloAveriaController extends Controller
+{        /**
 
-            /**
-
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-        Carbon::setlocale('co');
-    }
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+   public function __construct()
+   {
+       $this->middleware('auth');
+       Carbon::setlocale('co');
+   }
     /**
      * Display a listing of the resource.
      *
@@ -50,31 +49,24 @@ class CicloBreakOutController extends Controller
      */
     public function store(Request $request)
     {
+
+
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date4 = $request->input('breakin');
-        $date3 = $request->input('breakout');
-        $tiempoC = $hoy->floatDiffInRealDays($date3);
-        $tiempoD = $hoy->floatDiffInRealDays($date4);
-        $tiempo2 = $tiempoC - $tiempoD;
-        $tiempo3 = $hoy->diffInMinutes($date4)/60;
+
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
-        $validatedData = $request->validate([
-            'breakout'          => ['required|unique:ciclos,breakout'],
-        ]);
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
-        $ciclosos->breakout          = $hora;
-        $ciclosos->timebreak         = $tiempo3;
+        $ciclosos->daño              = $hora;
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -85,10 +77,10 @@ class CicloBreakOutController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloAveria  $cicloAveria
      * @return \Illuminate\Http\Response
      */
-    public function show(CicloBreakOut $cicloBreakOut)
+    public function show(CicloAveria $cicloAveria)
     {
         //
     }
@@ -96,22 +88,16 @@ class CicloBreakOutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloAveria  $cicloAveria
      * @return \Illuminate\Http\Response
      */
-   public function edit(Request $request, $id)
+    public function edit($id)
     {
 
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date4 = $request->input('breakin');
-        $date3 = $request->input('breakout');
-        $tiempoC = $hoy->floatDiffInRealDays($date3);
-        $tiempoD = $hoy->floatDiffInRealDays($date4);
-        $tiempo2 = $tiempoC - $tiempoD;
-        $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -120,16 +106,15 @@ class CicloBreakOutController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
-        // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
-        //return back();
+        return view('cicloaveria.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloAveria  $cicloAveria
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -138,12 +123,12 @@ class CicloBreakOutController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date4 = $request->input('breakin');
-        $date3 = $request->input('breakout');
-        $tiempoC = $hoy->floatDiffInRealDays($date3);
-        $tiempoD = $hoy->floatDiffInRealDays($date4);
-        $tiempo2 = $tiempoC - $tiempoD;
-        $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        // $date4 = $request->input('breakin');
+        // $date3 = $request->input('breakout');
+        // $tiempoC = $hoy->floatDiffInRealDays($date3);
+        // $tiempoD = $hoy->floatDiffInRealDays($date4);
+        // $tiempo2 = $tiempoC - $tiempoD;
+        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -151,20 +136,20 @@ class CicloBreakOutController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
-        $datosCiclo =request()->except(['_token','_method']);
-        Ciclo::where('id','=',$id)->update($datosCiclo);
+        $datosAveria = request()->except(['_token','_method']);
+        Ciclo::where('id','=',$id)->update($datosAveria);
      //return response()->json($ciclo);
-     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
+     return view('cicloaveria.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloAveria  $cicloAveria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CicloBreakOut $cicloBreakOut)
+    public function destroy(CicloAveria $cicloAveria)
     {
         //
     }

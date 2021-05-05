@@ -118,7 +118,7 @@ box-shadow:5px  10px #1c4c64;
                     {{csrf_field()}}
                <div class="card-boton">
 
-                 <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO NUEVO'  >
+                 <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INICIO DE TURNO'  >
                  {{--<a href="{{route('ciclo.create')}}"
                   class="botonIndex"
                   >Registrar Nuevo Ingreso
@@ -129,7 +129,7 @@ box-shadow:5px  10px #1c4c64;
             @endcan
 
 
-            <div><input type="hidden" id="fecha" name"fecha" value="{{ $hoy }}"> </div>
+
             <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
             <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
             <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
@@ -148,7 +148,7 @@ box-shadow:5px  10px #1c4c64;
 
 
         <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-
+            <div><input type="hidden" id="fecha" name"fecha" value="{{ $hoy }}"> </div>
            <div class="container">
                <div class="pull-right">
                    <div class="col-md-12">
@@ -207,7 +207,7 @@ box-shadow:5px  10px #1c4c64;
 <script>
 Swal.fire(
   'Cada Mininuto Cuenta',
-  'Registra todos los tiempos de tu jornada',
+  'REGISTRA TU ENTRADA CON EL BOTON NUEVO INGRESO',
   'success'
 )
 </script>

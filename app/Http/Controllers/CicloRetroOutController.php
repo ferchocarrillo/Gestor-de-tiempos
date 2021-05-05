@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\CicloBreakOut;
+use App\CicloRetroOut;
 use Carbon\carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Ciclo;
 
-class CicloBreakOutController extends Controller
+class CicloRetroOutController extends Controller
 {
-
-            /**
+        /**
 
      * Create a new controller instance.
      *
@@ -50,12 +49,14 @@ class CicloBreakOutController extends Controller
      */
     public function store(Request $request)
     {
+
+
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date4 = $request->input('breakin');
-        $date3 = $request->input('breakout');
+        $date4 = $request->input('retro');
+        $date3 = $request->input('retroout');
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
@@ -67,14 +68,14 @@ class CicloBreakOutController extends Controller
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
         $validatedData = $request->validate([
-            'breakout'          => ['required|unique:ciclos,breakout'],
+            'retro'          => ['required|unique:ciclos,retro'],
         ]);
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
-        $ciclosos->breakout          = $hora;
-        $ciclosos->timebreak         = $tiempo3;
+        $ciclosos->retroout          = $hora;
+        $ciclosos->timeretro         = $tiempo3;
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -82,13 +83,14 @@ class CicloBreakOutController extends Controller
 
     }
 
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloRetroOut  $cicloRetroOut
      * @return \Illuminate\Http\Response
      */
-    public function show(CicloBreakOut $cicloBreakOut)
+    public function show(CicloRetroOut $cicloRetroOut)
     {
         //
     }
@@ -96,18 +98,18 @@ class CicloBreakOutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloRetroOut  $cicloRetroOut
      * @return \Illuminate\Http\Response
      */
-   public function edit(Request $request, $id)
+    public function edit(Request $request, $id)
     {
 
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date4 = $request->input('breakin');
-        $date3 = $request->input('breakout');
+        $date4 = $request->input('retro');
+        $date3 = $request->input('retroout');
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
@@ -129,7 +131,7 @@ class CicloBreakOutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloRetroOut  $cicloRetroOut
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -138,8 +140,8 @@ class CicloBreakOutController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date4 = $request->input('breakin');
-        $date3 = $request->input('breakout');
+        $date4 = $request->input('retro');
+        $date3 = $request->input('retroout');
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
@@ -161,10 +163,10 @@ class CicloBreakOutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CicloBreakOut  $cicloBreakOut
+     * @param  \App\CicloRetroOut  $cicloRetroOut
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CicloBreakOut $cicloBreakOut)
+    public function destroy(CicloRetroOut $cicloRetroOut)
     {
         //
     }

@@ -273,7 +273,7 @@ border: none;
         <input type='submit' class="botonpeque" value='Inicio' >
     </form>
 
-        <form action="{{url('/ciclocapaout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <form action="{{url('/ciclocapout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
             @method('PATCH')
             <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>

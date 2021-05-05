@@ -411,8 +411,8 @@ border: none;
               @section('js')
       <script>
       Swal.fire(
-        'USTED ESTA EN BREAK',
-        'Actualiza los datos de los postulados',
+        'UN MERECIDO DESCANSO',
+        'EL TIEMPO DE BREAK COMENZARA DANDO CLICK EL EL BOTON INICIO',
         'success'
       )
       </script>

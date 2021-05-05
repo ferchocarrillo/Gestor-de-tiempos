@@ -57,7 +57,7 @@ class CicloSalidaController extends Controller
         Carbon::now();
         $hoy = Carbon::now();
         $date2 = $request->input('ingreso');
-        $date1 = $request->input('salida');
+        $date1 = Carbon::now()->format('h:i:s');
         $tiempoA = $hoy->floatDiffInRealDays($date1);
         $tiempoB = $hoy->floatDiffInRealDays($date2);
         $tiempo1 = $tiempoA - $tiempoB;
@@ -71,7 +71,7 @@ class CicloSalidaController extends Controller
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
-        $ciclosos->fecha             = $hoy;
+        $ciclosos->fecha             = $request->fecha;
         $ciclosos->ingreso           = $request->entrada;
         $ciclosos->salida            = $hora;
         $ciclosos->llave             = $llave;
@@ -157,7 +157,7 @@ class CicloSalidaController extends Controller
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);
-     return view('ciclo.index', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1','tiempo3'));
+     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1','tiempo3'));
     }
 
     /**
