@@ -7,6 +7,7 @@ use Carbon\carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Ciclo;
+use App\Http\Requests\CicloRequest; #importar request
 
 class CicloSalidaController extends Controller
 {
@@ -47,7 +48,7 @@ class CicloSalidaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CicloRequest $request, Ciclo $ciclosos)
     {
 
 
@@ -67,6 +68,9 @@ class CicloSalidaController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
+        $request->validate([
+            'llave'          => ['required|unique:ciclos,llave'],
+        ]);
 
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
@@ -137,6 +141,8 @@ class CicloSalidaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+
+
 
         $date2 = $request->input('ingreso');
         $date1 = $request->input('salida');

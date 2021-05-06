@@ -102,6 +102,11 @@ border: none;
   .datos{
       text-align: right;
   }
+  e{
+    text-align: right;
+    margin-top: 2em;
+    margin-left: 5em;
+}
 
 
 

@@ -170,52 +170,30 @@ e{
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
                     <br>
-
                     <br><br>
                     <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-
-
                     {{--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --}}
                     <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
-
                 </div>
                 </div>
-
-
-
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew1">
-
-
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
                     <br>
                     <br>
                     <br>
-
-
                     </form>
-
                       <br>
                       <br>
-
-
                       <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
-
-
                       <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
-
-
-
                     </div>
                   </div>
-
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
-
                     <div class="card-bodyNew1">
-
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>

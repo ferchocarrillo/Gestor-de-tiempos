@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ciclo;
+use App\Http\Requests\CicloRequest;
 use Carbon\carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,22 +56,18 @@ class CicloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Ciclo $ciclosos)
+    public function store(CicloRequest $request, Ciclo $ciclosos)
     {
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('h:i:s');
-
         $llave = $user_cedula. $hoy;
-
-        $validatedData = $request->validate([
-            'llave'          => ['unique:ciclo,llave']
+        $request->validate([
+            'llave'          => ['required|unique:ciclos,llave'],
         ]);
-
         $ciclosos = new Ciclo();
-
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
@@ -88,6 +85,7 @@ class CicloController extends Controller
         $ciclosos->reunion           = $request->reunion;
         $ciclosos->total             = $request->total;
         $ciclosos->llave             = $llave;
+
 
         $ciclosos->save();
         return back();
@@ -134,7 +132,7 @@ class CicloController extends Controller
      */
     public function update(Request $request, Ciclo $ciclo)
     {
-        //
+
     }
 
     /**

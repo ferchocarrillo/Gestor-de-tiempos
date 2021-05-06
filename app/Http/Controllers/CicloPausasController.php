@@ -8,6 +8,7 @@ use App\CicloSalida;
 use Carbon\carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Ciclo;
+use Illuminate\Auth\Events\Validated;
 
 class CicloPausasController extends Controller
 {
@@ -57,6 +58,13 @@ class CicloPausasController extends Controller
         Carbon::now();
         $hoy = Carbon::now();
 
+        $date4 = $request->input('pausas')->format('h:i:s A');
+        $date3 = $request->input('pausasout')->format('h:i:s A');
+
+
+
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4);
+
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -92,13 +100,20 @@ class CicloPausasController extends Controller
      * @param  \App\CicloPausa  $cicloPausa
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
 
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+        $date4 = $request->input('pausas');
+        $date3 = $request->input('pausasout');
+
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
+
+
+
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -107,7 +122,7 @@ class CicloPausasController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclopausas.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('ciclopausas.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
 
     }
 
@@ -124,12 +139,11 @@ class CicloPausasController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        // $date4 = $request->input('breakin');
-        // $date3 = $request->input('breakout');
-        // $tiempoC = $hoy->floatDiffInRealDays($date3);
-        // $tiempoD = $hoy->floatDiffInRealDays($date4);
-        // $tiempo2 = $tiempoC - $tiempoD;
-        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
+
+        $date4 = $request->input('pausas');
+        $date3 = $request->input('pausasout');
+
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -140,7 +154,7 @@ class CicloPausasController extends Controller
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclopausas.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclopausas.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
      //return back();
     }
 

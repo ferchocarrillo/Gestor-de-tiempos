@@ -112,6 +112,11 @@ border: none;
   .datos{
       text-align: right;
   }
+  e{
+    text-align: right;
+    margin-top: 2em;
+    margin-left: 5em;
+}
 
 
 
@@ -141,20 +146,9 @@ border: none;
                 </body>
             </div>
             </div>
-
-
-            {{--  @foreach ($ciclosos as $ciclosos)
-            <div><input type="text" id= "ingreso" name="ingreso" value=" {{$ciclosos->ingreso}}"></div>
-
-            @endforeach  --}}
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
 
-
-
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
-
-
-
     </body>
 
 
@@ -170,15 +164,9 @@ border: none;
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
                     <br>
-
-                    <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $ciclosos->ingreso)}} </small></p>
-                    <input type='submit' class="botonesinactivos" id= "turnoin" name='turnoin' value='INGRESO' disabled >
-                    <br>
-                    <br>
-
-                    <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
-                    <input type='submit' class="botonesinactivos" value='SALIDA'  disabled>
-
+                    <p class="card-text"><small class="text-muted2">Ingreso <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+                    <p class="card-text"><small class="text-muted2">Tiempo de conexión  {{ $tiempo1 }} minutos</small></p>
                 </div>
                 </div>
 
@@ -195,7 +183,7 @@ border: none;
                     <br>
                     <br>
 
-                      <input type='submit' class="botonesinactivos"  value='Inicio'disabled >
+
 
                       <br>
                       <br>
@@ -203,7 +191,7 @@ border: none;
 
                       <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
 
-                      <input type='submit' class="botonesinactivos"  value='Fin' disabled>
+
                       <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
 
 
@@ -224,13 +212,13 @@ border: none;
                     <br>
 
 
-                      <input type='submit' class="botonesinactivos"  value='Inicio'disabled >
+
 
                       <br>
                       <br>
 
 
-                      <input type='submit' class="botonesinactivos" value='Fin' disabled >
+
                       <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
                 </div>
                   </div>
@@ -249,12 +237,12 @@ border: none;
     <div class="row">
 
 
-        <input type='submit' class="botonpequeinactivo" value='Inicio' disabled >
+
 
 
 
             &nbsp;&nbsp;&nbsp;
-        <input type='submit' class="botonpequeinactivo" value='Fin'disabled>
+
 
         <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación</b> {{ old('timecap', $ciclosos->timecap)}} </small></p>
 
@@ -309,9 +297,9 @@ border: none;
 
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
                             </div>
                         </div>
@@ -327,9 +315,9 @@ border: none;
                         <center><img src="\theme\images\evalluaciones.png" alt=""  width="85px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled  >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"disabled  >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
                             </div>
                         </div>
@@ -347,9 +335,9 @@ border: none;
                         <center><img src="\theme\images\retroa.png" alt=""  width="85px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
                             </div>
                         </div>
@@ -364,9 +352,9 @@ border: none;
                         <center><img src="\theme\images\REUNION.png" alt=""  width="70px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                <input type='submit' class="botonpequeinactivo" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type='submit' class="botonpequeinactivo" value='Fin' style="width: 6.5rem; border-radius:0.75rem;" disabled >
+
                                 <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
                         </div>

@@ -141,82 +141,39 @@ e{
                     document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
                 </script>
             </div>
-
-                </body>
+            </body>
             </div>
             </div>
-
-
-            {{--  @foreach ($ciclosos as $ciclosos)
-            <div><input type="text" id= "ingreso" name="ingreso" value=" {{$ciclosos->ingreso}}"></div>
-
-            @endforeach  --}}
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
            <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
     </body>
         <div id="cuenta"></div>
         <center>
-
             <div class="card-group" >
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
                   <div class="card-bodyNew1">
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
                     <br>
-
                     <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $ciclosos->ingreso)}} </small></p>
-
-                    <br>
-                    <br>
-
-
-
-
-
-
-
-
+                    <br><br>
                     <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
-
-
                 </div>
                 </div>
-
-
-
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew1">
-
-
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-                    <br>
-                    <br>
-
-
+                    <br><br><br>
                     </form>
-
-                      <br>
-                      <br>
-
-
+                    <br><br>
                       <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
-
-
                       <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
-
-
-
                     </div>
                   </div>
-
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
-
                     <div class="card-bodyNew">
-
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
