@@ -57,8 +57,8 @@ class CicloSalidaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date2 = $request->input('ingreso');
-        $date1 = Carbon::now()->format('h:i:s');
+        $date1 = $request->input('ingreso');
+        $date2 = $request->input('salida');
         $tiempoA = $hoy->floatDiffInRealDays($date1);
         $tiempoB = $hoy->floatDiffInRealDays($date2);
         $tiempo1 = $tiempoA - $tiempoB;
@@ -111,10 +111,10 @@ class CicloSalidaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date2 = $request->input('ingreso');
-        $date1 = $request->input('salida');
-        $tiempoA = $hoy->diffInMinutes($date1);
-        $tiempoB = $hoy->diffInMinutes($date2);
+        $date1 = $request->input('ingreso');
+        $date2 = $request->input('salida');
+        $tiempoA = $hoy->floatDiffInRealDays($date1);
+        $tiempoB = $hoy->floatDiffInRealDays($date2);
         $tiempo1 = $tiempoA - $tiempoB;
         $tiempo3 = $hoy->diffInMinutes($date2)/60;
         $user_id = Auth::user()->cedula;
@@ -143,11 +143,10 @@ class CicloSalidaController extends Controller
         $hoy = Carbon::now();
 
 
-
-        $date2 = $request->input('ingreso');
-        $date1 = $request->input('salida');
-        $tiempoA = $hoy->diffInMinutes($date1);
-        $tiempoB = $hoy->diffInMinutes($date2);
+        $date1 = $request->input('ingreso');
+        $date2 = $request->input('salida');
+        $tiempoA = $hoy->floatDiffInRealDays($date1);
+        $tiempoB = $hoy->floatDiffInRealDays($date2);
         $tiempo1 = $tiempoA - $tiempoB;
         $tiempo3 = $hoy->diffInMinutes($date2)/60;
 

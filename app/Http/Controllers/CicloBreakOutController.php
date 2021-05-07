@@ -59,7 +59,8 @@ class CicloBreakOutController extends Controller
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
-        $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        $tiempo3 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -111,7 +112,8 @@ class CicloBreakOutController extends Controller
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
-        $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        $tiempo3 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -143,7 +145,8 @@ class CicloBreakOutController extends Controller
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
-        $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        $tiempo3 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;

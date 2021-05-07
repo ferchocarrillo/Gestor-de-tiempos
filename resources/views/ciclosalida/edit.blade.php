@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('content')
+
 <link rel="stylesheet" href="css/simplyCountdown.theme.default.css"/>
 <script src="\js\simplyCountdown.min.js"></script>
 <script src="\js\countdown.js"></script>
@@ -159,21 +160,15 @@ border: none;
                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                     <div><input type="hidden" name="salida" id="salida" value="{{ $hora }}"></div>
                 <br><br>
-                    <input type='submit' class="botones" value='Registrar Salida' >
-                    <br><br>
+                    <input type='submit' class="botones" value='Registrar Salida'>
+                <br><br>
                     <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-
-
-                    {{--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --}}
                     <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
-
                 </form>
-                </div>
-                </div>
-
-
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+            </div>
+        </div>
+                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew">
 
 

@@ -113,7 +113,7 @@ class CicloBreakinController extends Controller
         $date4 = $request->input('breakin1');
         $date3 = $request->input('breakout2');
 
-        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4);
 
         // $tiempoC = $hoy->floatDiffInRealDays($date3);
         // $tiempoD = $hoy->floatDiffInRealDays($date4);
@@ -151,7 +151,7 @@ class CicloBreakinController extends Controller
         $date4 = $request->input('breakin1');
         $date3 = $request->input('breakout2');
 
-        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
+        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;

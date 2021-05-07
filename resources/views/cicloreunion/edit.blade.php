@@ -398,8 +398,8 @@ border: none;
               @section('js')
       <script>
       Swal.fire(
-        'TOMALO COMO UNA OPORTUNIDAD DE MEJORA',
-        'REGISTRA EL TIEMPO DE RETROALIMENTACIÓN',
+        'QUE SEA UNA OPORTUNIDAD PARA VOLVER A VER ROSTROS CONOCIDOS',
+        'REGISTRA EL TIEMPO DE REUNIÓN',
         'success'
       )
       </script>

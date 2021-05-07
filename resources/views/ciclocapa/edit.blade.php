@@ -183,13 +183,10 @@ e{
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
                     <br>
-                    <br>
-                    <br>
-                    </form>
-                      <br>
-                      <br>
-                      <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
-                      <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
+                    <br><br>
+                    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->timebreak }} </small></p>
                     </div>
                   </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >

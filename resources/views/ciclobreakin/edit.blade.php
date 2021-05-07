@@ -14,7 +14,7 @@
         border-radius: 0.75rem;
         width: 16rem;
         background-color: #51abba;
-        border: #36738c;
+        border: #f8f8f8;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: bold;
         align-content: center;
@@ -25,6 +25,7 @@
     background-color: #36738c;
     color:#ebf2f3;
     border: #51abba;
+
 
 }
 .botonesinactivos{
@@ -87,36 +88,40 @@
     padding: 1.25rem;
  }
 img:hover {
-    transform: scaleX(-1);
+
+
+   -webkit-transform:scale(1.3);transform:scale(1.3);
+   overflow:hidden;
+   transform: scaleX(-1);
+
   }
 .imglogo{
     float: center;
     height: 40;
     width: 140;
   }
-  .input-small{
-width: 30px;
-background-color: transparent;
-border: none;
+.input-small{
+    width: 30px;
+    background-color: transparent;
+    border: none;
   }
-  a{
+a{
       font-size: 18px;
       color: #2965fd;
       -webkit-text-stroke: 0.7px rgb(0, 0, 0);
 
   }
-  p{
+p{
       text-align: left;
   }
   .datos{
       text-align: right;
   }
-  e{
+e{
       text-align: right;
       margin-top: 2em;
       margin-left: 5em;
-  }
-
+}
 
 
 
@@ -145,25 +150,10 @@ border: none;
                 </body>
             </div>
             </div>
-
-
-            {{--  @foreach ($ciclosos as $ciclosos)
-            <div><input type="text" id= "ingreso" name="ingreso" value=" {{$ciclosos->ingreso}}"></div>
-
-            @endforeach  --}}
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
-
-
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
-
-
-
     </body>
-
-
-
-
-        <div id="cuenta"></div>
+            <div id="cuenta"></div>
         <center>
 
             <div class="card-group" >
@@ -188,22 +178,18 @@ border: none;
                         <form action="{{url('/ciclobreakin/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             {{csrf_field()}}
                             @method('PATCH')
-
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-                    <br>
-                    <br>
-                      <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
-                      <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
-                     <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
-                      <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-                      <div><input type="hidden" name= "breakin" id="breakin" value="{{ $hora }}"></div>
-                      <input type='submit' class="botones"  value='Inicio' >
+                    <br><br><br>
+                        <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+                        <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
+                        <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+                        <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
+                        <div><input type="hidden" name= "breakin" id="breakin" value="{{ $hora }}"></div>
+                        <input type='submit' class="botones"  value='Inicio' >
                     </form>
-
-                      <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                         @method('PATCH')
                         <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
@@ -212,9 +198,6 @@ border: none;
                         <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                         <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
                       <input type='submit' class="botones"  value='Fin' >
-
-
-
                 <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                 <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
                 <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ $tiempo1 }} minutos</small></p>
