@@ -244,7 +244,6 @@ e{
             <div><input type="hidden" id= "capout" name="capout" value=" {{$hora}}"></div>
             &nbsp;&nbsp;&nbsp;
         <input type='submit' class="botonpeque" value='Fin'>
-
         <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación</b> {{ old('timecap', $ciclosos->timecap)}} </small></p>
     </form>
     </div>

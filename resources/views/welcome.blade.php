@@ -11,7 +11,7 @@
 
         <!-- Styles -->
         <style>
-            html, body {
+            html, {
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
@@ -61,7 +61,24 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+body{
 
+position: relative;
+border-radius: 2.75em;
+font-family: 'Nunito', sans-serif;
+font-weight: 200;
+height: 100vh;
+margin: 0;
+background-color: transparent;
+background-image: url('..\theme\images\reloj.gif');
+
+
+
+}
+
+.content{
+    background: url('theme\images\reloj.gif')
+}
 
         </style>
     </head>
@@ -84,6 +101,7 @@
                 <div class="title m-b-md">
 
                     <img src="{{asset('theme/images/icon/logo.jpg')}}" alt="CoolAdmin" width="350px"><br>
+
 
 
                     Sistema de Gestion de Tiempos

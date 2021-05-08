@@ -154,8 +154,9 @@ e{
                   <div class="card-bodyNew1">
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                    <p class="card-text"><small class="text-muted2">Entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
-                    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+                    <br><br><br><br>
+                    <p class="card-text"><small class="text-muted2"><b>Entrada:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Salida:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
                     <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
                 </div>
                 </div>
@@ -164,11 +165,11 @@ e{
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br><br><br>
-                    </form>
-                    <br><br>
+                    <br><br><br><br>
                       <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
-                      <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('breakout', $ciclosos->breakout)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Tiempo de almuerzo</b> {{ old('timelunch', $ciclosos->timebreak)}} <b> minutos</b></small></p>
                     </div>
                   </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
@@ -183,15 +184,12 @@ e{
                         @method('PATCH')
                         <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                         <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
-                       <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+                        <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                         <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                         <div><input type="hidden" id= "almuerzo" name="almuerzo" value=" {{$hora}}"></div>
-
                       <input type='submit' class="botones"  value='Inicio' >
                     </form>
-                    <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><p class="datos">{{ old('almuerzo', $ciclosos->almuerzo)}}</p> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><p class="datos">  {{ old('almuerzoout', $ciclosos->almuerzoout)}}</p> </small></p>
-                      <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                         @method('PATCH')
                         <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
@@ -200,8 +198,10 @@ e{
                         <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                         <div><input type="hidden" id= "almuerzoout" name="almuerzoout" value=" {{$hora}}"></div>
                       <input type='submit' class="botones" value='Fin' >
-                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
-                </div>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} minutos</small></p>
+                    </div>
                   </div>
                 </form>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">

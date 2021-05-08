@@ -153,7 +153,7 @@ e{
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
     </body>
-            <div id="cuenta"></div>
+
         <center>
 
             <div class="card-group" >
@@ -187,6 +187,7 @@ e{
                         <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                         <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                         <div><input type="hidden" name= "breakin" id="breakin" value="{{ $hora }}"></div>
+
                         <input type='submit' class="botones"  value='Inicio' >
                     </form>
                     <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -200,6 +201,7 @@ e{
                       <input type='submit' class="botones"  value='Fin' >
                 <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                 <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+
                 <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ $tiempo1 }} minutos</small></p>
             </form>
         </div>

@@ -59,10 +59,15 @@ class CicloBreakinController extends Controller
 
 
 
-        $date4 = $request->input('breakin1')->format('h:i:s A');
-        $date3 = $request->input('breakout2')->format('h:i:s A');
+        $date3 = $request->input('breakin1')->format('h:i:s A');
+        $date4 = $request->input('breakout2')->format('h:i:s A');
 
-        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4);
+
+        $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
+        $format_tiempo1 = number_format($tiempo1, 2);
+        if (isset($_POST['breakin']))
+        {$tiempo1= $_POST['breakout']-$_POST['breaakin']};
+
         // $tiempoC = $hoy->floatDiffInRealDays($date3);
         // $tiempoD = $hoy->floatDiffInRealDays($date4);
         // $tiempo1 = $tiempoC - $tiempoD;
@@ -110,10 +115,13 @@ class CicloBreakinController extends Controller
         $hoy = Carbon::now();
 
 
-        $date4 = $request->input('breakin1');
-        $date3 = $request->input('breakout2');
+        $date3 = $request->input('breakin1');
+        $date4 = $request->input('breakout2');
 
-        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4);
+
+        $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
+        $format_tiempo1 = number_format($tiempo1, 2);
+
 
         // $tiempoC = $hoy->floatDiffInRealDays($date3);
         // $tiempoD = $hoy->floatDiffInRealDays($date4);
@@ -148,10 +156,12 @@ class CicloBreakinController extends Controller
         // $tiempoD = $hoy->floatDiffInRealDays($date4);
         // $tiempo1 = $tiempoC - $tiempoD;
         // $tiempo3 = $hoy->diffInMinutes($date4)/60;
-        $date4 = $request->input('breakin1');
-        $date3 = $request->input('breakout2');
+        $date3 = $request->input('breakin1');
+        $date4 = $request->input('breakout2');
 
-        $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
+        $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
+        $format_tiempo1 = number_format($tiempo1, 2);
+
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
