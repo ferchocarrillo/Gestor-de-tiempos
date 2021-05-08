@@ -323,7 +323,10 @@ border: none;
                                 <br>
                                 <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunion: </b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
+
+
                         </div>
+
                     </div>
 
 
@@ -333,8 +336,10 @@ border: none;
 
 
             </div>
+            <br>
+            <p style="text-align: center; aline-contents: center;"><i class="fa fa-copyright" aria-hidden="true">Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>
         </div>
-    </div>
+        </div>
 @endsection
 
 <script type="text/javascript">

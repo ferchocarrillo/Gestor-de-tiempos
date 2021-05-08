@@ -55,6 +55,9 @@ class CicloAveriaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+        $date3 = $request->input('daño');
+        $date4 = $request->input('dañoout');
+        $tiempo1 =($date4)->diffInMinutes($date3);
 
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -91,13 +94,17 @@ class CicloAveriaController extends Controller
      * @param  \App\CicloAveria  $cicloAveria
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
 
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+
+        $date3 = $request->input('daño');
+        $date4 = $request->input('dañoout');
+        $tiempo1 =($date4)->diffInMinutes($date3);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -106,7 +113,7 @@ class CicloAveriaController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('cicloaveria.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('cicloaveria.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date3','date4','tiempo1'));
 
     }
 
@@ -123,6 +130,11 @@ class CicloAveriaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+
+        $date3 = $request->input('daño');
+        $date4 = $request->input('dañoout');
+
+        $tiempo1 =($date4)->diffInMinutes($date3);
         // $date4 = $request->input('breakin');
         // $date3 = $request->input('breakout');
         // $tiempoC = $hoy->floatDiffInRealDays($date3);

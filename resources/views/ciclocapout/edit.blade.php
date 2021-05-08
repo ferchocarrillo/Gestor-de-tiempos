@@ -343,9 +343,11 @@ img:hover {
 
 
             </div>
+            <br>
+            <p style="text-align: center; aline-contents: center;"><i class="fa fa-copyright" aria-hidden="true">Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>
         </div>
-    </div>
-
+        </div>
+        @endsection
 
 <script type="text/javascript">
     function HoraActual(hora, minuto, segundo){
@@ -383,6 +385,6 @@ img:hover {
       )
       </script>
       @stop
-      @endsection
+
 
 

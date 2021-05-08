@@ -201,7 +201,6 @@ e{
                       <input type='submit' class="botones"  value='Fin' >
                 <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                 <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
-
                 <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ $tiempo1 }} minutos</small></p>
             </form>
         </div>
@@ -338,9 +337,11 @@ e{
 
 
             </div>
+            <br>
+            <p style="text-align: center; aline-contents: center;"><i class="fa fa-copyright" aria-hidden="true">Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>
         </div>
-    </div>
-    @endsection
+        </div>
+        @endsection
 
 
 <script type="text/javascript">

@@ -64,9 +64,7 @@ class CicloBreakinController extends Controller
 
 
         $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
-        $format_tiempo1 = number_format($tiempo1, 2);
-        if (isset($_POST['breakin']))
-        {$tiempo1= $_POST['breakout']-$_POST['breaakin']};
+
 
         // $tiempoC = $hoy->floatDiffInRealDays($date3);
         // $tiempoD = $hoy->floatDiffInRealDays($date4);

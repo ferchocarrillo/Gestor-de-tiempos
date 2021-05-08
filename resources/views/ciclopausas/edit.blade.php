@@ -367,9 +367,11 @@ border: none;
 
 
             </div>
+            <br>
+            <p style="text-align: center; aline-contents: center;"><i class="fa fa-copyright" aria-hidden="true">Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>
         </div>
-    </div>
-    @endsection
+        </div>
+        @endsection
 
 
 <script type="text/javascript">

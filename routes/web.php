@@ -60,6 +60,7 @@ use Illuminate\Support\Facades\Gate;
     Route::resource('cicloretroout',     CicloRetroOutController::class);
     Route::resource('cicloreunion',      CicloReunionController::class);
     Route::resource('cicloreunionout',   CicloReunionOutController::class);
+    Route::resource('historico',         HistoricoController::class);
 
 
     Route::get('porta-list-excel', 'PortaController@exportExcel')->name('porta.excel');

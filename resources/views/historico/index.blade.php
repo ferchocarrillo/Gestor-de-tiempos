@@ -6,50 +6,9 @@
         </body>
 
         <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
-         <div class="col-md-12">
-
-
-
-
-
-            <center><h3 align="center">  </h3></center>
-        </div>
-
-        <div class="card-group">
-            <div class="card">
-              <img class="card-img-top" src="..." alt="">
-              <div class="card-body">
-                <p><h2 style="text-transform: capitalize" class="title">BIENVENIDO {{ Auth::user()->name }}</h2></p>
-                <br>
-                <div><button class="historico"><a href="{{url('/historico')}}" style="color: #EAF2F8">Ver Registros Anteriores</a></button></div>
-
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="\theme\images\isotipo-slogan.png" alt="Card image cap">
-              <div class="card-body">
-
-                <p><body input type = "time" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)"></p>
-                    <p><e><div style="font-size: 50px" id="contenedor_reloj"></div></e></p>
-                    <p><link rel="shortcut icon" href="" ></p>
-                    <script>
-                        var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                        var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
-                        var f=new Date();
-                        document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-                    </script>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="..." alt="">
-              <div class="card-body">
-
-              </div>
-            </div>
-          </div>
-
-
+            <img src="\theme\images\isotipo-slogan.png" float="left" height="120" width="320">
+            <h1 align="center">Registrar Tiempos</h1>
+            <h3 align="center">  BIENVENIDO {{ Auth::user()->name }}</h3>
             {{csrf_field()}}
                 <script type="text/javascript">
                     function HoraActual(hora, minuto, segundo){
@@ -73,46 +32,17 @@
                         setTimeout("HoraActual("+hora+", "+minuto+", "+segundo+")", 1000);
                 }
                 </script>
-
-
+                <script>
+                    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+                    var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+                    var f=new Date();
+                    document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                </script>
+                <body input type = "time" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)">
+                <div id="contenedor_reloj"></div>
+                <link rel="shortcut icon" href="">
 
  <style>
-     .logo{
-        float: center;
-
-     }
-
-    .historico{
-
-        align-content: left;
-        border-radius: 0.75em;
-        width: 35%;
-        align-self: left;
-        float: left;
-        color: #e7ecee;
-        background-color: #73abbb;
-        height: 70px;
-        font-size: 22px;
-        box-shadow:15px 16px 30px -2px #73abbb ;
-    }
-    .historico:hover{
-        background-color: #1c4c64;
-        color: #73abbb;
-        box-shadow:15px 16px 30px -2px #b2c3c7 ;
-
-
-    }
-
-.title{
-    font-size: 30px;
-    text-align: left;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-}
-
-    .card{
-        background-image: linear-gradient(#EAF2F8, #AAB7B8);
-    }
 .card-boton{
 
 background-color:#73abbb;
@@ -183,20 +113,6 @@ box-shadow:5px  10px #1c4c64;
 
                 </body>
 
-               @can('haveaccess','ciclo.index')
-                <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                    {{csrf_field()}}
-               <div class="card-boton">
-
-                 <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INICIO DE TURNO'  >
-                 {{--<a href="{{route('ciclo.create')}}"
-                  class="botonIndex"
-                  >Registrar Nuevo Ingreso
-                </a>
-                <br><br> --}}
-            </div>
-        </form>
-            @endcan
 
 
 
@@ -220,7 +136,6 @@ box-shadow:5px  10px #1c4c64;
         <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
             <div><input type="hidden" id="fecha" name"fecha" value="{{ $hoy }}"> </div>
            <div class="container">
-
                <div class="pull-right">
                    <div class="col-md-12">
                        <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -234,7 +149,7 @@ box-shadow:5px  10px #1c4c64;
                    <th scope="col">Ingreso</th>
                    <th scope="col">Salida</th>
                    <th scope="col">Tiempo de Conexión</th>
-                   <th colspan="3">Acciones</th>
+
                    </tr>
            </thead>
            <tbody>
@@ -246,16 +161,9 @@ box-shadow:5px  10px #1c4c64;
                     <td>{{$ciclo->ingreso}}</td>
                     <td>{{$ciclo->salida}}</td>
                     <td>{{$ciclo->total}}</td>
-                <td>
-                <form action="{{url('/ciclosalida/'.$ciclo->id)}}" method="post">
-                        @csrf
-                        {{--  @method('DELETE')  --}}
-                <a href="{{url('/ciclosalida/'.$ciclo->id.'/edit')}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Mas</a>
-                {{--  <button class="btn btn-warning btn-sm" onclick="return confirm('Borrar?');" type="submit"aria-pressed="true">Borrar</button>  --}}
-                </form>
-                            </td>
+
                             </tr>
-                            @endforeach
+            @endforeach
                             </tbody>
                          </table>
 
