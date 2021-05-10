@@ -14,6 +14,7 @@
     .botones{
         border-radius: 0.75rem;
         width: 16rem;
+        height: 2rem;
         background-color: #51abba;
         border: #36738c;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -150,6 +151,7 @@ e{
 
                   <div class="card-bodyNew">
                     <strong><p class="card-text" >Turno</p></strong>
+                    <br><br>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
                     <br>
                 <form action="{{ url('/ciclosalida/'.$ciclosos->id, 'edit')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
@@ -160,10 +162,10 @@ e{
                     <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                     <div><input type="hidden" name="salida" id="salida" value="{{ $hora }}"></div>
-                <br><br>
+                <br>
                     <input type='submit' class="botones" value='Registrar Salida'>
                 <br><br>
-                    <p class="card-text"><small class="text-muted2">Ingreso <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
                     <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
                 </form>
@@ -175,9 +177,9 @@ e{
 
 
                     <strong><p class="card-text">Break</p></strong>
-                      <br>   <br>
+                    <br><br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>    <br>
+                    <br>    <br><br>
                     <button class="botones"><a href="{{url('/ciclobreakin/'.$ciclosos->id.'/edit')}}">Registrar break</a></button>
                     <br> <br>
 
@@ -196,7 +198,7 @@ e{
                     <div class="card-bodyNew">
 
                       <strong><p class="card-text">Almuerzo</p></strong>
-                      <br>
+                      <br><br>
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
 
                       <br>
@@ -219,7 +221,7 @@ e{
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
 
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="85px" height="80px"></center>
+                      <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px"></center>
 
 <div class="card-boton">
     <div class="row">
@@ -237,7 +239,7 @@ e{
 
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
-                    <center><img src="\theme\images\pausas.png" alt=""  width="70px" height="80px"></center>
+                    <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px"  ></center>
                     <div class="card-boton">
                         <div class="row">
 
@@ -256,7 +258,7 @@ e{
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
 <br>
-                        <center><img src="\theme\images\dañado.png" alt=""  width="70px" height="80px" ></center>
+                        <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"   ></center>
 
                         <div class="card-boton">
                             <div class="row">
@@ -276,7 +278,7 @@ e{
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
 
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="85px" height="80px" margin></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px" margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <button class="botones"><a href="{{url('/cicloeva/'.$ciclosos->id.'/edit')}}">Registrar Evaluacion</a></button>
@@ -296,7 +298,7 @@ e{
 
                         <strong><p class="card-text">Retroalimentación</p></strong>
                         <br>
-                        <center><img src="\theme\images\retroa.png" alt=""  width="85px" height="80px" margin></center>
+                        <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px" margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <button class="botones"><a href="{{url('/cicloretro/'.$ciclosos->id.'/edit')}}">Registrar Retro</a></button>
@@ -313,7 +315,7 @@ e{
 
                         <strong><p class="card-text">Reunión</p></strong>
                         <br>
-                        <center><img src="\theme\images\REUNION.png" alt=""  width="70px" height="80px" margin></center>
+                        <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px"   margin></center>
                         <div class="card-boton">
                             <div class="row">
 
