@@ -103,7 +103,7 @@ border: none;
   .datos{
       text-align: right;
   }
-  e{
+e{
     text-align: right;
     margin-top: 2em;
     margin-left: 5em;
@@ -119,9 +119,10 @@ border: none;
            {{csrf_field()}}
            <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
            <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
-           <h1 style="font-weight: bold; text-aline:center;">Registro Tiempos Laborales</h1>
+           <br><br>
            <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">BIENVENIDO {{ Auth::user()->name }}</h3>
-           </center>
+           <h1 style="font-weight: bold; text-aline:center;">PANEL DE REGISTRO DE TIEMPOS</h1>
+        </center>
            <div class="row">
            <div class="card" style="background-color: transparent; width:100%" >
                 <center>  <body input type ="time" style="font-size: 20px;  border-radius:0.75rem;" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)" >
@@ -162,8 +163,8 @@ border: none;
                 <br><br>
                     <input type='submit' class="botones" value='Registrar Salida'>
                 <br><br>
-                    <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
-                    <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+                    <p class="card-text"><small class="text-muted2">Ingreso <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
                     <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
                 </form>
             </div>
@@ -182,7 +183,6 @@ border: none;
 
                     <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
-
                     <p class="card-text"><small class="text-muted2"><b>Tiempo de Break </b>  {{ old('timebreak', $ciclosos->timebreak)}} <b>minutos</b></small></p>
 
 

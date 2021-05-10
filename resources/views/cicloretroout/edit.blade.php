@@ -123,7 +123,7 @@ e{
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
             <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
             <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">{{ Auth::user()->name }}</h3>
-            <h1 style="font-weight: bold; text-aline:center;">PAUSAS ACTIVAS</h1>
+            <h1 style="font-weight: bold; text-aline:center;">ESTAS EN RETRO ALIMENTACION</h1>
 
         </center>
         <div class="row">
@@ -158,13 +158,10 @@ e{
                   <div class="card-bodyNew1">
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                    <br>
-                    <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $ciclosos->ingreso)}} </small></p>
-
-                    <br>
-                    <br>
-                    <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
-
+                    <br><br><br><br>
+                    <p class="card-text"><small class="text-muted2"><b>Entrada:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Salida:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
                 </div>
                 </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -174,24 +171,11 @@ e{
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-                    <br>
-                    <br>
-
-
-                    </form>
-
-                      <br>
-                      <br>
-
-
+                    <br><br><br><br>
                       <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
-
-
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
-
-
-
+                      <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('breakout', $ciclosos->breakout)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Tiempo de almuerzo</b> {{ old('timelunch', $ciclosos->timebreak)}} <b> minutos</b></small></p>
                     </div>
                   </div>
 
@@ -202,23 +186,13 @@ e{
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
-
-                      <br>
-                    <br>
-                    <br>
-
-
-
-
-                      <br>
-                      <br>
-
-
-
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de almuerzo</b> {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
-                </div>
+                      <br><br><br><br>
+                      <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
+                    </div>
                   </div>
-
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
                     <div class="card-bodyNew1">
@@ -230,8 +204,18 @@ e{
                       <center><img src="\theme\images\capacitacion.png" alt=""  width="85px" height="80px"></center>
 
 <div class="card-boton">
-       <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación</b> {{ old('timecap', $ciclosos->timecap)}} </small></p>
-       <br>
+    <div class="row">
+
+
+
+
+
+            &nbsp;&nbsp;&nbsp;
+
+
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación</b> {{ old('timecap', $ciclosos->timecap)}} </small></p>
+
+    </div>
 </div>
 
 
@@ -246,17 +230,7 @@ e{
                         <div class="row">
 
 
-                            <form action="{{url('/ciclopausas/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                {{csrf_field()}}
-                                @method('PATCH')
-                                <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
-                                <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
-                               <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
-                                <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-                                <div><input type="hidden" id= "pausas" name="pausas" value=" {{$hora}}"></div>
-                            <input type='submit' class="botones" value='Inicio'>
-                        </form>
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas</b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
                         </div>
                     </div>
                 </div>
@@ -267,14 +241,18 @@ e{
 
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
-                        <br>
+<br>
                         <center><img src="\theme\images\dañado.png" alt=""  width="70px" height="80px" ></center>
 
                         <div class="card-boton">
-                         <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo </b>{{ old('timedaño', $ciclosos->timedaño)}} </small></p>
+                            <div class="row">
+
+
+
+                                <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
+                            </div>
                         </div>
                     </div>
-
                   <div class="card-bodyNew1">
 
 
@@ -288,7 +266,8 @@ e{
                             <div class="row">
 
 
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de evaluacion</b>  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
+
+                                <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -305,9 +284,17 @@ e{
                         <center><img src="\theme\images\retroa.png" alt=""  width="85px" height="80px" margin></center>
                         <div class="card-boton">
                             <div class="row">
-
-
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion</b>  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
+                                      <form action="{{url('/cicloretroout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    {{csrf_field()}}
+                                    @method('PATCH')
+                                    <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+                                    <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
+                                   <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+                                    <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
+                                    <div><input type="hidden" id= "retroout" name="retroout" value=" {{$hora}}"></div>
+                                <input type='submit' class="botones" value='Fin'>
+                            </form>
+                                <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
 
                             </div>
                         </div>
@@ -325,7 +312,7 @@ e{
 
 
 
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunion</b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
+                                <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -374,8 +361,8 @@ e{
               @section('js')
       <script>
       Swal.fire(
-        'UN POCO DE ESTIRAMIENTO HARÁ LA DIFERENCIA PARA CONTINUAR TU JORNADA',
-        'REGISTRA EL TIEMPO DE TUS PAUSAS ACTIVAS',
+        'TOMALO COMO UNA OPORTUNIDAD DE MEJORA',
+        'REGISTRA EL TIEMPO DE RETROALIMENTACIÓN',
         'success'
       )
       </script>

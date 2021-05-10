@@ -117,9 +117,6 @@ e{
     margin-left: 5em;
 }
 
-
-
-
 </style>
 
 
@@ -189,7 +186,7 @@ e{
                         <div><input type="hidden" id= "almuerzo" name="almuerzo" value=" {{$hora}}"></div>
                       <input type='submit' class="botones"  value='Inicio' >
                     </form>
-                    <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{url('/ciclolunchout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                         @method('PATCH')
                         <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
@@ -197,7 +194,8 @@ e{
                        <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                         <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                         <div><input type="hidden" id= "almuerzoout" name="almuerzoout" value=" {{$hora}}"></div>
-                      <input type='submit' class="botones" value='Fin' >
+                      {{-- <input type='submit' class="botones" value='Fin' > --}}
+                      <br>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
                       <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
                       <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} minutos</small></p>

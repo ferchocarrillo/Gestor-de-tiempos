@@ -122,8 +122,9 @@ e{
 
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
             <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
-            <h1 style="font-weight: bold; text-aline:center;">Registro Tiempos Laborales</h1>
-            <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">BIENVENIDO {{ Auth::user()->name }}</h3>
+            <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">{{ Auth::user()->name }}</h3>
+            <h1 style="font-weight: bold; text-aline:center;">CAPACITACION</h1>
+
         </center>
         <div class="row">
         <div class="card" style="background-color: transparent; width:100%" >
@@ -142,24 +143,7 @@ e{
                 </body>
             </div>
             </div>
-
-
-            {{--  @foreach ($ciclosos as $ciclosos)
-            <div><input type="text" id= "ingreso" name="ingreso" value=" {{$ciclosos->ingreso}}"></div>
-
-            @endforeach  --}}
-            <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
-
-
-            <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
-
-
-
     </body>
-
-
-
-
         <div id="cuenta"></div>
         <center>
 
@@ -173,7 +157,6 @@ e{
                     <br><br>
                     <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-                    {{--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --}}
                     <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
                 </div>
                 </div>
@@ -231,21 +214,10 @@ e{
            <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
             <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
             <div><input type="hidden" id= "capacitacion" name="capacitacion" value=" {{$hora}}"></div>
-        <input type='submit' class="botonpeque" value='Inicio' >
+        <input type='submit' class="botones" value='Inicio' >
     </form>
 
-        <form action="{{url('/ciclocapout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-            {{csrf_field()}}
-            @method('PATCH')
-            <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
-            <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
-           <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
-            <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-            <div><input type="hidden" id= "capout" name="capout" value=" {{$hora}}"></div>
-            &nbsp;&nbsp;&nbsp;
-        <input type='submit' class="botonpeque" value='Fin'>
-        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación</b> {{ old('timecap', $ciclosos->timecap)}} </small></p>
-    </form>
+    <p class="card-text"><small class="text-muted2">Tiempo de Capacitación  {{ old('timecap', $ciclosos->timecap)}} </small></p>
     </div>
 </div>
 

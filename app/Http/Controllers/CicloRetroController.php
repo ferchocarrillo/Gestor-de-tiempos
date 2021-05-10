@@ -138,7 +138,7 @@ class CicloRetroController extends Controller
         $datosRetro = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosRetro);
      //return response()->json($ciclo);
-     return view('cicloretro.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('cicloretroout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

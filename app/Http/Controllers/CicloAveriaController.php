@@ -57,8 +57,7 @@ class CicloAveriaController extends Controller
         $hoy = Carbon::now();
         $date3 = $request->input('daño');
         $date4 = $request->input('dañoout');
-        $tiempo1 =($date4)->diffInMinutes($date3);
-
+        $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -104,7 +103,7 @@ class CicloAveriaController extends Controller
 
         $date3 = $request->input('daño');
         $date4 = $request->input('dañoout');
-        $tiempo1 =($date4)->diffInMinutes($date3);
+        $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -130,17 +129,9 @@ class CicloAveriaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-
         $date3 = $request->input('daño');
         $date4 = $request->input('dañoout');
-
-        $tiempo1 =($date4)->diffInMinutes($date3);
-        // $date4 = $request->input('breakin');
-        // $date3 = $request->input('breakout');
-        // $tiempoC = $hoy->floatDiffInRealDays($date3);
-        // $tiempoD = $hoy->floatDiffInRealDays($date4);
-        // $tiempo2 = $tiempoC - $tiempoD;
-        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -151,7 +142,7 @@ class CicloAveriaController extends Controller
         $datosAveria = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosAveria);
      //return response()->json($ciclo);
-     return view('cicloaveria.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('cicloaveriaout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

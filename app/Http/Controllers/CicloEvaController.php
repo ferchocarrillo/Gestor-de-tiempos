@@ -104,7 +104,7 @@ class CicloEvaController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('cicloeva.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('cicloevaout.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
 
     }
 
@@ -137,7 +137,7 @@ class CicloEvaController extends Controller
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('cicloeva.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

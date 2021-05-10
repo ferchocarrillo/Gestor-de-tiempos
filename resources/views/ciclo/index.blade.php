@@ -4,6 +4,111 @@
     <div class="col-md-12">
         <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
         </body>
+        <style>
+            .logo{
+               float: center;
+
+            }
+
+           .historico{
+
+               align-content: left;
+               border-radius: 0.75em;
+               width: 35%;
+               align-self: left;
+               float: left;
+               color: #e7ecee;
+               background-color: #73abbb;
+               height: 70px;
+               font-size: 22px;
+               box-shadow:15px 16px 30px -2px #73abbb ;
+           }
+           .historico:hover{
+               background-color: #1c4c64;
+               color: #73abbb;
+               box-shadow:15px 16px 30px -2px #b2c3c7 ;
+
+
+           }
+
+       .title{
+           font-size: 30px;
+           text-align: left;
+           font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+       }
+
+           .card{
+               background-image: linear-gradient(#EAF2F8, #AAB7B8);
+               border: #1c4c64;
+           }
+       .card-boton{
+
+       background-color:#73abbb;
+       width: 20%;
+       height: 70px;
+       border-radius: 0.75rem;
+       border: #1c4c64;
+       border-style: solid;
+       border-width: 1px;
+       margin: 2rem;
+       box-shadow:5px  10px #1c4c64;
+       opacity: 0.9;
+       }
+
+       .a.botonIndex {
+
+       background-attachment: fixed;
+       background-color: #cfd0d0;
+       margin-top: 3rem;
+       width: 350px;
+       height: 60px;
+       border-radius: 0.5rem;
+       border-style: solid;
+       border-width: 1px;
+       box-shadow:5px  10px #1c4c64;
+       }
+       .a.botonIndex[type=boton]{
+           background-attachment: fixed;
+           background-color: #cfd0d0;
+           margin-top: 0.7rem;
+           width: 350px;
+           height: 60px;
+           border-radius: 0.5rem;
+           border-style: solid;
+           border-width: 1px;
+           cursor: pointer;
+           box-shadow:5px  10px #1c4c64;
+       }
+       .botonIndex {
+
+           background-attachment: fixed;
+           background-color: #cfd0d0;
+           margin-top: 0.7rem;
+           width: 200px;
+           height: 40px;
+           border-radius: 0.5rem;
+           border-style: solid;
+           border-width: 1px;
+           box-shadow:5px  10px #1c4c64;
+           }
+
+
+
+       .botonIndex:hover {
+           background-attachment: fixed;
+           background-color: #cfd0d0;
+           box-shadow:5px  10px #1c4c64;
+
+           margin-top: 0.7rem;
+           width: 200px;
+           height: 40px;
+           border-radius: 1rem;
+           color: #1c4c64;
+           font-style: normal;
+
+           }
+                       </style>
 
         <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
@@ -76,110 +181,7 @@
 
 
 
- <style>
-     .logo{
-        float: center;
 
-     }
-
-    .historico{
-
-        align-content: left;
-        border-radius: 0.75em;
-        width: 35%;
-        align-self: left;
-        float: left;
-        color: #e7ecee;
-        background-color: #73abbb;
-        height: 70px;
-        font-size: 22px;
-        box-shadow:15px 16px 30px -2px #73abbb ;
-    }
-    .historico:hover{
-        background-color: #1c4c64;
-        color: #73abbb;
-        box-shadow:15px 16px 30px -2px #b2c3c7 ;
-
-
-    }
-
-.title{
-    font-size: 30px;
-    text-align: left;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-}
-
-    .card{
-        background-image: linear-gradient(#EAF2F8, #AAB7B8);
-    }
-.card-boton{
-
-background-color:#73abbb;
-width: 20%;
-height: 70px;
-border-radius: 0.75rem;
-border: #1c4c64;
-border-style: solid;
-border-width: 1px;
-margin: 2rem;
-box-shadow:5px  10px #1c4c64;
-opacity: 0.9;
-}
-
-.a.botonIndex {
-
-background-attachment: fixed;
-background-color: #cfd0d0;
-margin-top: 3rem;
-width: 350px;
-height: 60px;
-border-radius: 0.5rem;
-border-style: solid;
-border-width: 1px;
-box-shadow:5px  10px #1c4c64;
-}
-.a.botonIndex[type=boton]{
-    background-attachment: fixed;
-    background-color: #cfd0d0;
-    margin-top: 0.7rem;
-    width: 350px;
-    height: 60px;
-    border-radius: 0.5rem;
-    border-style: solid;
-    border-width: 1px;
-    cursor: pointer;
-    box-shadow:5px  10px #1c4c64;
-}
-.botonIndex {
-
-    background-attachment: fixed;
-    background-color: #cfd0d0;
-    margin-top: 0.7rem;
-    width: 200px;
-    height: 40px;
-    border-radius: 0.5rem;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow:5px  10px #1c4c64;
-    }
-
-
-
-.botonIndex:hover {
-    background-attachment: fixed;
-    background-color: #cfd0d0;
-    box-shadow:5px  10px #1c4c64;
-
-    margin-top: 0.7rem;
-    width: 200px;
-    height: 40px;
-    border-radius: 1rem;
-    color: #1c4c64;
-    font-style: normal;
-
-    }
-                </style>
 
                 </body>
 

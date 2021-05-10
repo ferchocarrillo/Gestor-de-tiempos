@@ -57,14 +57,9 @@ class CicloPausasController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-
         $date4 = $request->input('pausas')->format('h:i:s A');
         $date3 = $request->input('pausasout')->format('h:i:s A');
-
-
-
         $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4);
-
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -109,11 +104,7 @@ class CicloPausasController extends Controller
         $hoy = Carbon::now();
         $date4 = $request->input('pausas');
         $date3 = $request->input('pausasout');
-
         $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
-
-
-
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -139,10 +130,8 @@ class CicloPausasController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-
         $date4 = $request->input('pausas');
         $date3 = $request->input('pausasout');
-
         $tiempo1 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600;
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
@@ -154,7 +143,7 @@ class CicloPausasController extends Controller
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclopausas.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
+     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
      //return back();
     }
 

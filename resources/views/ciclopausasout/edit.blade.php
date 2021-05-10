@@ -253,8 +253,8 @@ e{
                                 <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                                <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                                 <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-                                <div><input type="hidden" id= "pausas" name="pausas" value=" {{$hora}}"></div>
-                            <input type='submit' class="botones" value='Inicio'>
+                                <div><input type="hidden" id= "pausasout" name="pausasout" value=" {{$hora}}"></div>
+                            <input type='submit' class="botones" value='FIN'>
                         </form>
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas</b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
                         </div>

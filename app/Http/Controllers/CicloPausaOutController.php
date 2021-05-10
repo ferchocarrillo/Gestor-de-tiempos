@@ -108,7 +108,7 @@ class CicloPausaOutController extends Controller
         Carbon::now();
         $hoy = Carbon::now();
         $date4 = $request->input('pausas');
-        $date3 = $request->input('pausaout');
+        $date3 = $request->input('pausasout');
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
@@ -121,7 +121,7 @@ class CicloPausaOutController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
+        return view('ciclopausasout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
         // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
         //return back();
     }
@@ -139,7 +139,7 @@ class CicloPausaOutController extends Controller
         Carbon::now();
         $hoy = Carbon::now();
         $date4 = $request->input('pausas');
-        $date3 = $request->input('pausaout');
+        $date3 = $request->input('pausasout');
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;

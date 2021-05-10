@@ -108,7 +108,7 @@ class CicloLunchController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclolunch.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('ciclolunchout.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
 
     }
 
@@ -141,7 +141,7 @@ class CicloLunchController extends Controller
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclolunch.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

@@ -111,16 +111,10 @@ class CicloBreakinController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-
-
         $date3 = $request->input('breakin1');
         $date4 = $request->input('breakout2');
-
-
         $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
         $format_tiempo1 = number_format($tiempo1, 2);
-
-
         // $tiempoC = $hoy->floatDiffInRealDays($date3);
         // $tiempoD = $hoy->floatDiffInRealDays($date4);
         // $tiempo1 = $tiempoC - $tiempoD;
@@ -156,10 +150,8 @@ class CicloBreakinController extends Controller
         // $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $date3 = $request->input('breakin1');
         $date4 = $request->input('breakout2');
-
         $tiempo1 = Carbon::parse($date4)->diffInMinutes($date3);
         $format_tiempo1 = number_format($tiempo1, 2);
-
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -170,10 +162,9 @@ class CicloBreakinController extends Controller
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclobreakin.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo1'));
+     return view('ciclobreakout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo1'));
      //return back();
     }
-
     /**
      * Remove the specified resource from storage.
      *
