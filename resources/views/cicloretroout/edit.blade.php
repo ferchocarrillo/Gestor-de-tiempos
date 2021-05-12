@@ -201,7 +201,7 @@ e{
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
 
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="85px" height="80px"></center>
+                      <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px" ></center>
 
 <div class="card-boton">
     <div class="row">
@@ -225,7 +225,7 @@ e{
 
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
-                    <center><img src="\theme\images\pausas.png" alt=""  width="70px" height="80px"></center>
+                    <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px" ></center>
                     <div class="card-boton">
                         <div class="row">
 
@@ -242,7 +242,7 @@ e{
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
 <br>
-                        <center><img src="\theme\images\dañado.png" alt=""  width="70px" height="80px" ></center>
+                        <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"  ></center>
 
                         <div class="card-boton">
                             <div class="row">
@@ -261,7 +261,7 @@ e{
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
 
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="85px" height="80px" margin></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
                             <div class="row">
 
@@ -281,7 +281,7 @@ e{
 
                         <strong><p class="card-text">Retroalimentación</p></strong>
                         <br>
-                        <center><img src="\theme\images\retroa.png" alt=""  width="85px" height="80px" margin></center>
+                        <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
                             <div class="row">
                                       <form action="{{url('/cicloretroout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -306,7 +306,7 @@ e{
 
                         <strong><p class="card-text">Reunión</p></strong>
                         <br>
-                        <center><img src="\theme\images\REUNION.png" alt=""  width="70px" height="80px" margin></center>
+                        <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
                             <div class="row">
 

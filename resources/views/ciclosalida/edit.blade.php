@@ -167,7 +167,7 @@ e{
                 <br><br>
                     <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b>  {{ $ciclosos->total }} </small></p>
                 </form>
             </div>
         </div>
@@ -183,8 +183,8 @@ e{
                     <button class="botones"><a href="{{url('/ciclobreakin/'.$ciclosos->id.'/edit')}}">Registrar break</a></button>
                     <br> <br>
 
-                    <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
-                    <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+                    <p class="card-text"><small class="text-muted2">Inicio de Break <e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2">Fin de Break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
                     <p class="card-text"><small class="text-muted2"><b>Tiempo de Break </b>  {{ old('timebreak', $ciclosos->timebreak)}} <b>minutos</b></small></p>
 
 
@@ -210,7 +210,7 @@ e{
                    <br><br>
                     <p class="card-text"><small class="text-muted2">Inicio de break <e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin de break&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de almuerzo: </b> {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b> {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -221,7 +221,7 @@ e{
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
 
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px"></center>
+                      <center><img src="\theme\images\capacitacion.png" alt="" width="100px" height="110px" ></center>
 
 <div class="card-boton">
     <div class="row">
@@ -239,7 +239,7 @@ e{
 
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
-                    <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px"  ></center>
+                    <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px"   ></center>
                     <div class="card-boton">
                         <div class="row">
 
@@ -258,7 +258,7 @@ e{
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
 <br>
-                        <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"   ></center>
+                        <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"    ></center>
 
                         <div class="card-boton">
                             <div class="row">
@@ -278,13 +278,13 @@ e{
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
 
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px" margin></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                <button class="botones"><a href="{{url('/cicloeva/'.$ciclosos->id.'/edit')}}">Registrar Evaluacion</a></button>
+                                <button class="botones"><a href="{{url('/cicloeva/'.$ciclosos->id.'/edit')}}">Registrar Evaluación</a></button>
                                 <br>
                                 <br>
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de evaluacion: </b>  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b>  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -298,7 +298,7 @@ e{
 
                         <strong><p class="card-text">Retroalimentación</p></strong>
                         <br>
-                        <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px" margin></center>
+                        <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
                             <div class="row">
                                 <button class="botones"><a href="{{url('/cicloretro/'.$ciclosos->id.'/edit')}}">Registrar Retro</a></button>
@@ -315,7 +315,7 @@ e{
 
                         <strong><p class="card-text">Reunión</p></strong>
                         <br>
-                        <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px"   margin></center>
+                        <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
                             <div class="row">
 
@@ -323,7 +323,7 @@ e{
                                 <button class="botones"><a href="{{url('/cicloreunion/'.$ciclosos->id.'/edit')}}">Registrar Reunión</a></button>
                                 <br>
                                 <br>
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunion: </b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
 
 

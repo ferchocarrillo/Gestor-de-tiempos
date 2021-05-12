@@ -163,25 +163,15 @@ b{
 
             <div class="card-group" >
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
-                  <div class="card-bodyNew1">
-                    <strong><p class="card-text" >Turno</p></strong>
-                    <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                    <br>
-
-                    <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $ciclosos->ingreso)}} </small></p>
-                    <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
-                    <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
-                   <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
-                    <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-
-
-
-                    <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
-
-
-                </div>
-                </div>
+                    <div class="card-bodyNew1">
+                      <strong><p class="card-text" >Turno</p></strong>
+                      <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
+                      <br><br><br><br>
+                      <p class="card-text"><small class="text-muted2"><b>Entrada:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Salida:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
+                  </div>
+                  </div>
 
 
 
@@ -242,7 +232,7 @@ b{
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
 
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="85px" height="80px"></center>
+                      <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px" ></center>
 
 <div class="card-boton">
     <div class="row">
@@ -260,7 +250,7 @@ b{
 
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
-                    <center><img src="\theme\images\pausas.png" alt=""  width="70px" height="80px"></center>
+                    <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px" ></center>
                     <div class="card-boton">
                         <div class="row">
 
@@ -278,7 +268,7 @@ b{
 
                         <strong><p class="card-text">Equipo Dañado</p></strong>
 <br>
-                        <center><img src="\theme\images\dañado.png" alt=""  width="70px" height="80px" ></center>
+                        <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"  ></center>
 
                         <div class="card-boton">
                             <div class="row">
@@ -297,7 +287,7 @@ b{
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
 
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="85px" height="80px" margin></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
 
@@ -317,7 +307,7 @@ b{
 
                         <strong><p class="card-text">Retroalimentación</p></strong>
                         <br>
-                        <center><img src="\theme\images\retroa.png" alt=""  width="85px" height="80px" margin></center>
+                        <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
 
@@ -334,7 +324,7 @@ b{
 
                         <strong><p class="card-text">Reunión</p></strong>
                         <br>
-                        <center><img src="\theme\images\REUNION.png" alt=""  width="70px" height="80px" margin></center>
+                        <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
 
