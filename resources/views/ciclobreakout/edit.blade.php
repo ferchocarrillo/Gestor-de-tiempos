@@ -17,12 +17,16 @@
         border: #36738c;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: bold;
+        margin-bottom: 2rem;
+
 
 }
 .botones:hover{
     background-color: #36738c;
     color:#ebf2f3;
     border: #51abba;
+    margin-bottom: 1rem;
+
 
 }
 .botonesinactivos{
@@ -166,7 +170,7 @@ b{
                     <div class="card-bodyNew1">
                       <strong><p class="card-text" >Turno</p></strong>
                       <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                      <br><br><br><br>
+                      <br><br>
                       <p class="card-text"><small class="text-muted2"><b>Entrada:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                       <p class="card-text"><small class="text-muted2"><b>Salida:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
                       <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
@@ -179,28 +183,27 @@ b{
                     <div class="card-bodyNew">
 
 
-                      <strong><p class="card-text">Break</p></strong>
-                      <br>
-                    <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-
-
-                    <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                        {{csrf_field()}}
-                        @method('PATCH')
+                        <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            {{csrf_field()}}
+                            @method('PATCH')
 
 
 
-                      <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
-                      <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
-                     <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
-                      <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
+                        <strong><p class="card-text">Break</p></strong>
+                        <br>
+                      <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
+                      <br><br>
+                          <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+                          <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
+                          <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
+                          <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                       <div><input type="hidden" name= "breakin" id="breakin" value="{{ old('breakin', $ciclosos->breakin)}}"></div>
                       <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
 
                       <input type='submit' class="botones"  value='Fin'>
-                      <br> <br>
-                      <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ $ciclosos->timebreak }} minutos</small></p>
+                      <br>
+                      <p class="card-text"><small class="text-muted2"><b>Inicio:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $ciclosos->timebreak }}<b> minutos</b></small></p>
 
                     </form>
                     </div>
@@ -212,16 +215,11 @@ b{
 
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
-                      <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
-
-                      <br>
-                    <br>
-                    <br>
-
-                      <br>
-                      <br>
-
-                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
+                      <center><img src="\theme\images\cubiertos.png" alt=""  width="190px" height="160px"></center>
+<br>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2">Tiempo de Almuerzo {{ old('timelunch', $ciclosos->timelunch)}} minutos</small></p>
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">

@@ -143,13 +143,7 @@
             </div>
             </div>
 
-
-            {{--  @foreach ($ciclosos as $ciclosos)
-            <div><input type="text" id= "ingreso" name="ingreso" value=" {{$ciclosos->ingreso}}"></div>
-
-            @endforeach  --}}
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
-
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
 
 
@@ -189,9 +183,7 @@
                   </div>
 
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
-
                     <div class="card-bodyNew">
-
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
@@ -199,16 +191,12 @@
                       <form action="{{url('/ciclolunchout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                         @method('PATCH')
-
-
-
                       <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                       <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                       <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                       <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-                      <div><input type="hidden" name= "almuerzo" id="almuerzo" value="{{ old('almuerzo', $ciclosos->almuerzo)}}"></div>
-                      <div><input type="hidden" name= "almuerzoout" id="almuerzoout" value="{{ $hora }}"></div>
-
+                      <div><input type="hidden" name="almuerzo" id="almuerzo" value="{{ old('almuerzo', $ciclosos->almuerzo)}}"></div>
+                      <div><input type="hidden" name="almuerzoout" id="almuerzoout" value="{{ $hora }}"></div>
                       <input type='submit' class="botones"  value='Fin'>
                       <br> <br>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>

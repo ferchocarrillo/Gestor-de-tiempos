@@ -158,7 +158,7 @@
                   <div class="card-bodyNew1">
                     <strong><p class="card-text" >Turno</p></strong>
                     <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                    <br>
+                    <br><br>
 
                     <p class="card-text"><small class="text-muted2"><b>Salida </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2"><b>Entrada </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
@@ -172,59 +172,45 @@
 
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew1">
-
-
                       <strong><p class="card-text">Break</p></strong>
                       <br>
                     <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-                    <br>
-                    <br>
-
-
-
-                      <p class="card-text"><small class="text-muted2">Tiempo de Break  {{ $ciclosos->timebreak }} minutos</small></p>
-
+                    <br><br>
+                      <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('breakout', $ciclosos->breakout)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b> {{ old('timelunch', $ciclosos->timebreak)}} <b> minutos</b></small></p>
                     </div>
                   </div>
 
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
 
-                    <div class="card-bodyNew1">
+                    <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
 
-                      <strong><p class="card-text">Almuerzo</p></strong>
-                      <br>
-                      <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
+                        <div class="card-bodyNew1">
 
-                      <br>
-                    <br>
-                    <br>
+                          <strong><p class="card-text">Almuerzo</p></strong>
+                          <br>
+                          <center><img src="\theme\images\cubiertos.png" alt=""  width="190px" height="160px"></center>
+                          <br>
+                          <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                          <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
+                          <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo </b> {{ old('timelunch', $ciclosos->timelunch)}} <b> minutos</b></small></p>
+                    </div>
+                      </div>
 
-                      <br>
-                      <br>
-
-                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
-                </div>
-                  </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
                     <div class="card-bodyNew">
 
 
-                      <strong><p class="card-text">Capacitación</p></strong>
+                      <strong><p class="card-text">Capacitación:&nbsp;&nbsp;&nbsp;{{ old('capacitacion', $ciclosos->capacitacion)}} </p></strong>
                       <br>
 
-                      <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px" ></center>
+                      <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="90px" ></center>
 
-                      <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                      <form action="{{url('/ciclocapout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                         @method('PATCH')
-
-
-
-                      <br>
-                      <br>
-
                       <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                       <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                      <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
@@ -239,10 +225,7 @@
 <div class="card-boton">
     <div class="row">
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
-        <p class="card-text"><small class="text-muted2">Tiempo de Capacitación {{ old('timecap', $ciclosos->timecap)}} </small></p>
     </div>
 </div>
 
@@ -255,10 +238,7 @@
                     <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px" ></center>
                     <div class="card-boton">
                         <div class="row">
-
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
                         </div>
                     </div>
                 </div>
@@ -274,10 +254,7 @@
 
                         <div class="card-boton">
                             <div class="row">
-
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b> {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -292,10 +269,7 @@
                         <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
                             <div class="row">
-
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de evaluacion: </b>  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -313,9 +287,7 @@
                         <div class="card-boton">
                             <div class="row">
 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b>  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -330,9 +302,7 @@
                         <div class="card-boton">
                             <div class="row">
 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunion: </b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
                         </div>
                     </div>

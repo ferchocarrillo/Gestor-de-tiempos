@@ -10,33 +10,29 @@
 
 <style>
 
-    .botones{
-        border-radius: 0.75rem;
-        width: 16rem;
-        background-color: #51abba;
-        border: #36738c;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-weight: bold;
-        align-content: center;
-
-
+.botones{
+    border-radius: 0.75rem;
+    width: 16rem;
+    background-color: #51abba;
+    border: #36738c;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    align-content: center;
 }
 .botones:hover{
     background-color: #36738c;
     color:#ebf2f3;
     border: #51abba;
-
-}
+    }
 .botonesinactivos{
     border-radius: 0.75rem;
     width: 16rem;
     background-color: #d8e3e6;
     border: #36738c;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
+    color: #060707;
+    }
 .botonpeque{
-
     border-radius: 0.75rem;
     width: 3.5rem;
     background-color: #51abba;
@@ -44,27 +40,21 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
     }
-
 .botonpeque:hover{
-        background-color: #36738c;
-        color:#ebf2f3;
-        border: #51abba;
-
+    background-color: #36738c;
+    color:#ebf2f3;
+    border: #51abba;
     }
-
-    .botonpequeinactivo{
-
-        border-radius: 0.75rem;
-        width: 6.5rem;
-        background-color: #d8e3e6;
-        border: #36738c;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.botonpequeinactivo{
+    border-radius: 0.75rem;
+    width: 6.5rem;
+    background-color: #d8e3e6;
+    border: #36738c;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 .card-boton{
-
     background-color: transparent;
-
-}
+    }
 .card-bodyNew{
     border: #060707 3px solid;
     border-radius:0.75rem;
@@ -73,10 +63,10 @@
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
- }
+    }
 .card-bodyNew:hover{
     background-image: linear-gradient(#53a7b0, #AAB7B8);
- }
+    }
  .card-bodyNew1{
     border: #060707 3px solid;
     border-radius:0.75rem;
@@ -85,42 +75,38 @@
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
- }
+    }
 img:hover {
     transform: scaleX(-1);
-  }
+    }
 .imglogo{
     float: center;
     height: 40;
     width: 140;
-  }
-  .input-small{
-width: 30px;
-background-color: transparent;
-border: none;
-  }
-  a{
-      font-size: 18px;
-      color: #2965fd;
-      -webkit-text-stroke: 0.7px rgb(0, 0, 0);
-
-  }
-  p{
+    }
+.input-small{
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    }
+a{
+    font-size: 18px;
+    color: #2965fd;
+    -webkit-text-stroke: 0.7px rgb(0, 0, 0);
+    }
+p{
     text-align: left;
-}
+    }
 .datos{
     text-align: right;
-}
+    }
 e{
     text-align: right;
     margin-top: 2em;
     margin-left: 5em;
-}
-
+    }
 </style>
-
-
-            <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+        <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
             <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
             <h1 style="font-weight: bold; text-aline:center;">Registro Tiempos Laborales</h1>
             <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">BIENVENIDO {{ Auth::user()->name }}</h3>
@@ -179,12 +165,17 @@ e{
                     <form action="{{url('/ciclolunch/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
                         @method('PATCH')
-                        <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
+
+                        @if(empty($ciclosos->almuerzo))
                         <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                         <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                         <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                         <div><input type="hidden" id= "almuerzo" name="almuerzo" value=" {{$hora}}"></div>
                       <input type='submit' class="botones"  value='Inicio' >
+                        @else
+                        <input type='submit' class="botonesinactivos"  value='Almuerzo Registrado'  disabled>
+                        @endif
+                           <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                     </form>
                       <br>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
@@ -192,17 +183,11 @@ e{
                       <p class="card-text"><small class="text-muted2">Tiempo de Almuerzo {{ old('timelunch', $ciclosos->timelunch)}} minutos</small></p>
                     </div>
                   </div>
-
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
                     <div class="card-bodyNew1">
-
-
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
-
                       <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px" ></center>
-
 <div class="card-boton">
     <div class="row">
 

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\CicloLunchOut;
 use Illuminate\Http\Request;
+use App\CicloSalida;
+use Carbon\carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Ciclo;
 
 class CicloLunchOutController extends Controller
 {
@@ -71,7 +75,7 @@ class CicloLunchOutController extends Controller
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
-        $ciclosos->almuerzoout          = $hora;
+        $ciclosos->almuerzoout       = $hora;
         $ciclosos->timelunch         = $tiempo3;
         $ciclosos->llave             = $llave;
 
@@ -119,9 +123,8 @@ class CicloLunchOutController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('cicloalmuerzoout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
-        // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
-        //return back();
+        return view('ciclolunchout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
+
     }
 
     /**

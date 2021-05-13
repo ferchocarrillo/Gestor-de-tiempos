@@ -121,10 +121,8 @@ class CicloBreakOutController extends Controller
         $hora = Carbon::now()->format('h:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
-
         return view('ciclobreakout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
-        // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
-        //return back();
+
     }
 
     /**
