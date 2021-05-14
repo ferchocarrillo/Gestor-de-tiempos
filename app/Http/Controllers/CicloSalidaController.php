@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Ciclo;
 use App\Http\Requests\CicloRequest; #importar request
 use Illuminate\Support\Carbon as SupportCarbon;
-use Illuminate\Support\Collection;
+
 
 class CicloSalidaController extends Controller
 {
@@ -69,7 +69,7 @@ class CicloSalidaController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $request->validate([
             'llave'          => ['required|unique:ciclos,llave'],
@@ -113,29 +113,78 @@ class CicloSalidaController extends Controller
 
         Carbon::setLocale('co');
         Carbon::now();
+
+        //convertimos la fecha 1 a objeto Carbon
         $hoy = Carbon::now();
-        $date1 = $request->input('iniciobreak');
-        $date2 = $request->input('finbreak');
-        $date3 = $request->input('finbreak');
-
-
-        $tiempoA =  $hoy->floatDiffInRealMinutes($date1);
-        $tiempoB =  $hoy->floatDiffInRealMinutes($date2);
-        //$tiempoC = $date3->floatDiffInRealMinutes($date3);
-
-
-        $tiempo1 = $tiempoB - $tiempoA;
-
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
-        $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
-    }
+        $date1 = $request->input('ingreso');
+        $date2 = $request->input('salida');
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $ciclosos=Ciclo::findOrFail($id);
+
+
+        $date1 = $ciclosos->breakin;
+        $date2 = $ciclosos->breakout;
+        $tiempoA = $carbon1->diffInMinutes($date1);
+        $tiempoB = $carbon1->diffInMinutes($date2);
+        $timebreak = ($tiempoB - $tiempoA);
+
+        $date3 = $ciclosos->almuerzo;
+        $date4 = $ciclosos->almuerzoout;
+        $tiempoC = $carbon1->diffInMinutes($date3);
+        $tiempoD = $carbon1->diffInMinutes($date4);
+        $timelunch = ($tiempoD - $tiempoC);
+
+        $date5 = $ciclosos->capacitacion;
+        $date6 = $ciclosos->capout;
+        $tiempoE = $carbon1->diffInMinutes($date5);
+        $tiempoF = $carbon1->diffInMinutes($date6);
+        $timecapa = ($tiempoF - $tiempoE);
+
+        $date7 = $ciclosos->pausas;
+        $date8 = $ciclosos->pausasout;
+        $tiempoG = $carbon1->diffInMinutes($date7);
+        $tiempoH = $carbon1->diffInMinutes($date8);
+        $timepau = ($tiempoH - $tiempoG);
+
+        $date9 = $ciclosos->daño;
+        $date10 = $ciclosos->dañoout;
+        $tiempoI = $carbon1->diffInMinutes($date9);
+        $tiempoJ = $carbon1->diffInMinutes($date10);
+        $timedaño = ($tiempoJ - $tiempoI);
+
+        $date11 = $ciclosos->evaluacion;
+        $date12 = $ciclosos->evaluacionout;
+        $tiempoK = $carbon1->diffInMinutes($date11);
+        $tiempoL = $carbon1->diffInMinutes($date12);
+        $timeeva = ($tiempoL - $tiempoK);
+
+        $date13 = $ciclosos->retro;
+        $date14 = $ciclosos->retroout;
+        $tiempoM = $carbon1->diffInMinutes($date13);
+        $tiempoN = $carbon1->diffInMinutes($date14);
+        $timeretro = ($tiempoN - $tiempoM);
+
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+
+        $ingreso =$ciclosos->ingreso;
+        $salida  =$ciclosos->salida;
+        $ingresoA = $carbon1->diffInMinutes($ingreso);
+        $salidaB = $carbon1->diffInMinutes($salida);
+        $total = ($salidaB - $ingresoA)-$timelunch;
+
+        return view('ciclosalida.edit' ,compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepau','timedaño','timeeva', 'timeretro','timereunion'));
+   }
 
      /**
      * Update the specified resource in storage.
@@ -148,26 +197,82 @@ class CicloSalidaController extends Controller
     {   date_default_timezone_set('America/Bogota');
 
         Carbon::setLocale('co');
+
         Carbon::now();
         $hoy = Carbon::now();
 
-
-        $date1 = $request->input('breakin');
-        $date2 = $request->input('breakout');
-
-        $tiempo1 = ($date2 - $date1)*60;
-
-        $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+
+        $date1 = $request->input('ingreso');
+        $date2 = $request->input('salida');
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $ciclosos=Ciclo::findOrFail($id);
+
+        $ingreso =$ciclosos->ingreso;
+        $salida  =$ciclosos->salida;
+        $ingresoA = $carbon1->diffInHours($ingreso);
+        $salidaB  = $carbon1->diffInHours($salida);
+        $total = ($salidaB - $ingresoA);
+
+        $date1 = $ciclosos->breakin;
+        $date2 = $ciclosos->breakout;
+        $tiempoA = $carbon1->diffInMinutes($date1);
+        $tiempoB = $carbon1->diffInMinutes($date2);
+        $timebreak = ($tiempoB - $tiempoA);
+
+        $date3 = $ciclosos->almuerzo;
+        $date4 = $ciclosos->almuerzoout;
+        $tiempoC = $carbon1->diffInMinutes($date3);
+        $tiempoD = $carbon1->diffInMinutes($date4);
+        $timelunch = ($tiempoD - $tiempoC);
+
+        $date5 = $ciclosos->capacitacion;
+        $date6 = $ciclosos->capout;
+        $tiempoE = $carbon1->diffInMinutes($date5);
+        $tiempoF = $carbon1->diffInMinutes($date6);
+        $timecapa = ($tiempoF - $tiempoE);
+
+        $date7 = $ciclosos->pausas;
+        $date8 = $ciclosos->pausasout;
+        $tiempoG = $carbon1->diffInMinutes($date7);
+        $tiempoH = $carbon1->diffInMinutes($date8);
+        $timepau = ($tiempoH - $tiempoG);
+
+        $date9 = $ciclosos->daño;
+        $date10 = $ciclosos->dañoout;
+        $tiempoI = $carbon1->diffInMinutes($date9);
+        $tiempoJ = $carbon1->diffInMinutes($date10);
+        $timedaño = ($tiempoJ - $tiempoI);
+
+        $date11 = $ciclosos->evaluacion;
+        $date12 = $ciclosos->evaluacionout;
+        $tiempoK = $carbon1->diffInMinutes($date11);
+        $tiempoL = $carbon1->diffInMinutes($date12);
+        $timeeva = ($tiempoL - $tiempoK);
+
+        $date13 = $ciclosos->retro;
+        $date14 = $ciclosos->retroout;
+        $tiempoM = $carbon1->diffInMinutes($date13);
+        $tiempoN = $carbon1->diffInMinutes($date14);
+        $timeretro = ($tiempoN - $tiempoM);
+
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+
+
+
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);
-     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
+     return view('ciclosalida.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepau','timedaño','timeeva', 'timeretro','timereunion'));
     }
 
     /**

@@ -178,7 +178,8 @@
                       <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                       <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('breakout', $ciclosos->breakout)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b> {{ old('timelunch', $ciclosos->timebreak)}} <b> minutos</b></small></p>
+
+
                     </div>
                   </div>
 
@@ -200,8 +201,8 @@
                       <input type='submit' class="botones"  value='Fin'>
                       <br> <br>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b> {{ old('timelunch', $ciclosos->timelunch)}} <b> minutos</b></small></p>
+                      {{-- <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p> --}}
+
 
                     </form></div>
                   </div>

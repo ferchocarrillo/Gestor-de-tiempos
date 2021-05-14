@@ -31,7 +31,7 @@ class CicloController extends Controller
         $hoy = Carbon::now()->format('d-m-Y');
         $today= Carbon::now()->format('Y-m-d');
         $fecha= Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s A');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->where('fecha','=', $fecha)->paginate(10);
 
@@ -62,7 +62,7 @@ class CicloController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $request->validate([
             'llave'          => ['required|unique:ciclos,llave'],
@@ -115,7 +115,7 @@ class CicloController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s A');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
         $fecha = Carbon::now()->format('Y-m-d');

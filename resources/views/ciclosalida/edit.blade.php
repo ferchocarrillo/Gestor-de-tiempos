@@ -113,6 +113,28 @@ e{
     margin-top: 2em;
     margin-left: 5em;
 }
+rem{
+  color: rgb(0, 0, 0);
+  background-color: papayawhip;
+  font-size:20px;
+  align-self: center;
+  width: 70px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  border-radius: 0.45em;
+  align-self: center;
+}
+rem2{
+  color: rgb(255, 255, 255);
+  background-color: rgb(233, 29, 11);
+  font-size:20px;
+  align-self: center;
+  width: 70px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  border-radius: 0.45em;
+  align-self: center;
+}
 
 
 
@@ -176,7 +198,7 @@ e{
                 <br><br>
                     <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b>  {{ $ciclosos->total }} </small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b>  {{ $total }} </small></p>
                 </form>
             </div>
         </div>
@@ -197,16 +219,20 @@ e{
                     @endif
 
 
-                    <br> <br>
-
-
-<input type="text" name="iniciobreak" id="iniciobreak" value="{{ old('breakin', $ciclosos->breakin)}}">
+                     <br> <br>
+{{--
+ <input type="text" name="iniciobreak" id="iniciobreak" value="{{ old('breakin', $ciclosos->breakin)}}">
 <input type="text" name="finbreak" id="finbreak" value="{{ old('breakout', $ciclosos->breakout)}}">
-<input type="text" name="total" id="total" value="{{( $tiempo1 )}}">
+<input type="text" name="totalbreak" id="totalbreak" value="{{ $timebreak }}"> --}}
+
                     <p class="card-text"><small class="text-muted2">Inicio&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $tiempo1 }}<b> minutos</b></small></p>
 
+                   @if ($timebreak > 20)
+                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>&nbsp;&nbsp;<rem2>&nbsp;&nbsp; {{ $timebreak }}&nbsp;&nbsp;</rem2>&nbsp;&nbsp;<b> minutos</b></small></p>
+                   @else
+                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>&nbsp;&nbsp;<rem> &nbsp;&nbsp;{{ $timebreak }}&nbsp;&nbsp;</rem>&nbsp;&nbsp;<b> minutos</b></small></p>
+                   @endif
 
                     </div>
                   </div>
@@ -232,7 +258,11 @@ e{
                    <br><br>
                     <p class="card-text"><small class="text-muted2">Inicio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b> {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
+                    @if ($timelunch > 60)
+                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem2>&nbsp;&nbsp; {{ $timelunch }}&nbsp;&nbsp;</rem2>&nbsp;&nbsp;<b> minutos</b></small></p>
+                   @else
+                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem> &nbsp;&nbsp;{{ $timelunch }}&nbsp;&nbsp;</rem>&nbsp;&nbsp;<b> minutos</b></small></p>
+                   @endif
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -256,7 +286,7 @@ e{
         @endif
         <br>
         <br>
-        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación: </b> {{ old('timecap', $ciclosos->timecap)}} </small></p>
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación: </b><rem> {{ $timecapa }} </rem></small></p>
     </div>
 </div>
 
@@ -277,7 +307,12 @@ e{
                                @endif
                             <br>
                             <br>
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+                            @if (empty($ciclosos->pausasout))
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  </rem> </small></p>
+                            @else
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepau }}</rem> </small></p>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -302,7 +337,12 @@ e{
 
                                 <br>
                                 <br>
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b> {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
+                                @if (empty($ciclosos->dañoout))
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b><rem>  </rem> </small></p>
+                            @else
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b><rem>  {{ $timedaño }}</rem> </small></p>
+                            @endif
+
                             </div>
                         </div>
                     </div>
@@ -325,7 +365,12 @@ e{
                                    @endif
                                 <br>
                                 <br>
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b>  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
+                                @if (empty($ciclosos->evaluacionout))
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem>  </rem> </small></p>
+                            @else
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem>  {{ $timeeva }}</rem> </small></p>
+                            @endif
+
                             </div>
                         </div>
                     </div>
