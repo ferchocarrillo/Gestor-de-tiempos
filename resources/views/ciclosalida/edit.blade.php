@@ -200,9 +200,9 @@ e{
                     <br> <br>
 
 
-<input type="text" name="iniciobreak" id="iniciobreak" value="{{ old('breakin', $ciclosos->breakin)}}">
+{{-- <input type="text" name="iniciobreak" id="iniciobreak" value="{{ old('breakin', $ciclosos->breakin)}}">
 <input type="text" name="finbreak" id="finbreak" value="{{ old('breakout', $ciclosos->breakout)}}">
-<input type="text" name="total" id="total" value="{{( $tiempo1 )}}">
+<input type="text" name="total" id="total" value="{{( $tiempo1 )}}"> --}}
                     <p class="card-text"><small class="text-muted2">Inicio&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
                     <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $tiempo1 }}<b> minutos</b></small></p>
