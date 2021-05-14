@@ -186,11 +186,11 @@ b{
                       <input type='submit' class="botones"  value='Fin'>
                       <br>
                       <p class="card-text"><small class="text-muted2"><b>Inicio:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
-                     @if ($tiempo2 > 15)
-                     <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $tiempo2}}<b> minutos</b></small></p>
-                     @else
+                     {{-- @if ($tiempo2 > 15) --}}
+                     {{-- <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $tiempo2}}<b> minutos</b></small></p> --}}
+                     {{-- @else
                      <p class="card-text"><small class="text-muted2" style="color: red"><b>Tiempo de Break</b>  {{ $tiempo2}}<b> minutos</b></small></p>
-                     @endif
+                     @endif --}}
                     </form>
                     </div>
                   </div>

@@ -116,8 +116,14 @@ class CicloSalidaController extends Controller
         $hoy = Carbon::now();
         $date1 = $request->input('iniciobreak');
         $date2 = $request->input('finbreak');
-        $tiempoA = $hoy->floatDiffInRealMinutes($date1);
-        $tiempoB = $hoy->floatDiffInRealMinutes($date2);
+        $date3 = $request->input('finbreak');
+
+
+        $tiempoA =  $hoy->floatDiffInRealMinutes($date1);
+        $tiempoB =  $hoy->floatDiffInRealMinutes($date2);
+        //$tiempoC = $date3->floatDiffInRealMinutes($date3);
+
+
         $tiempo1 = $tiempoB - $tiempoA;
 
         $user_id = Auth::user()->cedula;

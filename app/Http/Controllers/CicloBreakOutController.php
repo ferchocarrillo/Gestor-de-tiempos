@@ -144,7 +144,7 @@ class CicloBreakOutController extends Controller
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
         // $tiempo3 = $hoy->diffInMinutes($date4)/60;
-        $tiempo3 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
+        $tiempo1 = Carbon::parse($date3)->floatDiffInSeconds($date4)/60;
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -154,7 +154,7 @@ class CicloBreakOutController extends Controller
         $llave = $user_cedula. $hoy;
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
-     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
+     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo1'));
 
     }
 

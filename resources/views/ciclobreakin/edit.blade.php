@@ -187,21 +187,15 @@ b{
                         <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                         <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                         <div><input type="hidden" name= "breakin" id="breakin" value="{{ $hora }}"></div>
-
-
     <input type='submit' class="botones"  value='Inicio'>
     @else
      <input type='submit' class="botones"  value='Inicio'  disabled>
    @endif
                         <br><br>
-
                         <p class="card-text"><small class="text-muted2"><b>Inicio:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                         <p class="card-text"><small class="text-muted2"><b>Fin:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
                         <p class="card-text"><small class="text-muted2"><b>Tiempo de Break: </b>  {{ $ciclosos->total }} </small></p>
-
-
                     </form>
-
         </div>
     </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
