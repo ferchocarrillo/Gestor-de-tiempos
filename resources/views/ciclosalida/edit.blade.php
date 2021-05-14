@@ -167,7 +167,12 @@ e{
                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                     <div><input type="hidden" name="salida" id="salida" value="{{ $hora }}"></div>
                 <br>
-                    <input type='submit' class="botones" value='Registrar Salida'>
+                @if(empty($ciclosos->salida))
+                <input type='submit' class="botones" value='Registrar Salida'>
+                    @else
+                    <input type='submit' class="botonesinactivos"  value=' SALIDA DE TURNO REGISTRADA'  disabled>
+                   @endif
+
                 <br><br>
                     <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
@@ -194,9 +199,13 @@ e{
 
                     <br> <br>
 
+
+<input type="text" name="iniciobreak" id="iniciobreak" value="{{ old('breakin', $ciclosos->breakin)}}">
+<input type="text" name="finbreak" id="finbreak" value="{{ old('breakout', $ciclosos->breakout)}}">
+<input type="text" name="total" id="total" value="{{( $tiempo1 )}}">
                     <p class="card-text"><small class="text-muted2">Inicio&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
-                    <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Break </b>  {{ old('timebreak', $ciclosos->timebreak)}} <b>minutos</b></small></p>
+                    <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $tiempo1 }}<b> minutos</b></small></p>
 
 
                     </div>
@@ -261,7 +270,11 @@ e{
                     <div class="card-boton">
                         <div class="row">
 
+                            @if(empty($ciclosos->pausasout))
                             <button class="botones"><a href="{{url('/ciclopausas/'.$ciclosos->id.'/edit')}}">Registrar Pausas</a></button>
+                                @else
+                                <input type='submit' class="botonesinactivos"  value='PAUSA REGISTRADA'  disabled>
+                               @endif
                             <br>
                             <br>
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
@@ -280,7 +293,7 @@ e{
 
                         <div class="card-boton">
                             <div class="row">
-                                @if(empty($ciclosos->capout))
+                                @if(empty($ciclosos->dañoout))
                                 <button class="botones"><a href="{{url('/cicloaveria/'.$ciclosos->id.'/edit')}}">Registrar Daño</a></button>
                                 @else
                                 <input type='submit' class="botonesinactivos"  value='AVERIA REGISTRADA'  disabled>
@@ -304,7 +317,12 @@ e{
                         <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
+
+                                @if(empty($ciclosos->evaluacionout))
                                 <button class="botones"><a href="{{url('/cicloeva/'.$ciclosos->id.'/edit')}}">Registrar Evaluación</a></button>
+                                    @else
+                                    <input type='submit' class="botonesinactivos"  value='EVALUACION REGISTRADA'  disabled>
+                                   @endif
                                 <br>
                                 <br>
                                 <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b>  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
@@ -324,7 +342,13 @@ e{
                         <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
                             <div class="row">
+                                @if(empty($ciclosos->retroout))
                                 <button class="botones"><a href="{{url('/cicloretro/'.$ciclosos->id.'/edit')}}">Registrar Retro</a></button>
+                                    @else
+                                    <input type='submit' class="botonesinactivos"  value=' RETROALIMENTACION REGISTRADA'  disabled>
+                                   @endif
+
+
                                 <br>
                                 <br>
                                 <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b>  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
@@ -342,8 +366,12 @@ e{
                         <div class="card-boton">
                             <div class="row">
 
-
+                                @if(empty($ciclosos->reunionout))
                                 <button class="botones"><a href="{{url('/cicloreunion/'.$ciclosos->id.'/edit')}}">Registrar Reunión</a></button>
+                                    @else
+                                    <input type='submit' class="botonesinactivos"  value=' REUNION REGISTRADA'  disabled>
+                                   @endif
+
                                 <br>
                                 <br>
                                 <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>

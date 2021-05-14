@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Ciclo;
 use App\Http\Requests\CicloRequest; #importar request
+use Illuminate\Support\Carbon as SupportCarbon;
+use Illuminate\Support\Collection;
 
 class CicloSalidaController extends Controller
 {
@@ -59,6 +61,7 @@ class CicloSalidaController extends Controller
         $hoy = Carbon::now();
         $date1 = $request->input('ingreso');
         $date2 = $request->input('salida');
+
         $tiempoA = $hoy->floatDiffInRealDays($date1);
         $tiempoB = $hoy->floatDiffInRealDays($date2);
         $tiempo1 = $tiempoA - $tiempoB;
@@ -111,12 +114,12 @@ class CicloSalidaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date1 = $request->input('ingreso');
-        $date2 = $request->input('salida');
-        $tiempoA = $hoy->floatDiffInRealDays($date1);
-        $tiempoB = $hoy->floatDiffInRealDays($date2);
-        $tiempo1 = $tiempoA - $tiempoB;
-        $tiempo3 = $hoy->diffInMinutes($date2)/60;
+        $date1 = $request->input('iniciobreak');
+        $date2 = $request->input('finbreak');
+        $tiempoA = $hoy->floatDiffInRealMinutes($date1);
+        $tiempoB = $hoy->floatDiffInRealMinutes($date2);
+        $tiempo1 = $tiempoB - $tiempoA;
+
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -125,7 +128,7 @@ class CicloSalidaController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1','tiempo3'));
+        return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
     }
 
      /**
@@ -143,12 +146,10 @@ class CicloSalidaController extends Controller
         $hoy = Carbon::now();
 
 
-        $date1 = $request->input('ingreso');
-        $date2 = $request->input('salida');
-        $tiempoA = $hoy->floatDiffInRealDays($date1);
-        $tiempoB = $hoy->floatDiffInRealDays($date2);
-        $tiempo1 = $tiempoA - $tiempoB;
-        $tiempo3 = $hoy->diffInMinutes($date2)/60;
+        $date1 = $request->input('breakin');
+        $date2 = $request->input('breakout');
+
+        $tiempo1 = ($date2 - $date1)*60;
 
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
@@ -160,7 +161,7 @@ class CicloSalidaController extends Controller
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);
-     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1','tiempo3'));
+     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
     }
 
     /**

@@ -155,76 +155,56 @@ e{
         <center>
             <div class="card-group" >
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-                  <div class="card-bodyNew1">
-                    <strong><p class="card-text" >Turno</p></strong>
-                    <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                    <br>
-                    <p class="card-text"><small class="text-muted2">Hora Entrada  {{ old('ingreso', $ciclosos->ingreso)}} </small></p>
 
-                    <br>
-                    <br>
-                    <p class="card-text"><small class="text-muted2">Hora Salida  {{ old('salida', $ciclosos->salida)}} </small></p>
-
-                </div>
-                </div>
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew1">
-
-
-                      <strong><p class="card-text">Break</p></strong>
+                      <strong><p class="card-text" >Turno</p></strong>
+                      <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
                       <br>
-                    <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-                    <br>
-                    <br>
+                      <br><br>
+                      <p class="card-text"><small class="text-muted2"><b>Entrada: </b>&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Salida: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Conexión </b>  {{ old('total', $ciclosos->total)}}<b>minutos</b></small></p>
 
-
-                    </form>
-
-                      <br>
-                      <br>
-
-
-                      <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
-
-
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ old('timebreak', $ciclosos->timebreak)}} minutos</small></p>
-
-
-
+                  </div>
+                  </div>
+                  <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+                      <div class="card-bodyNew1">
+                        <strong><p class="card-text">Break</p></strong>
+                        <br>
+                      <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
+                        <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
+                        <br>
+                        <br><br>
+                        <p class="card-text"><small class="text-muted2"><b>Entrada: </b> &nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Salida: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Tiempo de Break </b> {{ old('timebreak', $ciclosos->timebreak)}} <b>minutos</b></small></p>
+                      </div>
                     </div>
-                  </div>
-
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
-
-                    <div class="card-bodyNew1">
-
-                      <strong><p class="card-text">Almuerzo</p></strong>
-                      <br>
-                      <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
-
-                      <br>
-                    <br>
-                    <br>
-
-
-
-
-                      <br>
-                      <br>
-
-
-
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de almuerzo</b> {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
-                </div>
-                  </div>
+                  <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
+                      <div class="card-bodyNew1">
+                        <strong><p class="card-text">Almuerzo</p></strong>
+                        <br>
+                        <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
+                        <br>
+                        <br><br>
+                        <p class="card-text"><small class="text-muted2"><b>Entrada</b>&nbsp;<e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Salida</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>  {{ old('timelunch', $ciclosos->timelunch)}} <b>minutos</b></small></p>
+                      </div>
+                    </div>
 
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
                     <div class="card-bodyNew1">
 
 
-                      <strong><p class="card-text">Capacitación</p></strong>
+@if(empty($ciclosos->capout))
+<strong><p class="card-text">Capacitación</p> </strong>
+@else
+<strong><p class="card-text">Capacitación Registrada</p></strong>
+@endif
+
+
                       <br>
 
                       <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px" ></center>
@@ -256,7 +236,7 @@ e{
                                 <div><input type="hidden" id= "pausas" name="pausas" value=" {{$hora}}"></div>
                             <input type='submit' class="botones" value='Inicio'>
                         </form>
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas</b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+
                         </div>
                     </div>
                 </div>
@@ -265,8 +245,12 @@ e{
 
                     <div class="card-bodyNew1">
 
-
+                        @if(empty($ciclosos->dañoout))
                         <strong><p class="card-text">Equipo Dañado</p></strong>
+                        @else
+                        <strong><p class="card-text">Equipo Dañado Registrada</p></strong>
+                        @endif
+
                         <br>
                         <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"  ></center>
 
@@ -279,8 +263,12 @@ e{
 
 
 
+                    @if(empty($ciclosos->evaout))
+                    <strong><p class="card-text">Evaluación</p></strong>
+                    @else
+                    <strong><p class="card-text">Evaluación Registrada</p></strong>
+                    @endif
 
-                        <strong><p class="card-text">Evaluación</p></strong>
                         <br>
 
                         <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px" ></center>
@@ -299,8 +287,11 @@ e{
 
                     <div class="card-bodyNew">
 
-
+                        @if(empty($ciclosos->evaout))
                         <strong><p class="card-text">Retroalimentación</p></strong>
+                        @else
+                        <strong><p class="card-text">Retroalimentación Registrada</p></strong>
+                        @endif
                         <br>
                         <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px" ></center>
                         <div class="card-boton">
@@ -314,11 +305,13 @@ e{
                     </div>
                   <div class="card-bodyNew1">
 
+                    @if(empty($ciclosos->evaout))
+                    <strong><p class="card-text">Reunión</p></strong>
+                    @else
+                    <strong><p class="card-text">Reunión Registrada</p></strong>
+                    @endif
 
-
-
-                        <strong><p class="card-text">Reunión</p></strong>
-                        <br>
+                       <br>
                         <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px"  ></center>
                         <div class="card-boton">
                             <div class="row">

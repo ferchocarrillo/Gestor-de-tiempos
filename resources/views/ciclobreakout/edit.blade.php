@@ -18,16 +18,12 @@
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: bold;
         margin-bottom: 2rem;
-
-
 }
 .botones:hover{
     background-color: #36738c;
     color:#ebf2f3;
     border: #51abba;
     margin-bottom: 1rem;
-
-
 }
 .botonesinactivos{
     border-radius: 0.75rem;
@@ -36,10 +32,7 @@
     border: #36738c;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-
 .botonpeque{
-
-
     border-radius:0.75rem
     width: 6.5rem;
     background-color: #51abba;
@@ -47,16 +40,12 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
     }
-
 .botonpeque:hover{
         background-color: #36738c;
         color:#ebf2f3;
         border: #51abba;
-
     }
-
     .botonpequeinactivo{
-
         border-radius:0.75rem;
         width: 6.5rem;
         background-color: #51abba;
@@ -64,26 +53,24 @@
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 .card-boton{
-
     background-color: transparent;
-
 }
 .card-bodyNew{
     border: #060707 3px solid;
     border-radius:0.75rem;
-    background-image: linear-gradient(#EAF2F8, #AAB7B8)
+    background-image: linear-gradient(#EAF2F8, #AAB7B8);
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
- }
+}
 .card-bodyNew:hover{
     background-image: linear-gradient(#53a7b0, #AAB7B8);
- }
+}
  .card-bodyNew1{
     border: #060707 3px solid;
     border-radius:0.75rem;
-    background-image: linear-gradient(#596164, #154762)
+    background-image: linear-gradient(#596164, #154762);
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     min-height: 1px;
@@ -186,9 +173,6 @@ b{
                         <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             {{csrf_field()}}
                             @method('PATCH')
-
-
-
                         <strong><p class="card-text">Break</p></strong>
                         <br>
                       <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
@@ -199,153 +183,106 @@ b{
                           <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                       <div><input type="hidden" name= "breakin" id="breakin" value="{{ old('breakin', $ciclosos->breakin)}}"></div>
                       <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
-
                       <input type='submit' class="botones"  value='Fin'>
                       <br>
                       <p class="card-text"><small class="text-muted2"><b>Inicio:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $ciclosos->timebreak }}<b> minutos</b></small></p>
-
+                     @if ($tiempo2 > 15)
+                     <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $tiempo2}}<b> minutos</b></small></p>
+                     @else
+                     <p class="card-text"><small class="text-muted2" style="color: red"><b>Tiempo de Break</b>  {{ $tiempo2}}<b> minutos</b></small></p>
+                     @endif
                     </form>
                     </div>
                   </div>
-
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
-
                     <div class="card-bodyNew1">
-
                       <strong><p class="card-text">Almuerzo</p></strong>
-                      <br>
+                    <br>
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="190px" height="160px"></center>
-<br>
+                    <br>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
                       <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
                       <p class="card-text"><small class="text-muted2">Tiempo de Almuerzo {{ old('timelunch', $ciclosos->timelunch)}} minutos</small></p>
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
                     <div class="card-bodyNew1">
-
-
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
-
                       <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px" ></center>
-
 <div class="card-boton">
     <div class="row">
-
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
         <p class="card-text"><small class="text-muted2">Tiempo de Capacitación {{ old('timecap', $ciclosos->timecap)}} </small></p>
     </div>
 </div>
-
-                  </div>
+                 </div>
                   <div class="card-bodyNew1">
-
-
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
                     <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px" ></center>
                     <div class="card-boton">
                         <div class="row">
-
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
                             <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
                         </div>
                     </div>
                 </div>
                   </div>
                   <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
                     <div class="card-bodyNew1">
-
-
                         <strong><p class="card-text">Equipo Dañado</p></strong>
-<br>
+                        <br>
                         <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"  ></center>
-
                         <div class="card-boton">
                             <div class="row">
-
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
                                 <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
                             </div>
                         </div>
                     </div>
                   <div class="card-bodyNew1">
-
-
-
-
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
-
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
+                       <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
-
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
                             </div>
                         </div>
                     </div>
-
-
                   </div>
                   <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-
                     <div class="card-bodyNew1">
-
-
                         <strong><p class="card-text">Retroalimentación</p></strong>
                         <br>
                         <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
-
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
+                              <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
                             </div>
                         </div>
                     </div>
                   <div class="card-bodyNew1">
-
-
-
-
                         <strong><p class="card-text">Reunión</p></strong>
                         <br>
                         <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
-
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
                                 <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
                         </div>
                     </div>
-
-
                   </div>
-
-
-
-
             </div>
             <br>
             <p style="text-align: center; aline-contents: center;"><i class="fa fa-copyright" aria-hidden="true">Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>
         </div>
         </div>
         @endsection
-
 <script type="text/javascript">
     function HoraActual(hora, minuto, segundo){
         segundo = segundo + 1;

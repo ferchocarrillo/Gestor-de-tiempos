@@ -138,7 +138,7 @@ class CicloReunionController extends Controller
         $datosRetro = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosRetro);
      //return response()->json($ciclo);
-     return view('cicloreunion.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('cicloreunionout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

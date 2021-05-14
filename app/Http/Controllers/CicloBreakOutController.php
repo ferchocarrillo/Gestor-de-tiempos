@@ -54,13 +54,14 @@ class CicloBreakOutController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        $date4 = $request->input('breakin');
-        $date3 = $request->input('breakout');
+        $base= Ciclo::all();
+        $date4 = $base->breakin;
+        $date3 = $base->breakout;
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
-        $tiempo2 = $tiempoC - $tiempoD;
+        $tiempo2 = $tiempoD - $tiempoC;
         // $tiempo3 = $hoy->diffInMinutes($date4)/60;
-        $tiempo3 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
+        $tiempo3 = ($date3)->floatDiffInMinutes($date4);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -113,7 +114,7 @@ class CicloBreakOutController extends Controller
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
         // $tiempo3 = $hoy->diffInMinutes($date4)/60;
-        $tiempo3 = Carbon::parse($date3)->floatDiffInMinutes($date4)/3600*100;
+        // $tiempo3 = $date3->floatDiffInMinutes($date4);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
@@ -122,7 +123,6 @@ class CicloBreakOutController extends Controller
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
         return view('ciclobreakout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
-
     }
 
     /**
@@ -154,9 +154,8 @@ class CicloBreakOutController extends Controller
         $llave = $user_cedula. $hoy;
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
-     //return response()->json($ciclo);
      return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date4','date3','tiempo2','tiempo3'));
-     //return back();
+
     }
 
     /**

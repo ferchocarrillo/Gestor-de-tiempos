@@ -143,7 +143,7 @@ class CicloPausasController extends Controller
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclosalida.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
+     return view('ciclopausasout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
      //return back();
     }
 

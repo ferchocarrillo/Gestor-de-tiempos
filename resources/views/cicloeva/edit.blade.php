@@ -150,53 +150,45 @@ e{
             <div class="card-group" >
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
-                  <div class="card-bodyNew1">
-                    <strong><p class="card-text" >Turno</p></strong>
-                    <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                    <br>
-                    <br><br>
-                    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
-                    <p class="card-text"><small class="text-muted2">Entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
-                </div>
-                </div>
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew1">
-                      <strong><p class="card-text">Break</p></strong>
+                      <strong><p class="card-text" >Turno</p></strong>
+                      <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
                       <br>
-                    <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                    <br>
-                    <br><br>
-                    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
-                    <p class="card-text"><small class="text-muted2">Entrada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->timebreak }} </small></p>
+                      <br><br>
+                      <p class="card-text"><small class="text-muted2"><b>Entrada: </b>&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Salida: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Conexión </b>  {{ old('total', $ciclosos->total)}}<b>minutos</b></small></p>
+
+                  </div>
+                  </div>
+                  <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+                      <div class="card-bodyNew1">
+                        <strong><p class="card-text">Break</p></strong>
+                        <br>
+                      <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
+                        <div><input type="hidden" name="breakout" id="breakout" value="{{ $hora }}"></div>
+                        <br>
+                        <br><br>
+                        <p class="card-text"><small class="text-muted2"><b>Entrada: </b> &nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Salida: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Tiempo de Break </b> {{ old('timebreak', $ciclosos->timebreak)}} <b>minutos</b></small></p>
+                      </div>
                     </div>
-                  </div>
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
-                    <div class="card-bodyNew1">
-                      <strong><p class="card-text">Almuerzo</p></strong>
-                      <br>
-                      <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
-
-                      <br>
-                    <br>
-                    <br>
-
-
-
-
-                      <br>
-                      <br>
-
-
-
-                      <p class="card-text"><small class="text-muted2">Tiempo de almuerzo {{ old('timelunch', $ciclosos->timelunch)}} </small></p>
-                </div>
-                  </div>
-
+                  <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
+                      <div class="card-bodyNew1">
+                        <strong><p class="card-text">Almuerzo</p></strong>
+                        <br>
+                        <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
+                        <br>
+                        <br><br>
+                        <p class="card-text"><small class="text-muted2"><b>Entrada</b>&nbsp;<e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Salida</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
+                        <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>  {{ old('timelunch', $ciclosos->timelunch)}} <b>minutos</b></small></p>
+                      </div>
+                    </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
 
-                    <div class="card-bodyNew">
+                    <div class="card-bodyNew1">
 
 
                       <strong><p class="card-text">Capacitación</p></strong>
@@ -206,7 +198,7 @@ e{
 
 <div class="card-boton">
     <div class="row">
-    <p class="card-text"><small class="text-muted2">Tiempo de Capacitación  {{ old('timecap', $ciclosos->timecap)}} </small></p>
+    <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación </b> {{ old('timecap', $ciclosos->timecap)}} </small></p>
     </div>
 </div>
 
@@ -221,9 +213,9 @@ e{
                     <div class="card-boton">
                         <div class="row">
 
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas</b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
                         </div>
                     </div>
                 </div>
@@ -240,13 +232,13 @@ e{
                         <div class="card-boton">
                             <div class="row">
 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
+
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo</b> {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
                             </div>
                         </div>
                     </div>
-                  <div class="card-bodyNew1">
+                  <div class="card-bodyNew">
 
 
 
@@ -254,7 +246,7 @@ e{
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
 
-                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="100px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
                                 <form action="{{url('/cicloeva/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -268,7 +260,7 @@ e{
                                 <input type='submit' class="botones" value='Inicio' >
                             </form>
 
-                                <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
+
                             </div>
                         </div>
                     </div>
@@ -286,9 +278,9 @@ e{
                         <div class="card-boton">
                             <div class="row">
 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
+
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion</b>  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
                             </div>
                         </div>
                     </div>
@@ -303,9 +295,9 @@ e{
                         <div class="card-boton">
                             <div class="row">
 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
+
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunion</b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
                             </div>
                         </div>
                     </div>

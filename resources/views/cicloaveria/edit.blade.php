@@ -150,25 +150,9 @@ b{
                 </body>
             </div>
             </div>
-
-
-            {{--  @foreach ($ciclosos as $ciclosos)
-            <div><input type="text" id= "ingreso" name="ingreso" value=" {{$ciclosos->ingreso}}"></div>
-
-            @endforeach  --}}
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
-
-
-
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
-
-
-
     </body>
-
-
-
-
         <div id="cuenta"></div>
         <center>
 
