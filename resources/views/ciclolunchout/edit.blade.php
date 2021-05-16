@@ -201,8 +201,8 @@
                       <input type='submit' class="botones"  value='Fin'>
                       <br> <br>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
-                      {{-- <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p> --}}
 
+<input type="text" name="timelunch" id="timelunch" value="{{ $timelunch }}">
 
                     </form></div>
                   </div>

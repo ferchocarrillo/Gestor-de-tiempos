@@ -49,7 +49,7 @@ class CicloLunchOutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Ciclo $ciclosos)
     {
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
@@ -62,7 +62,7 @@ class CicloLunchOutController extends Controller
         $llave = $user_cedula. $hoy;
 
         $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
-        $ciclosos=Ciclo::findOrFail($id);
+
 
         $date1 = $ciclosos->breakin;
         $date2 = $ciclosos->breakout;
@@ -125,7 +125,7 @@ class CicloLunchOutController extends Controller
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->almuerzoout       = $hora;
-        $ciclosos->timelunch         = $tiempo3;
+        $ciclosos->timelunch         = $timelunch;
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -300,6 +300,7 @@ class CicloLunchOutController extends Controller
         $ingresoA = $carbon1->diffInMinutes($ingreso);
         $salidaB = $carbon1->diffInMinutes($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
+
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);

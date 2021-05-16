@@ -67,10 +67,10 @@
 .card-bodyNew:hover{
     background-image: linear-gradient(#53a7b0, #AAB7B8);
 }
- .card-bodyNew1{
+.card-bodyNew1{
     border: #060707 3px solid;
     border-radius:0.75rem;
-    background-image: linear-gradient(#596164, #154762);
+    background-image: linear-gradient(#596164, #154762)
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     min-height: 1px;
@@ -105,6 +105,28 @@ b{
     text-align: left;
     align-content: left;
 }
+rem{
+    color: rgb(0, 0, 0);
+    background-color: papayawhip;
+    font-size:20px;
+    align-self: center;
+    width: 70px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border-radius: 0.45em;
+    align-self: center;
+  }
+  rem2{
+    color: rgb(255, 255, 255);
+    background-color: rgb(233, 29, 11);
+    font-size:20px;
+    align-self: center;
+    width: 70px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border-radius: 0.45em;
+    align-self: center;
+  }
 </style>
 
 
@@ -156,12 +178,17 @@ b{
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
                     <div class="card-bodyNew1">
                       <strong><p class="card-text" >Turno</p></strong>
-                      <center><img src="\theme\images\turno.png" alt=""  width="170px" height="170px"></center>
-                      <br><br>
-                      <p class="card-text"><small class="text-muted2"><b>Entrada:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Salida:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Horas de conexion: </b>  {{ $ciclosos->total }} </small></p>
-                  </div>
+                      <center><img src="\theme\images\turno.png" alt=""  width="170px" height="160px"></center>
+                      <br>
+                          <p class="card-text"><small class="text-muted2"><b>Ingreso</b>&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
+                          <p class="card-text"><small class="text-muted2"><b>Salida</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
+
+
+                          @if (empty($ciclosos->salida))
+                          <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b><rem>0</rem> </small></p>
+                          @else
+                          <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b><rem> {{ $total }} </rem></small></p>
+                          @endif</div>
                   </div>
 
 
@@ -182,15 +209,12 @@ b{
                           <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                           <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                       <div><input type="hidden" name= "breakin" id="breakin" value="{{ old('breakin', $ciclosos->breakin)}}"></div>
-                      <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
+                      <div><input type="hidden" id="breakout" name"breakout" value="{{ $hora }}"> </div>
+                      <div><input type="hidden" name= "timebreak" id="timebreak" value="{{ $timebreak }}"></div>
                       <input type='submit' class="botones"  value='Fin'>
                       <br>
                       <p class="card-text"><small class="text-muted2"><b>Inicio:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
-                     {{-- @if ($tiempo2 > 15) --}}
-                     {{-- <p class="card-text"><small class="text-muted2"><b>Tiempo de Break</b>  {{ $tiempo2}}<b> minutos</b></small></p> --}}
-                     {{-- @else
-                     <p class="card-text"><small class="text-muted2" style="color: red"><b>Tiempo de Break</b>  {{ $tiempo2}}<b> minutos</b></small></p>
-                     @endif --}}
+
                     </form>
                     </div>
                   </div>
@@ -198,85 +222,154 @@ b{
                     <div class="card-bodyNew1">
                       <strong><p class="card-text">Almuerzo</p></strong>
                     <br>
-                      <center><img src="\theme\images\cubiertos.png" alt=""  width="190px" height="160px"></center>
-                    <br>
-                      <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2">Tiempo de Almuerzo {{ old('timelunch', $ciclosos->timelunch)}} minutos</small></p>
+                    <center><img src="\theme\images\cubiertos.png" alt=""  width="190px" height="160px"></center>
+                    <p class="card-text"><small class="text-muted2"><b>Inicio:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Fin: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
+
+                    @if (is_null($ciclosos->almuerzo))
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem>0</rem></small></p>
+                    @else
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem> {{ $timelunch2 }} </rem><b> minutos</b></small></p>
+                    @endif
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+
                     <div class="card-bodyNew1">
                       <strong><p class="card-text">Capacitación</p></strong>
                       <br>
                       <center><img src="\theme\images\capacitacion.png" alt=""  width="100px" height="110px" ></center>
 <div class="card-boton">
     <div class="row">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <p class="card-text"><small class="text-muted2">Tiempo de Capacitación {{ old('timecap', $ciclosos->timecap)}} </small></p>
+
+
+
+
+        @if (empty($ciclosos->capout))
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitacion: </b><rem>0</rem> </small></p>
+        @else
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación: </b><rem> {{ $timecapa }} </rem></small></p>
+        @endif
     </div>
 </div>
-                 </div>
+
+                  </div>
                   <div class="card-bodyNew1">
+
+
                     <strong><p class="card-text">Pausas Activas</p></strong>
                     <br>
                     <center><img src="\theme\images\pausas.png" alt=""  width="100px" height="110px" ></center>
                     <div class="card-boton">
                         <div class="row">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+
+
+
+                            @if (empty($ciclosos->pausasout))
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>0</rem> </small></p>
+                            @else
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepau }}</rem> </small></p>
+                            @endif
                         </div>
                     </div>
                 </div>
                   </div>
                   <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+
                     <div class="card-bodyNew1">
+
+
                         <strong><p class="card-text">Equipo Dañado</p></strong>
-                        <br>
+<br>
                         <center><img src="\theme\images\dañado.png" alt=""  width="100px" height="110px"  ></center>
+
                         <div class="card-boton">
                             <div class="row">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <p class="card-text"><small class="text-muted2">Tiempo de Daño de Equipo {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
+
+
+
+                                @if (empty($ciclosos->dañoout))
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b><rem> 0 </rem> </small></p>
+                            @else
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b><rem>  {{ $timedaño }}</rem> </small></p>
+                            @endif
                             </div>
                         </div>
                     </div>
                   <div class="card-bodyNew1">
+
+
+
+
                         <strong><p class="card-text">Evaluación</p></strong>
                         <br>
-                       <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
+
+                        <center><img src="\theme\images\evalluaciones.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
-                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <p class="card-text"><small class="text-muted2">Tiempo de evaluacion  {{ old('timeeva', $ciclosos->timeeva)}} </small></p>
+
+
+
+                                @if (empty($ciclosos->evaluacionout))
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem> 0 </rem> </small></p>
+                                @else
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem>  {{ $timeeva }}</rem> </small></p>
+                                @endif
                             </div>
                         </div>
                     </div>
+
+
                   </div>
                   <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+
                     <div class="card-bodyNew1">
+
+
                         <strong><p class="card-text">Retroalimentación</p></strong>
                         <br>
                         <center><img src="\theme\images\retroa.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              <p class="card-text"><small class="text-muted2">Tiempo de Retroalimentacion  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
+                                @if (empty($ciclosos->retroout))
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b><rem> 0 </rem> </small></p>
+                                @else
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b><rem>  {{ $timeretro }}</rem> </small></p>
+                                @endif
+
+
+
                             </div>
                         </div>
                     </div>
                   <div class="card-bodyNew1">
+
+
+
+
                         <strong><p class="card-text">Reunión</p></strong>
                         <br>
                         <center><img src="\theme\images\REUNION.png" alt=""  width="100px" height="110px"  margin></center>
                         <div class="card-boton">
                             <div class="row">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <p class="card-text"><small class="text-muted2">Tiempo de Reunion  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
+
+
+
+                                @if (empty($ciclosos->reunionout))
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem>0</rem> </small></p>
+                                @else
+                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem> {{ $timereunion }} </rem></small></p>
+                                @endif
                             </div>
                         </div>
                     </div>
+
+
                   </div>
+
+
+
+
             </div>
             <br>
             <p style="text-align: center; aline-contents: center;"><i class="fa fa-copyright" aria-hidden="true">Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>

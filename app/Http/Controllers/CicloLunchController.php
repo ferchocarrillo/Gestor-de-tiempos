@@ -69,6 +69,7 @@ class CicloLunchController extends Controller
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->almuerzo          = $hora;
+        $ciclosos->timelunch         = $request->timelunch;
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -107,9 +108,6 @@ class CicloLunchController extends Controller
       $hoy = Carbon::now()->format('Y-m-d');
       $hora = Carbon::now()->format('H:i:s');
       $llave = $user_cedula. $hoy;
-
-      $date1 = $request->input('ingreso');
-      $date2 = $request->input('salida');
       $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
       $ciclosos=Ciclo::findOrFail($id);
 
@@ -166,7 +164,7 @@ class CicloLunchController extends Controller
       $salida  =$ciclosos->salida;
       $ingresoA = $carbon1->diffInMinutes($ingreso);
       $salidaB = $carbon1->diffInMinutes($salida);
-      $total = ($salidaB - $ingresoA)-$timelunch;
+      $total = ($timelunch)-($salidaB - $ingresoA);
 
         return view('ciclolunch.edit' ,compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepau','timedaño','timeeva', 'timeretro','timereunion'));
 

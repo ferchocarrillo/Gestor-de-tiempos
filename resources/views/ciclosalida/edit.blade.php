@@ -198,7 +198,12 @@ rem2{
                 <br><br>
                     <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
-                    <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b>  {{ $total }} </small></p>
+                    @if (empty($ciclosos->salida))
+                    <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b><rem>0</rem> </small></p>
+                    @else
+                    <p class="card-text"><small class="text-muted2"><b>Horas de Conexión: </b><rem> {{ $total }} </rem></small></p>
+                    @endif
+                    <input type="hidden" name="total" id="total" value="{{$total}}">
                 </form>
             </div>
         </div>
@@ -217,14 +222,7 @@ rem2{
                     @else
                     <input type='submit' class="botonesinactivos"  value='BREAK YA REGISTRADO'  disabled>
                     @endif
-
-
                      <br> <br>
-{{--
- <input type="text" name="iniciobreak" id="iniciobreak" value="{{ old('breakin', $ciclosos->breakin)}}">
-<input type="text" name="finbreak" id="finbreak" value="{{ old('breakout', $ciclosos->breakout)}}">
-<input type="text" name="totalbreak" id="totalbreak" value="{{ $timebreak }}"> --}}
-
                     <p class="card-text"><small class="text-muted2">Inicio&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('breakout', $ciclosos->breakout)}}</e> </small></p>
 
@@ -251,18 +249,18 @@ rem2{
                     <br>
                     <br>
                     @if(empty($ciclosos->almuerzo))
-                    <button class="botones"><a href="{{url('/ciclolunch/'.$ciclosos->id.'/edit')}}">Registrar Lunch</a></button>
+                   <button class="botones"><a href="{{url('/ciclolunch/'.$ciclosos->id.'/edit')}}">Registrar Lunch</a></button>
                     @else
-                    <input type='submit' class="botonesinactivos"  value='ALMUERZO YA REGISTRADO'  disabled>
+                   <input type='submit' class="botonesinactivos"  value='ALMUERZO YA REGISTRADO'  disabled>
                     @endif
                    <br><br>
                     <p class="card-text"><small class="text-muted2">Inicio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
                     @if ($timelunch > 60)
                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem2>&nbsp;&nbsp; {{ $timelunch }}&nbsp;&nbsp;</rem2>&nbsp;&nbsp;<b> minutos</b></small></p>
-                   @else
-                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem> &nbsp;&nbsp;{{ $timelunch }}&nbsp;&nbsp;</rem>&nbsp;&nbsp;<b> minutos</b></small></p>
-                   @endif
+                    @else
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem> &nbsp;&nbsp;{{ $timelunch }}&nbsp;&nbsp;</rem>&nbsp;&nbsp;<b> minutos</b></small></p>
+                    @endif
                 </div>
                   </div>
                   <div class="card"  style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -286,7 +284,12 @@ rem2{
         @endif
         <br>
         <br>
+        @if (empty($ciclosos->capout))
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitacion: </b><rem>0</rem> </small></p>
+        @else
         <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación: </b><rem> {{ $timecapa }} </rem></small></p>
+        @endif
+
     </div>
 </div>
 
@@ -308,7 +311,7 @@ rem2{
                             <br>
                             <br>
                             @if (empty($ciclosos->pausasout))
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  </rem> </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>0</rem> </small></p>
                             @else
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepau }}</rem> </small></p>
                             @endif
@@ -338,7 +341,7 @@ rem2{
                                 <br>
                                 <br>
                                 @if (empty($ciclosos->dañoout))
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b><rem>  </rem> </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b><rem> 0 </rem> </small></p>
                             @else
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo: </b><rem>  {{ $timedaño }}</rem> </small></p>
                             @endif
@@ -366,7 +369,7 @@ rem2{
                                 <br>
                                 <br>
                                 @if (empty($ciclosos->evaluacionout))
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem>  </rem> </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem> 0 </rem> </small></p>
                             @else
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem>  {{ $timeeva }}</rem> </small></p>
                             @endif
@@ -392,11 +395,13 @@ rem2{
                                     @else
                                     <input type='submit' class="botonesinactivos"  value=' RETROALIMENTACION REGISTRADA'  disabled>
                                    @endif
-
-
-                                <br>
-                                <br>
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b>  {{ old('timeretro', $ciclosos->timeretro)}} </small></p>
+                                   <br>
+                                   <br>
+                                   @if (empty($ciclosos->retroout))
+                                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b><rem> 0 </rem> </small></p>
+                                   @else
+                                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b><rem>  {{ $timeretro }}</rem> </small></p>
+                                   @endif
                             </div>
                         </div>
                     </div>
@@ -419,7 +424,12 @@ rem2{
 
                                 <br>
                                 <br>
-                                <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b>  {{ old('timereunion', $ciclosos->timereunion)}} </small></p>
+                                @if (empty($ciclosos->reunionout))
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem>0</rem> </small></p>
+        @else
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem> {{ $timereunion }} </rem></small></p>
+        @endif
+
                             </div>
 
 
