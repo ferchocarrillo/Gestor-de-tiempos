@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `panels` (
   `timecap` int(11) DEFAULT NULL,
   `pausas` time DEFAULT NULL,
   `pausasout` time DEFAULT NULL,
-  `timepau` int(11) DEFAULT NULL,
+  `timepausas` int(11) DEFAULT NULL,
   `daño` time DEFAULT NULL,
   `dañoout` time DEFAULT NULL,
   `timedaño` int(11) DEFAULT NULL,

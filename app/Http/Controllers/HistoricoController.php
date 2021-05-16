@@ -32,7 +32,7 @@ class HistoricoController extends Controller
         $hoy = Carbon::now()->format('d-m-Y');
         $today= Carbon::now()->format('Y-m-d');
         $fecha= Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s A');
+        $hora = Carbon::now()->format('H:i:s A');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::orderBy('fecha', 'desc')->where('nombre','=', $user_nombre)->paginate(10);
 

@@ -39,7 +39,7 @@ class HomeController extends Controller
 
         $hoy = Carbon::now()->format('d-m-Y');
         $today = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $ago = Carbon::now()->diffForHumans();
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -65,7 +65,7 @@ class HomeController extends Controller
 
     {
         $hoy = Carbon::today()->format('d-m-Y');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $ago = Carbon::now()->diffForHumans();
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;

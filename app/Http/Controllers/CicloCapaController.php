@@ -61,7 +61,7 @@ class CicloCapaController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
@@ -103,7 +103,7 @@ class CicloCapaController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
@@ -135,11 +135,11 @@ class CicloCapaController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
-     //return response()->json($ciclo);
+     //return response()->json($ciclosos);
      return view('ciclocapout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }

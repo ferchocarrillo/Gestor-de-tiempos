@@ -209,7 +209,7 @@ e{
 
 
 
-                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepausas', $ciclosos->timepausas)}} </small></p>
                         </div>
                     </div>
                 </div>

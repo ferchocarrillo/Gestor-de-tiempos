@@ -202,7 +202,7 @@
                       <br> <br>
                       <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
 
-<input type="text" name="timelunch" id="timelunch" value="{{ $timelunch }}">
+<input type="hidden" name="timelunch" id="timelunch" value="{{ $timelunch }}">
 
                     </form></div>
                   </div>
@@ -238,7 +238,7 @@
 
 
 
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas</b>  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas</b>  {{ old('timepausas', $ciclosos->timepausas)}} </small></p>
                         </div>
                     </div>
                 </div>

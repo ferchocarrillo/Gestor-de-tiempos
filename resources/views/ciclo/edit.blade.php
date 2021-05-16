@@ -251,7 +251,7 @@ img:hover {
                             <input type='submit' class="botonpeque" value='Inicio' style="width: 6.5rem; border-radius:0.75rem;"  >
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type='submit' class="pequeinactivos" value='Fin' style="width: 6.5rem; border-radius:0.75rem;"  disabled>
-                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepau', $ciclosos->timepau)}} </small></p>
+                            <p class="card-text"><small class="text-muted2">Tiempo de Pausas Activas  {{ old('timepausas', $ciclosos->timepausas)}} </small></p>
                         </div>
                     </div>
                 </div>

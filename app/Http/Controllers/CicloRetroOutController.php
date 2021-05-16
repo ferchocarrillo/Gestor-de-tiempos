@@ -60,22 +60,22 @@ class CicloRetroOutController extends Controller
         $tiempoC = $hoy->floatDiffInRealDays($date3);
         $tiempoD = $hoy->floatDiffInRealDays($date4);
         $tiempo2 = $tiempoC - $tiempoD;
-        $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        $tiempo3 = $date3->diffInMinutes($date4);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $validatedData = $request->validate([
-            'retro'          => ['required|unique:ciclos,retro'],
+            'pausas'          => ['required|unique:ciclos,pausas'],
         ]);
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->retroout          = $hora;
-        $ciclosos->timeretro         = $tiempo3;
+        $ciclosos->timeretro         = $request->timepausas;
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -134,7 +134,7 @@ class CicloRetroOutController extends Controller
         $date8 = $ciclosos->pausasout;
         $tiempoG = $carbon1->floatDiffInRealSeconds($date7);
         $tiempoH = $carbon1->floatDiffInRealSeconds($date8);
-        $timepau = ($tiempoH - $tiempoG)/60;
+        $timepausas = ($tiempoH - $tiempoG)/60;
 
         $date9 = $ciclosos->daño;
         $date10 = $ciclosos->dañoout;
@@ -164,10 +164,10 @@ class CicloRetroOutController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
 
-        return view('cicloretroout.edit', compact('date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepau','timedaño','timeeva', 'timeretro','timereunion'));
+        return view('cicloretroout.edit', compact('date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
         // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
         //return back();
     }
@@ -211,7 +211,7 @@ class CicloRetroOutController extends Controller
         $date8 = $ciclosos->pausasout;
         $tiempoG = $carbon1->floatDiffInRealSeconds($date7);
         $tiempoH = $carbon1->floatDiffInRealSeconds($date8);
-        $timepau = ($tiempoH - $tiempoG)/60;
+        $timepausas = ($tiempoH - $tiempoG)/60;
 
         $date9 = $ciclosos->daño;
         $date10 = $ciclosos->dañoout;
@@ -241,12 +241,12 @@ class CicloRetroOutController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
      //return response()->json($ciclo);
-     return view('ciclosalida.edit', compact('date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepau','timedaño','timeeva', 'timeretro','timereunion'));
+     return view('ciclosalida.edit', compact('date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
      //return back();
     }
 

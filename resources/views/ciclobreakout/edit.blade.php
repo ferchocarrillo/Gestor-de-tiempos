@@ -208,8 +208,7 @@ rem{
                           <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                           <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                           <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-                      <div><input type="hidden" name= "breakin" id="breakin" value="{{ old('breakin', $ciclosos->breakin)}}"></div>
-                      <div><input type="hidden" id="breakout" name"breakout" value="{{ $hora }}"> </div>
+                          <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
                       <div><input type="hidden" name= "timebreak" id="timebreak" value="{{ $timebreak }}"></div>
                       <input type='submit' class="botones"  value='Fin'>
                       <br>
@@ -229,7 +228,7 @@ rem{
                     @if (is_null($ciclosos->almuerzo))
                     <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem>0</rem></small></p>
                     @else
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem> {{ $timelunch2 }} </rem><b> minutos</b></small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem> {{ $timelunch }} </rem><b> minutos</b></small></p>
                     @endif
                 </div>
                   </div>
@@ -268,7 +267,7 @@ rem{
                             @if (empty($ciclosos->pausasout))
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>0</rem> </small></p>
                             @else
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepau }}</rem> </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepausas }}</rem> </small></p>
                             @endif
                         </div>
                     </div>

@@ -62,7 +62,7 @@ class CicloAveriaController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
@@ -108,7 +108,7 @@ class CicloAveriaController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
 
@@ -137,7 +137,7 @@ class CicloAveriaController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $datosAveria = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosAveria);

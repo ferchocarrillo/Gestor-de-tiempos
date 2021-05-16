@@ -313,7 +313,7 @@ rem2{
                             @if (empty($ciclosos->pausasout))
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>0</rem> </small></p>
                             @else
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepau }}</rem> </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepausas }}</rem> </small></p>
                             @endif
 
                         </div>

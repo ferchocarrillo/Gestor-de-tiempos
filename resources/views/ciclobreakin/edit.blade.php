@@ -217,10 +217,8 @@ rem{
     @else
     <input type='submit' class="botones" value='Inicio' disabled>
    @endif
-                        <br><br>
-
-
-                    </form>
+    <br><br>
+           </form>
         </div>
     </div>
                 <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);" >
@@ -232,11 +230,11 @@ rem{
                       <center><img src="\theme\images\cubiertos.png" alt=""  width="190px" height="160px"></center>
                       <br>
                       <p class="card-text"><small class="text-muted2"><b>Inicio:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
-                      <p class="card-text"><small class="text-muted2"><b>Fin: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Fin: </b><e>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>
                       @if (empty($ciclosos->almuerzoout))
                       <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem>0</rem> </small></p>
                       @else
-                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem> {{ $timelunch2 }} </rem><b> minutos</b></small></p>
+                      <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo: </b><rem> {{ $timelunch }} </rem><b> minutos</b></small></p>
                       @endif
                 </div>
                   </div>
@@ -279,7 +277,7 @@ rem{
                             @if (empty($ciclosos->pausasout))
                             <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>0</rem> </small></p>
                             @else
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepau }}</rem> </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas: </b><rem>  {{ $timepausas }}</rem> </small></p>
                             @endif
                         </div>
                     </div>

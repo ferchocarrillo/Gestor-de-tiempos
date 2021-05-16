@@ -239,7 +239,7 @@ b{
                     <div class="card-boton">
                         <div class="row">
 
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas </b> {{ old('timepau', $ciclosos->timepau)}} </small></p>
+                            <p class="card-text"><small class="text-muted2"><b>Tiempo de Pausas Activas </b> {{ old('timepausas', $ciclosos->timepausas)}} </small></p>
                         </div>
                     </div>
                 </div>

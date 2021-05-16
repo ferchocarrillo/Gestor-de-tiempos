@@ -62,7 +62,7 @@ class CicloLunchController extends Controller
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
-        $hora = Carbon::now()->format('h:i:s');
+        $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
@@ -134,7 +134,7 @@ class CicloLunchController extends Controller
       $date8 = $ciclosos->pausasout;
       $tiempoG = $carbon1->diffInMinutes($date7);
       $tiempoH = $carbon1->diffInMinutes($date8);
-      $timepau = ($tiempoH - $tiempoG);
+      $timepausas = ($tiempoH - $tiempoG);
 
       $date9 = $ciclosos->daño;
       $date10 = $ciclosos->dañoout;
@@ -166,7 +166,7 @@ class CicloLunchController extends Controller
       $salidaB = $carbon1->diffInMinutes($salida);
       $total = ($timelunch)-($salidaB - $ingresoA);
 
-        return view('ciclolunch.edit' ,compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepau','timedaño','timeeva', 'timeretro','timereunion'));
+        return view('ciclolunch.edit' ,compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
 
     }
 
@@ -219,7 +219,7 @@ class CicloLunchController extends Controller
          $date8 = $ciclosos->pausasout;
          $tiempoG = $carbon1->diffInMinutes($date7);
          $tiempoH = $carbon1->diffInMinutes($date8);
-         $timepau = ($tiempoH - $tiempoG);
+         $timepausas = ($tiempoH - $tiempoG);
 
          $date9 = $ciclosos->daño;
          $date10 = $ciclosos->dañoout;
@@ -253,7 +253,7 @@ class CicloLunchController extends Controller
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclolunchout.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepau','timedaño','timeeva', 'timeretro','timereunion'));
+     return view('ciclolunchout.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
      //return back();
     }
 
