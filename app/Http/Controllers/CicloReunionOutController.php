@@ -74,8 +74,8 @@ class CicloReunionOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -113,12 +113,7 @@ class CicloReunionOutController extends Controller
         $timeretro = ($tiempoN - $tiempoM);
         $timeretro = number_format($timeretro,1,'.',',');
 
-        $date15 = $ciclosos->reunion;
-        $date16 = $ciclosos->reunionout;
-        $tiempoO = $carbon1->diffInMinutes($date15);
-        $tiempoP = $carbon1->diffInMinutes($date16);
-        $timereunion = ($tiempoP - $tiempoO);
-        $timereunion = number_format($timereunion,1,'.',',');
+
 
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
@@ -127,6 +122,14 @@ class CicloReunionOutController extends Controller
         $salidaB = $carbon1->diffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timeluch;
         $total = number_format($total,1,'.',',');
+
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+        $timereunion = number_format($timereunion,1,'.',',');
+
         $validatedData = $request->validate([
             'reunion'          => ['required|unique:ciclos,reunion'],
         ]);
@@ -189,8 +192,8 @@ class CicloReunionOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -228,13 +231,6 @@ class CicloReunionOutController extends Controller
         $timeretro = ($tiempoN - $tiempoM);
         $timeretro = number_format($timeretro,1,'.',',');
 
-        $date15 = $ciclosos->reunion;
-        $date16 = $ciclosos->reunionout;
-        $tiempoO = $carbon1->diffInMinutes($date15);
-        $tiempoP = $carbon1->diffInMinutes($date16);
-        $timereunion = ($tiempoP - $tiempoO);
-        $timereunion = number_format($timereunion,1,'.',',');
-
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
         $timelunch = $ciclosos->timelunch;
@@ -242,6 +238,13 @@ class CicloReunionOutController extends Controller
         $salidaB = $carbon1->floatDiffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
         $total = number_format($total,1,'.',',');
+
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+        $timereunion = number_format($timereunion,1,'.',',');
 
         return view('cicloretroout.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
         // return view('ciclo.index' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo2','tiempo3'));
@@ -281,8 +284,8 @@ class CicloReunionOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -320,13 +323,6 @@ class CicloReunionOutController extends Controller
         $timeretro = ($tiempoN - $tiempoM);
         $timeretro = number_format($timeretro,1,'.',',');
 
-        $date15 = $ciclosos->reunion;
-        $date16 = $ciclosos->reunionout;
-        $tiempoO = $carbon1->diffInMinutes($date15);
-        $tiempoP = $carbon1->diffInMinutes($date16);
-        $timereunion = ($tiempoP - $tiempoO);
-        $timereunion = number_format($timereunion,1,'.',',');
-
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
         $timelunch = $ciclosos->timelunch;
@@ -334,6 +330,13 @@ class CicloReunionOutController extends Controller
         $salidaB = $carbon1->floatDiffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
         $total = number_format($total,1,'.',',');
+
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+        $timereunion = number_format($timereunion,1,'.',',');
 
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);

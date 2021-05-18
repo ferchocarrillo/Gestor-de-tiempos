@@ -290,6 +290,8 @@ e{
                                    <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                                     <div><input type="hidden" id= "retroout" name="retroout" value=" {{$hora}}"></div>
+<input type="hidden" id="timeretro" name="timeretro" value="{{ $timeretro}}">
+
                                 <input type='submit' class="botones" value='Fin'>
                             </form>
                                </div>

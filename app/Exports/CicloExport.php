@@ -2,16 +2,16 @@
 
 namespace App\Exports;
 
-use App\Fija;
+use App\Ciclo;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class FijaExport implements FromCollection
+class CicloExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Fija::all();
+        return Ciclo::all();
     }
 }

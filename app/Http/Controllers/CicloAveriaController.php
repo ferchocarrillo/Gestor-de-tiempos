@@ -47,7 +47,7 @@ class CicloAveriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Ciclo $ciclosos)
     {
 
 
@@ -64,6 +64,13 @@ class CicloAveriaController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $date9 = $ciclosos->daño;
+        $date10 = $ciclosos->dañoout;
+        $tiempoI = $carbon1->diffInMinutes($date9);
+        $tiempoJ = $carbon1->diffInMinutes($date10);
+        $timedaño = ($tiempoJ - $tiempoI);
+        $timedaño = number_format($timedaño,1,'.',',');
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
@@ -111,8 +118,17 @@ class CicloAveriaController extends Controller
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $date9 = $ciclosos->daño;
+        $date10 = $ciclosos->dañoout;
+        $tiempoI = $carbon1->diffInMinutes($date9);
+        $tiempoJ = $carbon1->diffInMinutes($date10);
+        $timedaño = ($tiempoJ - $tiempoI);
+        $timedaño = number_format($timedaño,1,'.',',');
 
-        return view('cicloaveria.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','date3','date4','tiempo1'));
+
+
+        return view('cicloaveria.edit' ,compact('timedaño','ciclosos','hoy','hora','llave','user_nombre','user_cedula','date3','date4','tiempo1'));
 
     }
 
@@ -139,10 +155,18 @@ class CicloAveriaController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $date9 = $ciclosos->daño;
+        $date10 = $ciclosos->dañoout;
+        $tiempoI = $carbon1->diffInMinutes($date9);
+        $tiempoJ = $carbon1->diffInMinutes($date10);
+        $timedaño = ($tiempoJ - $tiempoI);
+        $timedaño = number_format($timedaño,1,'.',',');
+
         $datosAveria = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosAveria);
      //return response()->json($ciclo);
-     return view('cicloaveriaout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('cicloaveriaout.edit', compact('timedaño','ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

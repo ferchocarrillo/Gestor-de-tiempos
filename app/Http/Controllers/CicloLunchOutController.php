@@ -72,9 +72,10 @@ class CicloLunchOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
+        $timelunch = number_format($timelunch,1,'.',',');
 
         $date5 = $ciclosos->capacitacion;
         $date6 = $ciclosos->capout;
@@ -174,9 +175,10 @@ class CicloLunchOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
+        $timelunch = number_format($timelunch,1,'.',',');
 
         $date5 = $ciclosos->capacitacion;
         $date6 = $ciclosos->capout;
@@ -255,9 +257,10 @@ class CicloLunchOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
+        $timelunch = number_format($timelunch,1,'.',',');
 
         $date5 = $ciclosos->capacitacion;
         $date6 = $ciclosos->capout;

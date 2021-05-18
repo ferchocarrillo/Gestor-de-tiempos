@@ -256,10 +256,10 @@ rem2{
                    <br><br>
                     <p class="card-text"><small class="text-muted2">Inicio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
                     <p class="card-text"><small class="text-muted2">Fin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('almuerzoout', $ciclosos->almuerzoout)}}</e> </small></p>
-                    @if ($timelunch > 60)
-                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem2>&nbsp;&nbsp; {{ $timelunch }}&nbsp;&nbsp;</rem2>&nbsp;&nbsp;<b> minutos</b></small></p>
+                    @if ($timelunch > 1)
+                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem2>&nbsp;&nbsp; {{ $timelunch }}&nbsp;&nbsp;</rem2>&nbsp;&nbsp;<b> horas</b></small></p>
                     @else
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem> &nbsp;&nbsp;{{ $timelunch }}&nbsp;&nbsp;</rem>&nbsp;&nbsp;<b> minutos</b></small></p>
+                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem> &nbsp;&nbsp;{{ $timelunch }}&nbsp;&nbsp;</rem>&nbsp;&nbsp;<b> horas</b></small></p>
                     @endif
                 </div>
                   </div>
@@ -398,9 +398,9 @@ rem2{
                                    <br>
                                    <br>
                                    @if (empty($ciclosos->retroout))
-                                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b><rem> 0 </rem> </small></p>
+                                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Retro: </b><rem> 0 </rem> </small></p>
                                    @else
-                                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Retroalimentacion: </b><rem>  {{ $timeretro }}</rem> </small></p>
+                                   <p class="card-text"><small class="text-muted2"><b>Tiempo de Retro: </b><rem>  {{ $timeretro }}</rem> </small></p>
                                    @endif
                             </div>
                         </div>

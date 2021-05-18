@@ -68,6 +68,7 @@ class CicloCapaController extends Controller
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->capacitacion      = $hora;
+
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -106,8 +107,14 @@ class CicloCapaController extends Controller
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $date5 = $ciclosos->capacitacion;
+        $date6 = $ciclosos->capout;
+        $tiempoE = $carbon1->diffInMinutes($date5);
+        $tiempoF = $carbon1->diffInMinutes($date6);
+        $timecapa = ($tiempoF - $tiempoE);
 
-        return view('ciclocapa.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('ciclocapa.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','timecapa'));
 
     }
 
@@ -137,10 +144,16 @@ class CicloCapaController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $date5 = $ciclosos->capacitacion;
+        $date6 = $ciclosos->capout;
+        $tiempoE = $carbon1->diffInMinutes($date5);
+        $tiempoF = $carbon1->diffInMinutes($date6);
+        $timecapa = ($tiempoF - $tiempoE);
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclosos);
-     return view('ciclocapout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('ciclocapout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','timecapa'));
      //return back();
     }
 

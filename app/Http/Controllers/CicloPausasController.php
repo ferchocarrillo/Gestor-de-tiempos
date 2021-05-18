@@ -66,6 +66,8 @@ class CicloPausasController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+
+
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
@@ -111,9 +113,17 @@ class CicloPausasController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $ciclosos=Ciclo::findOrFail($id);
+        $date5 = $ciclosos->pausas;
+        $date6 = $ciclosos->pausasout;
+        $tiempoE = $carbon1->diffInMinutes($date5);
+        $tiempoF = $carbon1->diffInMinutes($date6);
+        $timepausas = ($tiempoF - $tiempoE);
+        $timepausas = number_format($timepausas,1,'.',',');
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('ciclopausas.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
+        return view('ciclopausas.edit' ,compact('timepausas','ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
 
     }
 
@@ -140,10 +150,19 @@ class CicloPausasController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $ciclosos=Ciclo::findOrFail($id);
+        $date5 = $ciclosos->pausas;
+        $date6 = $ciclosos->pausasout;
+        $tiempoE = $carbon1->diffInMinutes($date5);
+        $tiempoF = $carbon1->diffInMinutes($date6);
+        $timepausas = ($tiempoF - $tiempoE);
+        $timepausas = number_format($timepausas,1,'.',',');
+
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('ciclopausasout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
+     return view('ciclopausasout.edit', compact('timepausas','ciclosos','hoy','hora','llave','user_nombre','user_cedula','tiempo1'));
      //return back();
     }
 

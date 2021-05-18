@@ -74,8 +74,8 @@ class CicloEvaOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -99,12 +99,7 @@ class CicloEvaOutController extends Controller
         $tiempoJ = $carbon1->diffInMinutes($date10);
         $timedaño = ($tiempoJ - $tiempoI);
 
-        $date11 = $ciclosos->evaluacion;
-        $date12 = $ciclosos->evaluacionout;
-        $tiempoK = $carbon1->diffInMinutes($date11);
-        $tiempoL = $carbon1->diffInMinutes($date12);
-        $timeeva = ($tiempoL - $tiempoK);
-        $timeeva = number_format($timeeva,1,'.',',');
+
 
         $date13 = $ciclosos->retro;
         $date14 = $ciclosos->retroout;
@@ -127,6 +122,14 @@ class CicloEvaOutController extends Controller
         $salidaB = $carbon1->diffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timeluch;
         $total = number_format($total,1,'.',',');
+
+        $date11 = $ciclosos->evaluacion;
+        $date12 = $ciclosos->evaluacionout;
+        $tiempoK = $carbon1->diffInMinutes($date11);
+        $tiempoL = $carbon1->diffInMinutes($date12);
+        $timeeva = ($tiempoL - $tiempoK);
+        $timeeva = number_format($timeeva,1,'.',',');
+
         $validatedData = $request->validate([
             'evaluacionout'          => ['required|unique:ciclos,evaluacionout'],
         ]);
@@ -188,8 +191,8 @@ class CicloEvaOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -213,13 +216,6 @@ class CicloEvaOutController extends Controller
         $tiempoJ = $carbon1->diffInMinutes($date10);
         $timedaño = ($tiempoJ - $tiempoI);
 
-        $date11 = $ciclosos->evaluacion;
-        $date12 = $ciclosos->evaluacionout;
-        $tiempoK = $carbon1->diffInMinutes($date11);
-        $tiempoL = $carbon1->diffInMinutes($date12);
-        $timeeva = ($tiempoL - $tiempoK);
-        $timeeva = number_format($timeeva,1,'.',',');
-
         $date13 = $ciclosos->retro;
         $date14 = $ciclosos->retroout;
         $tiempoM = $carbon1->diffInMinutes($date13);
@@ -237,10 +233,17 @@ class CicloEvaOutController extends Controller
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
         $timelunch = $ciclosos->timelunch;
-        $ingresoA = $carbon1->floatDiffInHours($ingreso);
-        $salidaB = $carbon1->floatDiffInHours($salida);
+        $ingresoA = $carbon1->diffInHours($ingreso);
+        $salidaB  = $carbon1->diffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
         $total = number_format($total,1,'.',',');
+
+        $date11 = $ciclosos->evaluacion;
+        $date12 = $ciclosos->evaluacionout;
+        $tiempoK = $carbon1->diffInMinutes($date11);
+        $tiempoL = $carbon1->diffInMinutes($date12);
+        $timeeva = ($tiempoL - $tiempoK);
+        $timeeva = number_format($timeeva,1,'.',',');
 
 
         return view('cicloevaout.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
@@ -282,8 +285,8 @@ class CicloEvaOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -307,13 +310,6 @@ class CicloEvaOutController extends Controller
         $tiempoJ = $carbon1->diffInMinutes($date10);
         $timedaño = ($tiempoJ - $tiempoI);
 
-        $date11 = $ciclosos->evaluacion;
-        $date12 = $ciclosos->evaluacionout;
-        $tiempoK = $carbon1->diffInMinutes($date11);
-        $tiempoL = $carbon1->diffInMinutes($date12);
-        $timeeva = ($tiempoL - $tiempoK);
-        $timeeva = number_format($timeeva,1,'.',',');
-
         $date13 = $ciclosos->retro;
         $date14 = $ciclosos->retroout;
         $tiempoM = $carbon1->diffInMinutes($date13);
@@ -332,9 +328,15 @@ class CicloEvaOutController extends Controller
         $salida  =$ciclosos->salida;
         $timelunch = $ciclosos->timelunch;
         $ingresoA = $carbon1->floatDiffInHours($ingreso);
-        $salidaB = $carbon1->floatDiffInHours($salida);
+        $salidaB  = $carbon1->floatDiffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
         $total = number_format($total,1,'.',',');
+        $date11 = $ciclosos->evaluacion;
+        $date12 = $ciclosos->evaluacionout;
+        $tiempoK = $carbon1->diffInMinutes($date11);
+        $tiempoL = $carbon1->diffInMinutes($date12);
+        $timeeva = ($tiempoL - $tiempoK);
+        $timeeva = number_format($timeeva,1,'.',',');
 
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);

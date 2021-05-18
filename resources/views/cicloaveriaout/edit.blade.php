@@ -264,7 +264,8 @@ b{
                                    <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                                     <div><input type="hidden" id= "dañoout" name="dañoout" value=" {{$hora}}"></div>
-                                <input type='submit' class="botones" value='Fin'>
+                                <input type="text" id="timedaño" name="timedaño" value="{{$timedaño}}">
+                                    <input type='submit' class="botones" value='Fin'>
                             </form>
                               <p class="card-text"><small class="text-muted2"><b>Tiempo de Daño de Equipo </b> {{ old('timedaño', $ciclosos->timedaño)}} </small></p>
 

@@ -229,7 +229,7 @@ e{
                                 <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                                 <div><input type="hidden" id= "pausasout" name="pausasout" value=" {{$hora}}"></div>
 
-                                {{--  <input type="hidden" name="timepausas" id="timepausas" value="{{ $timepausas }}">  --}}
+                               <input type="text" name="timepausas" id="timepausas" value="{{ $timepausas }}">
 
                             <input type='submit' class="botones" value='FIN'>
                         </form>

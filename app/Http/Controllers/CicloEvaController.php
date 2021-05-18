@@ -94,6 +94,8 @@ class CicloEvaController extends Controller
 
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
+        $ciclosos = Ciclo::findOrFail($id);
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
         Carbon::now();
         $hoy = Carbon::now();
         $user_id = Auth::user()->cedula;
@@ -102,9 +104,15 @@ class CicloEvaController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
-        $ciclosos = Ciclo::findOrFail($id);
+        $date11 = $ciclosos->evaluacion;
+        $date12 = $ciclosos->evaluacionout;
+        $tiempoK = $carbon1->diffInMinutes($date11);
+        $tiempoL = $carbon1->diffInMinutes($date12);
+        $timeeva = ($tiempoL - $tiempoK);
+        $timeeva = number_format($timeeva,1,'.',',');
 
-        return view('cicloeva.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+
+        return view('cicloeva.edit' ,compact('timeeva','ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
 
     }
 
@@ -121,12 +129,7 @@ class CicloEvaController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        // $date4 = $request->input('breakin');
-        // $date3 = $request->input('breakout');
-        // $tiempoC = $hoy->floatDiffInRealDays($date3);
-        // $tiempoD = $hoy->floatDiffInRealDays($date4);
-        // $tiempo2 = $tiempoC - $tiempoD;
-        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
         $ciclosos=Ciclo::findOrFail($id);
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -134,10 +137,16 @@ class CicloEvaController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $date11 = $ciclosos->evaluacion;
+        $date12 = $ciclosos->evaluacionout;
+        $tiempoK = $carbon1->diffInMinutes($date11);
+        $tiempoL = $carbon1->diffInMinutes($date12);
+        $timeeva = ($tiempoL - $tiempoK);
+        $timeeva = number_format($timeeva,1,'.',',');
         $datosBreakin = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosBreakin);
      //return response()->json($ciclo);
-     return view('cicloevaout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('cicloevaout.edit', compact('timeeva','ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

@@ -61,6 +61,7 @@ class CicloPausaOutController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $ciclosos=Ciclo::findOrFail($id);
         $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
 
         $date1 = $ciclosos->breakin;
@@ -72,8 +73,8 @@ class CicloPausaOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -81,8 +82,8 @@ class CicloPausaOutController extends Controller
         $date6 = $ciclosos->capout;
         $tiempoE = $carbon1->diffInMinutes($date5);
         $tiempoF = $carbon1->diffInMinutes($date6);
-        $timepausas = ($tiempoF - $tiempoE);
-        $timepausas = number_format($timepausas,1,'.',',');
+        $timecapa = ($tiempoF - $tiempoE);
+        $timecapa = number_format($timecapa,1,'.',',');
 
         $date7 = $ciclosos->pausas;
         $date8 = $ciclosos->pausasout;
@@ -126,8 +127,8 @@ class CicloPausaOutController extends Controller
         $total = ($salidaB - $ingresoA)-$timeluch;
         $total = number_format($total,1,'.',',');
 
-        $date5 = $ciclosos->capacitacion;
-        $date6 = $ciclosos->capout;
+        $date5 = $ciclosos->pausas;
+        $date6 = $ciclosos->pausasout;
         $tiempoE = $carbon1->diffInMinutes($date5);
         $tiempoF = $carbon1->diffInMinutes($date6);
         $timepausas = ($tiempoF - $tiempoE);
@@ -141,7 +142,7 @@ class CicloPausaOutController extends Controller
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->pausasout         = $hora;
-        $ciclosos->timepausas        = $timepausas;
+        $ciclosos->timepausas        = $request->timepausas;
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -194,8 +195,8 @@ class CicloPausaOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -287,8 +288,8 @@ class CicloPausaOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
@@ -345,8 +346,8 @@ class CicloPausaOutController extends Controller
 
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
-   return response()->json($ciclosos);
-    // return view('ciclosalida.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
+   //return response()->json($ciclosos);
+     return view('ciclosalida.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
      //return back();
     }
 

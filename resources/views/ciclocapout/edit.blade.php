@@ -217,7 +217,7 @@
                       <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                       <div><input type="hidden" name= "capacitacion" id="capacitacion" value="{{ old('capacitacion', $ciclosos->capacitacion)}}"></div>
                       <div><input type="hidden" name= "capout" id="capout" value="{{ $hora }}"></div>
-
+                      <input type="text" id="timecap" name="timecap" value="{{ $timecapa }}">
 
                     <input type='submit' class="botones"  value='Fin'>
                 </form>

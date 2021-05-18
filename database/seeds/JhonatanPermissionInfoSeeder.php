@@ -172,210 +172,224 @@ class JhonatanPermissionInfoSeeder extends Seeder
             'description' => 'Un usuario puede Editar a si mismo',
         ]);
 
-        //porta porta
-        $porta = Permission::create([
-            'name' => 'Index porta',
-            'slug' => 'porta.index',
-            'description' => 'Un usuario puede listar un Porta',
-        ]);
+       //ciclos ciclos
+       $ciclos = Permission::create([
+        'name' => 'Index ciclos',
+        'slug' => 'ciclo.index',
+        'description' => 'Un usuario puede listar un ciclos',
+    ]);
 
-        $porta_all[] = $porta->id;
+    $ciclos_all[] = $ciclos->id;
 
-        $porta = Permission::create([
-            'name' => 'Show porta',
-            'slug' => 'porta.show',
-            'description' => 'Un usuario puede Ver un Porta',
-        ]);
+    $ciclos = Permission::create([
+        'name' => 'Create ciclos',
+        'slug' => 'ciclo.create',
+        'description' => 'Un usuario puede Crear un ciclos',
+    ]);
 
-        $porta_all[] = $porta->id;
+    $ciclos_all[] = $ciclos->id;
 
-        $porta = Permission::create([
-            'name' => 'Create porta',
-            'slug' => 'porta.create',
-            'description' => 'Un usuario puede Crear un Porta',
-        ]);
+    $ciclos = Permission::create([
+        'name' => 'Edit ciclos',
+        'slug' => 'ciclo.edit',
+        'description' => 'Un usuario puede Editar un ciclos',
+    ]);
 
-        $porta_all[] = $porta->id;
+//ciclos averia
 
-        $porta = Permission::create([
-            'name' => 'Edit porta',
-            'slug' => 'porta.edit',
-            'description' => 'Un usuario puede Editar un Porta',
-        ]);
+$ciclos_all[] = $ciclos->id;
 
-        $porta_all[] = $porta->id;
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Averia',
+'slug' => 'cicloaveria.edit',
+'description' => 'Un usuario puede Editar inicio de averia',
+]);
 
-        $porta = Permission::create([
-            'name' => 'Destroy porta',
-            'slug' => 'porta.destroy',
-            'description' => 'Un usuario puede Destruir un Porta',
-        ]);
+//ciclos averia out
 
-        $porta_all[] = $porta->id;
+$ciclos_all[] = $ciclos->id;
 
-        //fija fija
-        $fija = Permission::create([
-            'name' => 'Index fija',
-            'slug' => 'fija.index',
-            'description' => 'Un usuario puede listar un Fija',
-        ]);
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Averia',
+    'slug' => 'cicloaveriaout.edit',
+    'description' => 'Un usuario puede Editar fin de averia',
+]);
 
-        $fija_all[] = $fija->id;
+//ciclos break
 
-        $fija = Permission::create([
-            'name' => 'Show fija',
-            'slug' => 'fija.show',
-            'description' => 'Un usuario puede Ver un Fija',
-        ]);
+$ciclos_all[] = $ciclos->id;
 
-        $fija_all[] = $fija->id;
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Break',
+'slug' => 'ciclobreakin.edit',
+'description' => 'Un usuario puede Editar inicio de break',
+]);
 
-        $fija = Permission::create([
-            'name' => 'Create fija',
-            'slug' => 'fija.create',
-            'description' => 'Un usuario puede Crear un Fija',
-        ]);
+//ciclos break out
 
-        $fija_all[] = $fija->id;
+$ciclos_all[] = $ciclos->id;
 
-        $fija = Permission::create([
-            'name' => 'Edit fija',
-            'slug' => 'fija.edit',
-            'description' => 'Un usuario puede Editar un Fija',
-        ]);
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Break',
+    'slug' => 'ciclobreakout.edit',
+    'description' => 'Un usuario puede Editar fin de break',
+]);
 
-        $fija_all[] = $fija->id;
+//ciclos capa
 
-        $fija = Permission::create([
-            'name' => 'Destroy fija',
-            'slug' => 'fija.destroy',
-            'description' => 'Un usuario puede Destruir un Fija',
-        ]);
+$ciclos_all[] = $ciclos->id;
 
-        $fija_all[] = $fija->id;
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Capacitacion',
+'slug' => 'ciclocapa.edit',
+'description' => 'Un usuario puede Editar inicio de capa',
+]);
+
+//ciclos capa out
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Capacitacion',
+    'slug' => 'ciclocapout.edit',
+    'description' => 'Un usuario puede Editar fin de capa',
+]);
+
+//ciclos evaluacion
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Evaluacion',
+'slug' => 'cicloeva.edit',
+'description' => 'Un usuario puede Editar inicio de evaluacion',
+]);
+
+//ciclos evaluacion out
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Evaluacion',
+    'slug' => 'cicloevaout.edit',
+    'description' => 'Un usuario puede Editar fin de evaluacion',
+]);
+
+//ciclos lunch
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Almuerzo',
+'slug' => 'ciclolunch.edit',
+'description' => 'Un usuario puede Editar inicio de lunch',
+]);
+
+//ciclos lunch out
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Almuerzo',
+    'slug' => 'ciclolunchout.edit',
+    'description' => 'Un usuario puede Editar fin de lunch',
+]);
+
+//ciclos pausas
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Pausas',
+'slug' => 'ciclopausas.edit',
+'description' => 'Un usuario puede Editar inicio de pausas',
+]);
+
+//ciclos pausas out
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Pausas',
+    'slug' => 'ciclopausasout.edit',
+    'description' => 'Un usuario puede Editar fin de pausas',
+]);
+
+//ciclos retro
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Retro',
+'slug' => 'cicloretro.edit',
+'description' => 'Un usuario puede Editar inicio de retro',
+]);
+
+//ciclos retro out
+
+$ciclos_all[] = $ciclos->id;
+
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Retro',
+    'slug' => 'cicloretroout.edit',
+    'description' => 'Un usuario puede Editar fin de retro',
+]);
 
 
-        //upgrade upgrade
-        $upgrade = Permission::create([
-            'name' => 'Index upgrade',
-            'slug' => 'upgrade.index',
-            'description' => 'Un usuario puede listar un Upgrade',
-        ]);
+//ciclos reunion
 
-        $upgrade_all[] = $upgrade->id;
+$ciclos_all[] = $ciclos->id;
 
-        $upgrade = Permission::create([
-            'name' => 'Show upgrade',
-            'slug' => 'upgrade.show',
-            'description' => 'Un usuario puede Ver un Upgrade',
-        ]);
+$ciclos = Permission::create([
+'name' => 'Edit Inicio Reunion',
+'slug' => 'cicloreunion.edit',
+'description' => 'Un usuario puede Editar inicio de reunion',
+]);
 
-        $upgrade_all[] = $upgrade->id;
+//ciclos reunion out
 
-        $upgrade = Permission::create([
-            'name' => 'Create upgrade',
-            'slug' => 'upgrade.create',
-            'description' => 'Un usuario puede Crear un Upgrade',
-        ]);
+$ciclos_all[] = $ciclos->id;
 
-        $upgrade_all[] = $upgrade->id;
+$ciclos = Permission::create([
+    'name' => 'Edit Fin Reunion',
+    'slug' => 'cicloreunionout.edit',
+    'description' => 'Un usuario puede Editar fin de reunion',
+]);
+//ciclos salida
 
-        $upgrade = Permission::create([
-            'name' => 'Edit upgrade',
-            'slug' => 'upgrade.edit',
-            'description' => 'Un usuario puede Editar un Upgrade',
-        ]);
+$ciclos_all[] = $ciclos->id;
 
-        $upgrade_all[] = $upgrade->id;
+$ciclos = Permission::create([
+    'name' => 'Edit Fin turno',
+    'slug' => 'ciclosalida.edit',
+    'description' => 'Un usuario puede Editar fin de salida',
+]);
 
-        $upgrade = Permission::create([
-            'name' => 'Destroy upgrade',
-            'slug' => 'upgrade.destroy',
-            'description' => 'Un usuario puede Destruir un Upgrade',
-        ]);
 
-        $upgrade_all[] = $upgrade->id;
+//historico
 
-        //prepost prepost
-        $prepost = Permission::create([
-            'name' => 'Index prepost',
-            'slug' => 'prepost.index',
-            'description' => 'Un usuario puede listar un Prepost',
-        ]);
+$ciclos_all[] = $ciclos->id;
 
-        $prepost_all[] = $prepost->id;
+$ciclos = Permission::create([
+'name' => 'index historico',
+'slug' => 'historico.index',
+'description' => 'Un usuario puede indexxar datos historicos',
+]);
 
-        $prepost = Permission::create([
-            'name' => 'Show prepost',
-            'slug' => 'prepost.show',
-            'description' => 'Un usuario puede Ver un Prepost',
-        ]);
+//personal general
 
-        $prepost_all[] = $prepost->id;
+$ciclos_all[] = $ciclos->id;
 
-        $prepost = Permission::create([
-            'name' => 'Create prepost',
-            'slug' => 'prepost.create',
-            'description' => 'Un usuario puede Crear un Prepost',
-        ]);
+$ciclos = Permission::create([
+'name' => 'index personal general',
+'slug' => 'personalgeneral.index',
+'description' => 'Un usuario puede indexxar datos personal general',
+]);
 
-        $prepost_all[] = $prepost->id;
 
-        $prepost = Permission::create([
-            'name' => 'Edit prepost',
-            'slug' => 'prepost.edit',
-            'description' => 'Un usuario puede Editar un Prepost',
-        ]);
 
-        $prepost_all[] = $prepost->id;
 
-        $prepost = Permission::create([
-            'name' => 'Destroy prepost',
-            'slug' => 'prepost.destroy',
-            'description' => 'Un usuario puede Destruir un Prepost',
-        ]);
 
-        $prepost_all[] = $prepost->id;
-        //rechazos rechazos
-        $rechazos = Permission::create([
-            'name' => 'Index rechazos',
-            'slug' => 'rechazos.index',
-            'description' => 'Un usuario puede listar un Rechazos',
-        ]);
-
-        $rechazos_all[] = $rechazos->id;
-
-        $rechazos = Permission::create([
-            'name' => 'Show rechazos',
-            'slug' => 'rechazos.show',
-            'description' => 'Un usuario puede Ver un Rechazos',
-        ]);
-
-        $rechazos_all[] = $rechazos->id;
-
-        $rechazos = Permission::create([
-            'name' => 'Create rechazos',
-            'slug' => 'rechazos.create',
-            'description' => 'Un usuario puede Crear un Rechazos',
-        ]);
-
-        $rechazos_all[] = $rechazos->id;
-
-        $rechazos = Permission::create([
-            'name' => 'Edit rechazos',
-            'slug' => 'rechazos.edit',
-            'description' => 'Un usuario puede Editar un Rechazos',
-        ]);
-
-        $rechazos_all[] = $rechazos->id;
-
-        $rechazos = Permission::create([
-            'name' => 'Destroy rechazos',
-            'slug' => 'rechazos.destroy',
-            'description' => 'Un usuario puede Destruir un Rechazos',
-        ]);
-
-        $rechazos_all[] = $rechazos->id;
 
 
         /*$permission = Permission::create([

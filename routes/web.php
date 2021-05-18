@@ -62,11 +62,14 @@ use Illuminate\Support\Facades\Gate;
     Route::resource('cicloreunion',      CicloReunionController::class);
     Route::resource('cicloreunionout',   CicloReunionOutController::class);
     Route::resource('historico',         HistoricoController::class);
+    Route::resource('personalgeneral',   PersonalActivoController::class);
 
 
-    Route::get('porta-list-excel', 'PortaController@exportExcel')->name('porta.excel');
 
-    Route::get('/search','PortaController@search');
+    Route::get('ciclo-list-excel', 'PersonalActivoController@exportExcel')->name('ciclo.excel');
+
+
+    Route::get('/searchpersonalgeneral','PersonalActivoController@searchpersonalgeneral');
 
 
 

@@ -309,7 +309,9 @@ border: none;
                                    <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                                     <div><input type="hidden" id= "reunionout" name="reunionout" value=" {{$hora}}"></div>
-                                <input type='submit' class="botones" value='FIN' >
+
+                                <input type="text" id="timereunion" name="timereunion" value="{{ $timereunion}}">
+                                    <input type='submit' class="botones" value='FIN' >
                             </form>
                             </div>
                         </div>

@@ -259,6 +259,13 @@ return [
 
         ],
 
+        [
+            'text' => 'Historico General',
+            'url'  => 'personalgeneral',
+            'icon' => 'fas fa-landmark',
+
+        ],
+
 
         ['header' => 'ADMINISTRATIVO'],
         [

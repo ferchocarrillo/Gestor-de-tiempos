@@ -48,7 +48,7 @@ class CicloReunionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Ciclo $ciclosos)
     {
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
@@ -61,6 +61,15 @@ class CicloReunionController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+        $timereunion = number_format($timereunion,1,'.',',');
+
         $ciclosos = new Ciclo();
         $ciclosos->nombre            = $user_nombre;
         $ciclosos->cedula            = $user_cedula;
@@ -103,9 +112,17 @@ class CicloReunionController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
         $ciclosos = Ciclo::findOrFail($id);
 
-        return view('cicloreunion.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+        $timereunion = number_format($timereunion,1,'.',',');
+
+        return view('cicloreunion.edit' ,compact('timereunion','ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
 
     }
 
@@ -135,10 +152,19 @@ class CicloReunionController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+
+        $date15 = $ciclosos->reunion;
+        $date16 = $ciclosos->reunionout;
+        $tiempoO = $carbon1->diffInMinutes($date15);
+        $tiempoP = $carbon1->diffInMinutes($date16);
+        $timereunion = ($tiempoP - $tiempoO);
+        $timereunion = number_format($timereunion,1,'.',',');
+
         $datosRetro = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosRetro);
      //return response()->json($ciclo);
-     return view('cicloreunionout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('cicloreunionout.edit', compact('timereunion','ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

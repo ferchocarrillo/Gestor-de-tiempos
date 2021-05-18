@@ -262,7 +262,8 @@ e{
                                    <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
                                     <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
                                     <div><input type="hidden" id= "evaluacionout" name="evaluacionout" value="{{$hora}}"></div>
-                                <input type='submit' class="botones" value='FIN' >
+                                   <input type="hidden" id="timeeva" name="timeeva" value="{{ $timeeva }}">
+                                    <input type='submit' class="botones" value='FIN' >
 
                             </form>
 

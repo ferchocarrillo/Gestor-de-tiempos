@@ -48,12 +48,20 @@ class CicloRetroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Ciclo $ciclosos)
     {
         date_default_timezone_set('America/Bogota');
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
+
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $date13 = $ciclosos->retro;
+        $date14 = $ciclosos->retroout;
+        $tiempoM = $carbon1->diffInMinutes($date13);
+        $tiempoN = $carbon1->diffInMinutes($date14);
+        $timeretro = ($tiempoN - $tiempoM);
+        $timeretro = number_format($timeretro,1,'.',',');
 
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
@@ -103,9 +111,16 @@ class CicloRetroController extends Controller
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
         $ciclosos = Ciclo::findOrFail($id);
+        $date13 = $ciclosos->retro;
+        $date14 = $ciclosos->retroout;
+        $tiempoM = $carbon1->diffInMinutes($date13);
+        $tiempoN = $carbon1->diffInMinutes($date14);
+        $timeretro = ($tiempoN - $tiempoM);
+        $timeretro = number_format($timeretro,1,'.',',');
 
-        return view('cicloretro.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+        return view('cicloretro.edit' ,compact('timeretro','ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
 
     }
 
@@ -122,23 +137,26 @@ class CicloRetroController extends Controller
         Carbon::setLocale('co');
         Carbon::now();
         $hoy = Carbon::now();
-        // $date4 = $request->input('breakin');
-        // $date3 = $request->input('breakout');
-        // $tiempoC = $hoy->floatDiffInRealDays($date3);
-        // $tiempoD = $hoy->floatDiffInRealDays($date4);
-        // $tiempo2 = $tiempoC - $tiempoD;
-        // $tiempo3 = $hoy->diffInMinutes($date4)/60;
         $ciclosos=Ciclo::findOrFail($id);
+
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
         $llave = $user_cedula. $hoy;
+        $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
+        $ciclosos = Ciclo::findOrFail($id);
+        $date13 = $ciclosos->retro;
+        $date14 = $ciclosos->retroout;
+        $tiempoM = $carbon1->diffInMinutes($date13);
+        $tiempoN = $carbon1->diffInMinutes($date14);
+        $timeretro = ($tiempoN - $tiempoM);
+        $timeretro = number_format($timeretro,1,'.',',');
         $datosRetro = request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosRetro);
      //return response()->json($ciclo);
-     return view('cicloretroout.edit', compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
+     return view('cicloretroout.edit', compact('timeretro','ciclosos','hoy','hora','llave','user_nombre','user_cedula'));
      //return back();
     }
 

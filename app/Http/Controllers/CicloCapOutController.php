@@ -72,9 +72,10 @@ class CicloCapOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
+        $timelunch = number_format($timelunch,1,'.',',');
 
         $date5 = $ciclosos->capacitacion;
         $date6 = $ciclosos->capout;
@@ -114,8 +115,8 @@ class CicloCapOutController extends Controller
 
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
-        $ingresoA = $carbon1->diffInMinutes($ingreso);
-        $salidaB = $carbon1->diffInMinutes($salida);
+        $ingresoA = $carbon1->diffInHours($ingreso);
+        $salidaB  = $carbon1->diffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
         $validatedData = $request->validate([
             'capout'          => ['required|unique:ciclos,capout'],
@@ -125,7 +126,7 @@ class CicloCapOutController extends Controller
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->capout            = $hora;
-        $ciclosos->timecap           = $request->timecapa;
+        $ciclosos->timecap           = $request->timecap;
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();
@@ -165,9 +166,11 @@ class CicloCapOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
+        $timelunch = number_format($timelunch,1,'.',',');
+
 
         $date5 = $ciclosos->capacitacion;
         $date6 = $ciclosos->capout;
@@ -207,8 +210,8 @@ class CicloCapOutController extends Controller
 
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
-        $ingresoA = $carbon1->diffInMinutes($ingreso);
-        $salidaB = $carbon1->diffInMinutes($salida);
+        $ingresoA = $carbon1->diffInHours($ingreso);
+        $salidaB  = $carbon1->diffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
 
         return view('ciclocapout.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
@@ -247,9 +250,10 @@ class CicloCapOutController extends Controller
 
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->diffInMinutes($date3);
-        $tiempoD = $carbon1->diffInMinutes($date4);
+        $tiempoC = $carbon1->floatDiffInHours($date3);
+        $tiempoD = $carbon1->floatDiffInHours($date4);
         $timelunch = ($tiempoD - $tiempoC);
+        $timelunch = number_format($timelunch,1,'.',',');
 
         $date5 = $ciclosos->capacitacion;
         $date6 = $ciclosos->capout;
@@ -289,8 +293,8 @@ class CicloCapOutController extends Controller
 
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
-        $ingresoA = $carbon1->diffInMinutes($ingreso);
-        $salidaB = $carbon1->diffInMinutes($salida);
+        $ingresoA = $carbon1->diffInHours($ingreso);
+        $salidaB  = $carbon1->diffInHours($salida);
         $total = ($salidaB - $ingresoA)-$timelunch;
 
         $datosCiclo =request()->except(['_token','_method']);
