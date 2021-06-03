@@ -176,7 +176,7 @@ e{
 
                           <strong><p class="card-text">Almuerzo</p></strong>
                           <br>
-                          <center><img src="\theme\images\cubiertos.png" alt=""  width="190px" height="160px"></center>
+                          <center><img src="\theme\images\cubiertos.png" alt=""  width="120px" height="90px"></center>
                           <br>
                           <p class="card-text"><small class="text-muted2"><b>Hora Entrada:</b><e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>
                           <p class="card-text"><small class="text-muted2"><b>Hora Salida: </b><e>&nbsp;&nbsp;&nbsp; {{ old('almuerzoout', $ciclosos->almuerzoout)}} </e></small></p>

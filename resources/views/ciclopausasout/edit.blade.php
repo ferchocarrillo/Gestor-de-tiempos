@@ -184,7 +184,7 @@ e{
                 <div class="card-bodyNew1">
                   <strong><p class="card-text">Almuerzo</p></strong>
                   <br>
-                  <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
+                  <center><img src="\theme\images\cubiertos.png" alt=""  width="120px" height="90px"></center>
                   <br>
                   <br><br>
                   <p class="card-text"><small class="text-muted2"><b>Entrada</b>&nbsp;<e> {{ old('almuerzo', $ciclosos->almuerzo)}} </e></small></p>

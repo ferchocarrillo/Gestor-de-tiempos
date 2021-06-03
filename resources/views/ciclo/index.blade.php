@@ -19,8 +19,8 @@
                float: left;
                color: #e7ecee;
                background-color: #73abbb;
-               height: 70px;
-               font-size: 22px;
+               height: 50px;
+               font-size: 12px;
                box-shadow:15px 16px 30px -2px #73abbb ;
            }
            .historico:hover{
@@ -32,7 +32,7 @@
            }
 
        .title{
-           font-size: 30px;
+           font-size: 20px;
            text-align: left;
            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
@@ -45,8 +45,8 @@
        .card-boton{
 
        background-color:#73abbb;
-       width: 20%;
-       height: 70px;
+       width: 150px;
+       height: 50px;
        border-radius: 0.75rem;
        border: #1c4c64;
        border-style: solid;
@@ -61,8 +61,8 @@
        background-attachment: fixed;
        background-color: #cfd0d0;
        margin-top: 3rem;
-       width: 350px;
-       height: 60px;
+       width: 250px;
+       height: 40px;
        border-radius: 0.5rem;
        border-style: solid;
        border-width: 1px;
@@ -71,9 +71,9 @@
        .a.botonIndex[type=boton]{
            background-attachment: fixed;
            background-color: #cfd0d0;
-           margin-top: 0.7rem;
-           width: 350px;
-           height: 60px;
+           margin-top: 2rem;
+           width: 250px;
+           height: 40px;
            border-radius: 0.5rem;
            border-style: solid;
            border-width: 1px;
@@ -84,13 +84,16 @@
 
            background-attachment: fixed;
            background-color: #cfd0d0;
-           margin-top: 0.7rem;
-           width: 200px;
-           height: 40px;
+           margin-top: 0.3rem;
+           width: 120px;
+           font-size: 10px;
+           margin-bottom: 2rem;
+           height: 30px;
            border-radius: 0.5rem;
            border-style: solid;
            border-width: 1px;
            box-shadow:5px  10px #1c4c64;
+
            }
 
 
@@ -100,9 +103,11 @@
            background-color: #cfd0d0;
            box-shadow:5px  10px #1c4c64;
 
-           margin-top: 0.7rem;
-           width: 200px;
-           height: 40px;
+           margin-top: 0.3rem;
+           width: 120px;
+           font-size: 10px;
+           margin-bottom: 2rem;
+           height: 30px;
            border-radius: 1rem;
            color: #1c4c64;
            font-style: normal;
@@ -146,11 +151,7 @@
                     </script>
               </div>
             </div>
-            <div class="card">
-              <img class="card-img-top" src="..." alt="">
-              <div class="card-body">
 
-              </div>
             </div>
           </div>
 
@@ -178,11 +179,6 @@
                         setTimeout("HoraActual("+hora+", "+minuto+", "+segundo+")", 1000);
                 }
                 </script>
-
-
-
-
-
                 </body>
 
                @can('haveaccess','ciclo.index')
@@ -190,12 +186,14 @@
                     {{csrf_field()}}
                <div class="card-boton">
 
-                 <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INICIO DE TURNO'  >
-                 {{--<a href="{{route('ciclo.create')}}"
-                  class="botonIndex"
-                  >Registrar Nuevo Ingreso
-                </a>
-                <br><br> --}}
+
+                @if (empty($ciclosos->ingreso))
+                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO YA REGISTRADO' disabled >
+
+                @else
+                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INICIO DE TURNO'  >
+                @endif
+
             </div>
         </form>
             @endcan

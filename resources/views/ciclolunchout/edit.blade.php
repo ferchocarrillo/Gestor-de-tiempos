@@ -187,7 +187,7 @@
                     <div class="card-bodyNew">
                       <strong><p class="card-text">Almuerzo</p></strong>
                       <br>
-                      <center><img src="\theme\images\cubiertos.png" alt=""  width="170px" height="140px"></center>
+                      <center><img src="\theme\images\cubiertos.png" alt=""  width="120px" height="90px"></center>
 <br><br>
                       <form action="{{url('/ciclolunchout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                         {{csrf_field()}}
