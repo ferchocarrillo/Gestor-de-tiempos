@@ -152,6 +152,15 @@
               </div>
             </div>
 
+                        <div class="card">
+              <img class="card-img-top" src="..." alt="">
+              <div class="card-body">
+                <p><h2 style="text-transform: capitalize" class="title"></h2></p>
+                <br>
+                <div></div>
+
+              </div>
+            </div>
             </div>
           </div>
 
@@ -180,7 +189,7 @@
                 }
                 </script>
                 </body>
-
+<center>
                @can('haveaccess','ciclo.index')
                 <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                     {{csrf_field()}}
@@ -188,17 +197,19 @@
 
 
                 @if (empty($ciclosos->ingreso))
-                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO YA REGISTRADO' disabled >
 
+                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO YA REGISTRADO' disabled >
                 @else
                 <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INICIO DE TURNO'  >
+
+
                 @endif
 
             </div>
         </form>
             @endcan
 
-
+        </center>
 
             <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
             <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>

@@ -8,134 +8,167 @@
         <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
         </body>
 
-<style>
 
-    .botones{
-        border-radius: 0.75rem;
-        width: 7rem;
-        background-color: #51abba;
-        border: #36738c;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-weight: bold;
-        margin-bottom: 2rem;
-}
-.botones:hover{
-    background-color: #36738c;
-    color:#ebf2f3;
-    border: #51abba;
-    margin-bottom: 1rem;
-}
-.botonesinactivos{
-    border-radius: 0.75rem;
-    width: 7rem;
-    background-color: #51abba;
-    border: #36738c;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-.botonpeque{
-    border-radius:0.75rem
-    width: 6.5rem;
-    background-color: #51abba;
-    border: #36738c;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
-    }
-.botonpeque:hover{
-        background-color: #36738c;
-        color:#ebf2f3;
-        border: #51abba;
-    }
-    .botonpequeinactivo{
-        border-radius:0.75rem;
-        width: 6.5rem;
-        background-color: #51abba;
-        border: #36738c;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
-.card-boton{
-    background-color: transparent;
-}
-.card-bodyNew{
-    border: #060707 3px solid;
-    border-radius:0.75rem;
-    background-image: linear-gradient(#EAF2F8, #AAB7B8);
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1.25rem;
-}
-.card-bodyNew:hover{
-    background-image: linear-gradient(#53a7b0, #AAB7B8);
-}
-.card-bodyNew1{
-    border: #060707 3px solid;
-    border-radius:0.75rem;
-    background-image: linear-gradient(#596164, #154762)
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1.25rem;
- }
-img:hover {
-    transform: scaleX(-1);
-  }
-.imglogo{
-    float: center;
-    height: 40;
-    width: 140;
-  }
-  a{
-      font-size: 18px;
-      color: #2965fd;
-      -webkit-text-stroke: 0.7px rgb(0, 0, 0);
+        <style>
+            .botones{
+                border-radius: 0.75rem;
+                width: 8rem;
+                font-size: 12px;
+                height: 2rem;
+                background-color: #51abba;
+                border: #36738c;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                align-content: center;
+        }
+        .botones:hover{
+                background-color: #36738c;
+                color:#ebf2f3;
+                border: #51abba;
+        }
+            .botonessmall{
+                border-radius: 0.75rem;
+                width: 8rem;
+                font-size: 8px;
+                height: 1rem;
+                background-color: #51abba;
+                border: #36738c;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                align-content: center;
+            }
+            .botonessmall:hover{
+                background-color: #36738c;
+                color:#ebf2f3;
+                border: #51abba;
+            }
+            .botonesinactivos{
+                border-radius: 0.75rem;
+                width: 8rem;
+                font-size: 8px;
+                height: 2rem;
+                background-color: #073841;
+                border: #36738c;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                color: #EAF2F8;
+            }
+            .botonpeque{
+                border-radius: 0.75rem;
+                width: 3.5rem;
+                background-color: #51abba;
+                border: #36738c;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-weight: bold;
+                }
 
-  }
-  p{
-      text-align: left;
-  }
-  .datos{
-      text-align: right;
-  }
-e{
-    text-align: right;
-    margin-top: 2em;
-    margin-left: 5em;
-}
-b{
-    text-align: left;
-    align-content: left;
-}
-rem{
-    color: rgb(0, 0, 0);
-    background-color: papayawhip;
-    font-size:20px;
-    align-self: center;
-    width: 70px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    border-radius: 0.45em;
-    align-self: center;
-  }
-  rem2{
-    color: rgb(255, 255, 255);
-    background-color: rgb(233, 29, 11);
-    font-size:20px;
-    align-self: center;
-    width: 70px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    border-radius: 0.45em;
-    align-self: center;
-  }
-</style>
+            .botonpeque:hover{
+                    background-color: #36738c;
+                    color:#ebf2f3;
+                    border: #51abba;
+
+                }
+
+                .botonpequeinactivo{
+
+                    border-radius: 0.75rem;
+                    width: 3.5rem;
+                    background-color: #51abba;
+                    border: #36738c;
+
+                    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                }
+            .card-boton{
+
+                background-color: transparent;
+
+            }
+            .card-bodyNew{
+
+                border: #060707 3px solid;
+                border-radius:0.75rem;
+                background-image: linear-gradient(#EAF2F8, #AAB7B8)
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                padding: 1.25rem;
+             }
+            .card-bodyNew:hover{
+                background-image: linear-gradient(#53a7b0, #AAB7B8);
+             }
+             .card-bodyNew1{
+                border: #060707 3px solid;
+                border-radius:0.75rem;
+                background-image: linear-gradient(#EAF2F8, #AAB7B8)
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                padding: 1.25rem;
+             }
 
 
 
+
+
+            img:hover {
+                transform: scaleX(-1);
+              }
+            .imglogo{
+                float: center;
+                height: 40;
+                width: 140;
+              }
+              .input-small{
+            width: 30px;
+            background-color: transparent;
+            border: none;
+              }
+              a{
+                font-size: 10px;
+                  color: #29a8fd;
+                  -webkit-text-stroke: 0.7px rgb(0, 0, 0);
+              }
+              p{
+                  text-align: left;
+                  font-size: 16px;
+                  color: #EAF2F8;
+                  -webkit-text-stroke: 0.7px rgb(0, 0, 0);
+
+              }
+              .datos{
+                  text-align: right;
+              }
+            e{
+                text-align: right;
+                margin-top: 2em;
+                margin-left: 5em;
+            }
+            rem{
+              color: rgb(0, 0, 0);
+              background-color: papayawhip;
+              font-size:14px;
+              align-self: center;
+              width: 70px;
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+              font-weight: bold;
+              border-radius: 0.45em;
+              align-self: center;
+            }
+            rem2{
+              color: rgb(255, 255, 255);
+              background-color: rgb(233, 29, 11);
+              font-size:14px;
+              align-self: center;
+              width: 70px;
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+              font-weight: bold;
+              border-radius: 0.45em;
+              align-self: center;
+            }
+            small{
+
+                font-size: 10px;
+            }
+            </style>
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
             <img src="\theme\images\isotipo-slogan.png" float="left" height="40" width="140">
             <h3 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">{{ Auth::user()->name }}</h3>
             <h1 style="font-weight: bold; text-aline:center;">ESTAS EN BREAK</h1>
-
         </center>
         <div class="row">
         <div class="card" style="background-color: transparent; width:100%" >
@@ -175,11 +208,11 @@ rem{
         <center>
 
             <div class="card-group" >
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-                    <div class="card-bodyNew1">
-                      <strong><p class="card-text" >Turno</p></strong>
-                      <center><img src="\theme\images\turno.png" alt=""  width="170px" height="160px"></center>
-                      <br>
+                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8); height: 90px;">
+                    <div class="card-bodyNew1" >
+                      <strong><p class="card-text" style="color:rgb(0, 0, 0)">Turno</p></strong>
+                      <center><img src="\theme\images\turno.png" alt=""  width="90px" height="90px"></center>
+
                           <p class="card-text"><small class="text-muted2"><b>Ingreso</b>&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
                           <p class="card-text"><small class="text-muted2"><b>Salida</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
 
@@ -193,17 +226,14 @@ rem{
 
 
 
-                <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
+                  <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8); height: 90px;">
                     <div class="card-bodyNew">
-
-
                         <form action="{{url('/ciclobreakout/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             {{csrf_field()}}
                             @method('PATCH')
-                        <strong><p class="card-text">Break</p></strong>
-                        <br>
-                      <center><img src="\theme\images\cafe.png" alt=""  width="140px" height="140px"></center>
-                      <br><br>
+                            <strong><p class="card-text" style="color:rgb(0, 0, 0)">Break</p></strong>
+                            <center><img src="\theme\images\cafe.png" alt=""  width="110px" height="90px"></center>
+
                           <div><input type="hidden" id="hoy" name"hoy" value="{{ $hoy }}"> </div>
                           <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
                           <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
@@ -211,7 +241,7 @@ rem{
                           <div><input type="hidden" name= "breakout" id="breakout" value="{{ $hora }}"></div>
                       <div><input type="hidden" name= "timebreak" id="timebreak" value="{{ $timebreak }}"></div>
                       <input type='submit' class="botones"  value='Fin'>
-                      <br>
+<br><br>
                       <p class="card-text"><small class="text-muted2"><b>Inicio:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e> {{ old('breakin', $ciclosos->breakin)}} </e></small></p>
 
                     </form>
