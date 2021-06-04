@@ -90,15 +90,12 @@
 
     border: #060707 3px solid;
     border-radius:0.75rem;
-    background-image: linear-gradient(#EAF2F8, #AAB7B8)
+    background-image: linear-gradient(#EAF2F8, #AAB7B8);
 
     -ms-flex: 1 1 auto;
-
-    flex: 1 1 auto;
-
-
-
+        flex: 1 1 auto;
     padding: 1.25rem;
+
  }
 .card-bodyNew:hover{
     background-image: linear-gradient(#53a7b0, #AAB7B8);
@@ -166,23 +163,22 @@ small{
     font-size: 10px;
 }
 .card-space{
-    height: 90px;
+    height: 120px;
     width: 200px;
     background-image: linear-gradient(#EAF2F8, #AAB7B8);
     padding: 5px;
 }
 
-.card-space-small{
-    height: 45px;
-    width: 180px;
-    background-image: linear-gradient(#EAF2F8, #AAB7B8);
-    padding: 5px;
+
+.container-a{
+
+
 }
-.container-small-1{
-margin-left: 600px;
-}
-.container-small-2{
-margin-left: 400px;
+.container-b{
+
+margin-left: 39rem;
+margin-right: 0rem;
+margin-top: 0%;
 }
 </style>
 
@@ -218,8 +214,8 @@ margin-left: 400px;
         <div id="cuenta"></div>
         <center>
 
-<div class="container">
-    <div class="card-group">
+<div class="container-a">
+<div class="row">
         <div class="card-space">
          <div class="card-bodyNew" >
            <strong><p class="card-text" style="color:rgb(0, 0, 0)">Turno</p></strong>
@@ -288,16 +284,12 @@ margin-left: 400px;
            @endif
            </div>
        </div>
-   </div>
-
 </div>
-
-<div class="container">
-
-            <div class="card-group">
-
-            <div class="row">
-                <div class="card-space-small" >
+</div>
+<div class="container-b">
+<div class="row">
+<div class="col-sm-2">
+            <div class="card">
                 <div class="card-bodyNew">
                     <strong><p class="card-text" style="color:rgb(0, 0, 0)">Capacitación</p></strong>
                     <center><img src="\theme\images\capacitacion.png" alt="" width="40px" height="40px" ></center>
@@ -319,8 +311,10 @@ margin-left: 400px;
 </div>
                   </div>
                   </div>
-                  <div class="card-space-small" >
-                    <div class="card-bodyNew">
+                </div>
+                <div class="col-sm-2">
+                    <div class="card">
+                        <div class="card-bodyNew">
                        <strong><p class="card-text" style="color:rgb(0, 0, 0)">Pausas Activas</p></strong>
                     <center><img src="\theme\images\pausas.png"  alt="" width="40px" height="40px" ></center>
                     <div class="card-boton">
@@ -342,9 +336,10 @@ margin-left: 400px;
                     </div>
                 </div>
                   </div>
-
-                  <div class="card-space-small" >
-                    <div class="card-bodyNew">
+                </div>
+                <div class="col-sm-2">
+                    <div class="card">
+                        <div class="card-bodyNew">
                         <strong><p class="card-text" style="color:rgb(0, 0, 0)">Equipo Dañado</p></strong>
                         <center><img src="\theme\images\dañado.png" alt="" width="40px" height="40px" ></center>
 
@@ -368,10 +363,10 @@ margin-left: 400px;
                 </div>
             </div>
         </div>
-        <div class="container-small-1" >
-            <div class="row">
-                    <div class="card-space-small" >
-                  <div class="card-bodyNew">
+        <div class="row">
+            <div class="col-sm-2">
+                        <div class="card">
+                            <div class="card-bodyNew">
                     <strong><p class="card-text" style="color:rgb(0, 0, 0)">Evaluación</p></strong>
                         <center><img src="\theme\images\evalluaciones.png" alt="" width="40px" height="40px" ></center>
                         <div class="card-boton">
@@ -390,10 +385,12 @@ margin-left: 400px;
 
                         </div>
                     </div>
-                  </div>
+               </div>
+ </div>
 
-                  <div class="card-space-small" >
-                    <div class="card-bodyNew">
+                    <div class="col-sm-2">
+                                <div class="card">
+                                    <div class="card-bodyNew">
                         <strong><p class="card-text" style="color:rgb(0, 0, 0)">Retro</p></strong>
                         <center><img src="\theme\images\retroa.png" alt="" width="40px" height="40px"></center>
                         <div class="card-boton">
@@ -411,10 +408,12 @@ margin-left: 400px;
                             </div>
                         </div>
                     </div>
+  </div>
 
 
-                    <div class="container-small-2" >
-                  <div class="card-bodyNew">
+                        <div class="col-sm-2">
+                                    <div class="card">
+                                        <div class="card-bodyNew">
                     <strong><p class="card-text" style="color:rgb(0, 0, 0)">Reunión</p></strong>
                     <center><img src="\theme\images\REUNION.png" alt="" width="40px" height="40px"></center>
                     <div class="card-boton">
@@ -438,6 +437,7 @@ margin-left: 400px;
                   </div>
                 </div>
             </div>
+        </div>
             <br><br>
             <p style="text-align: center; aline-contents: center; style="color:rgb(0, 0, 0)"; ><i class="fa fa-copyright" aria-hidden="true" ;>Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>
 

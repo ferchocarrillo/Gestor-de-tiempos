@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('content')
+
 <div class="pull-right">
     <div class="col-md-12">
         <div class="card" style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
@@ -161,11 +162,12 @@
 
               </div>
             </div>
-            </div>
-          </div>
+
+
 
 
             {{csrf_field()}}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script type="text/javascript">
                     function HoraActual(hora, minuto, segundo){
                         segundo = segundo + 1;
@@ -188,22 +190,21 @@
                         setTimeout("HoraActual("+hora+", "+minuto+", "+segundo+")", 1000);
                 }
                 </script>
+
+
                 </body>
-<center>
+            </div>
+
+
+            <center>
                @can('haveaccess','ciclo.index')
-                <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+               {{-- <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO YA REGISTRADO' disabled > --}}
+
+                <form  action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" >
                     {{csrf_field()}}
                <div class="card-boton">
-
-
-                @if (empty($ciclosos->ingreso))
-
-                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INGRESO YA REGISTRADO' disabled >
-                @else
-                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INICIO DE TURNO'  >
-
-
-                @endif
+                <input type='submit' class="botonIndex" id= "turnoin" name='turnoin' value='INICIO DE TURNO'>
+                {{-- @endif --}}
 
             </div>
         </form>
@@ -228,7 +229,7 @@
 
 
 
-        <form action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <form   action="{{ url('/ciclo')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" >
             <div><input type="hidden" id="fecha" name"fecha" value="{{ $hoy }}"> </div>
            <div class="container">
 
@@ -293,4 +294,5 @@ Swal.fire(
 )
 </script>
 @stop
+
 
