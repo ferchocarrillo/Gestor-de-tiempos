@@ -48,7 +48,7 @@ class CicloPausaOutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CicloRequest $request, Ciclo $ciclosos)
+    public function store(CicloRequest $request, Ciclo $ciclosos, $id)
     {
         Carbon::setLocale('co');
         Carbon::now();

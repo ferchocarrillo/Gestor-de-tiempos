@@ -68,7 +68,6 @@ class CicloCapaController extends Controller
         $ciclosos->cedula            = $user_cedula;
         $ciclosos->fecha             = $hoy;
         $ciclosos->capacitacion      = $hora;
-
         $ciclosos->llave             = $llave;
 
         $ciclosos->save();

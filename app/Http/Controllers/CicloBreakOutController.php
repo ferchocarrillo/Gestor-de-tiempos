@@ -216,7 +216,7 @@ class CicloBreakOutController extends Controller
         $salida  =$ciclosos->salida;
         $ingresoA = $carbon1->diffInHours($ingreso);
         $salidaB = $carbon1->diffInHours($salida);
-        $total = ($salidaB - $ingresoA)-diffInHours;
+        $total = ($salidaB - $ingresoA);
 
         $date1 = $ciclosos->breakin;
         $date2 = $ciclosos->breakout;

@@ -100,6 +100,12 @@
 .card-bodyNew:hover{
     background-image: linear-gradient(#53a7b0, #AAB7B8);
  }
+.iconos{
+    width="1rem";
+    Height="1rem";
+
+}
+
 img:hover {
     transform: scaleX(-1);
   }
@@ -163,63 +169,70 @@ small{
     font-size: 10px;
 }
 .card-space{
-    height: 120px;
-    width: 200px;
+    height:230px;
+    width: 340px;
     background-image: linear-gradient(#EAF2F8, #AAB7B8);
-    padding: 5px;
+
 }
 
 
 .container-a{
 
+    background-color: #060707;
+
 
 }
 .container-b{
 
-margin-left: 39rem;
-margin-right: 0rem;
-margin-top: 0%;
+
+    margin-left: 38rem;
+
+}
+
+.card-text{
+font-size: 12px;
+
 }
 </style>
 
-
+<div class="row">
+    <div class="col-sm-6">
+   <div class="card" style="background-color: transparent; height: 60;" >
            <form action="{{url('/ciclosalida/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
            {{csrf_field()}}
-           <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
-           <img src="\theme\images\isotipo-slogan.png" float="left" height="50" width="150">
-           <br>
-           <h5 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">BIENVENIDO {{ Auth::user()->name }}</h5>
-           <h3 style="font-weight: bold; text-aline:center;">PANEL DE REGISTRO DE TIEMPOS</h3>
-        </center>
-           <div class="row">
-           <div class="card" style="background-color: transparent; width:100%" >
-                <center>  <body input type ="time" style="font-size: 20px;  border-radius:0.75rem;" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)" >
-                  <div id="contenedor_reloj" style="width: 400px; font-size:20px; font-family: Lucida Console, Courier New , monospace; text-align:center; margin-left:0;"></div>
-                    <link rel="shortcut icon" href="">
-            <div style=" margin-left:0;">
-                <script>
+           <h6 style="font-family: Georgia, Verdana, sans-serif; font-weight: bold; text-transform: uppercase;">BIENVENIDO {{ Auth::user()->name }}</h6>
+           <h6 style="font-weight: bold; text-aline:center;">PANEL DE REGISTRO DE TIEMPOS</h6>
+
+    </div>
+</div>
+<div class="col-sm-6">
+    <div class="card" style="background-color: transparent; height: 60;" >
+   <body input type ="time" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)"  >
+                  <div id="contenedor_reloj" style="margin-left:28rem;"></div>
+                    <link rel="shortcut icon" href="" >
+
+                <div style="margin-left:20rem;">   <script>
                     var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
                     var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
                     var f=new Date();
                     document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
                 </script>
             </div>
+            </div>
             </body>
             </div>
-            </div>
+        </div>
+    </div>
             <div><input type="hidden" name= "ingreso" id="ingreso" value="{{ old('ingreso', $ciclosos->ingreso)}}"></div>
 
             <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
     </body>
-        <div id="cuenta"></div>
-        <center>
-
-<div class="container-a">
-<div class="row">
-        <div class="card-space">
-         <div class="card-bodyNew" >
+    <div class="row">
+        <div class="col-sm-4">
+                    <div class="card-space">
+                        <div class="card-bodyNew">
            <strong><p class="card-text" style="color:rgb(0, 0, 0)">Turno</p></strong>
-           <center><img src="\theme\images\turno.png" alt=""  width="90px" height="90px"></center>
+         <img class="iconos" src="\theme\images\turno.png" alt=""  >
 
        <form action="{{ url('/ciclosalida/'.$ciclosos->id, 'edit')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
              {{csrf_field()}}
@@ -235,7 +248,7 @@ margin-top: 0%;
            @else
            <input type='submit' class="botonesinactivos"  value=' SALIDA DE TURNO REGISTRADA'  disabled>
           @endif
-       <br>
+
            <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('ingreso', $ciclosos->ingreso)}} </e></small></p>
            <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('salida', $ciclosos->salida)}}</e> </small></p>
            @if (empty($ciclosos->salida))
@@ -245,12 +258,15 @@ margin-top: 0%;
            @endif
            <input type="hidden" name="total" id="total" value="{{$total}}">
        </form>
-   </div>
+    </div>
 </div>
-           <div class="card-space">
-           <div class="card-bodyNew">
+                  </div>
+
+                <div class="col-sm-4">
+                    <div class="card-space">
+                        <div class="card-bodyNew">
                <strong><p class="card-text" style="color:rgb(0, 0, 0)">Break</p></strong>
-           <center><img src="\theme\images\cafe.png" alt=""  width="110px" height="90px"></center>
+           <center><img src="\theme\images\cafe.png" alt=""  width="70px" height="70px"></center>
            @if(empty($ciclosos->breakout))
            <button class="botones"><a href="{{url('/ciclobreakin/'.$ciclosos->id.'/edit')}}">Registrar break</a></button>
            @else
@@ -266,10 +282,12 @@ margin-top: 0%;
           @endif
            </div>
          </div>
-         <div class="card-space">
-           <div class="card-bodyNew">
+        </div>
+        <div class="col-sm-4">
+            <div class="card-space">
+                <div class="card-bodyNew">
                <strong><p class="card-text" style="color:rgb(0, 0, 0)">Almuerzo</p></strong>
-             <center><img src="\theme\images\cubiertos.png" alt=""  width="120px" height="90px"></center>
+             <center><img src="\theme\images\cubiertos.png" alt="" width="70px" height="70px"></center>
            @if(empty($ciclosos->almuerzo))
           <button class="botones"><a href="{{url('/ciclolunch/'.$ciclosos->id.'/edit')}}">Registrar Lunch</a></button>
            @else
@@ -282,17 +300,18 @@ margin-top: 0%;
            @else
            <p class="card-text"><small class="text-muted2"><b>Tiempo de Almuerzo</b>&nbsp;&nbsp;<rem> &nbsp;&nbsp;{{ $timelunch }}&nbsp;&nbsp;</rem>&nbsp;&nbsp;<b> horas</b></small></p>
            @endif
-           </div>
-       </div>
+        </div>
+    </div>
 </div>
 </div>
-<div class="container-b">
+
+
 <div class="row">
-<div class="col-sm-2">
+<div class="col-sm-4">
             <div class="card">
                 <div class="card-bodyNew">
                     <strong><p class="card-text" style="color:rgb(0, 0, 0)">Capacitación</p></strong>
-                    <center><img src="\theme\images\capacitacion.png" alt="" width="40px" height="40px" ></center>
+                    <center><img src="\theme\images\capacitacion.png" alt="" width="70px" height="70px" ></center>
 <div class="card-boton">
     <div class="row">
        @if(empty($ciclosos->capout))
@@ -302,9 +321,9 @@ margin-top: 0%;
         @endif
 
         @if (empty($ciclosos->capout))
-        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitacion: </b><rem>0</rem> </small></p>
+        <p class="card-text"><small ><b>Tiempo de Capacitacion: </b><rem>0</rem> </small></p>
         @else
-        <p class="card-text"><small class="text-muted2"><b>Tiempo de Capacitación: </b><rem> {{ $timecapa }} </rem></small></p>
+        <p class="card-text"><small ><b>Tiempo de Capacitación: </b><rem> {{ $timecapa }} </rem></small></p>
         @endif
 
     </div>
@@ -312,11 +331,11 @@ margin-top: 0%;
                   </div>
                   </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="card">
                         <div class="card-bodyNew">
                        <strong><p class="card-text" style="color:rgb(0, 0, 0)">Pausas Activas</p></strong>
-                    <center><img src="\theme\images\pausas.png"  alt="" width="40px" height="40px" ></center>
+                    <center><img src="\theme\images\pausas.png"  alt="" width="70px" height="70px" ></center>
                     <div class="card-boton">
                         <div class="row">
 
@@ -337,11 +356,11 @@ margin-top: 0%;
                 </div>
                   </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="card">
                         <div class="card-bodyNew">
                         <strong><p class="card-text" style="color:rgb(0, 0, 0)">Equipo Dañado</p></strong>
-                        <center><img src="\theme\images\dañado.png" alt="" width="40px" height="40px" ></center>
+                        <center><img src="\theme\images\dañado.png" alt="" width="70px" height="70px" ></center>
 
                         <div class="card-boton">
                             <div class="row">
@@ -364,11 +383,11 @@ margin-top: 0%;
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-4">
                         <div class="card">
                             <div class="card-bodyNew">
                     <strong><p class="card-text" style="color:rgb(0, 0, 0)">Evaluación</p></strong>
-                        <center><img src="\theme\images\evalluaciones.png" alt="" width="40px" height="40px" ></center>
+                        <center><img src="\theme\images\evalluaciones.png" alt="" width="70px" height="70px" ></center>
                         <div class="card-boton">
 
                                 @if(empty($ciclosos->evaluacionout))
@@ -388,11 +407,11 @@ margin-top: 0%;
                </div>
  </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-bodyNew">
                         <strong><p class="card-text" style="color:rgb(0, 0, 0)">Retro</p></strong>
-                        <center><img src="\theme\images\retroa.png" alt="" width="40px" height="40px"></center>
+                        <center><img src="\theme\images\retroa.png" alt="" width="70px" height="70px"></center>
                         <div class="card-boton">
 
                                 @if(empty($ciclosos->retroout))
@@ -411,11 +430,11 @@ margin-top: 0%;
   </div>
 
 
-                        <div class="col-sm-2">
+                        <div class="col-sm-4">
                                     <div class="card">
                                         <div class="card-bodyNew">
                     <strong><p class="card-text" style="color:rgb(0, 0, 0)">Reunión</p></strong>
-                    <center><img src="\theme\images\REUNION.png" alt="" width="40px" height="40px"></center>
+                    <center><img src="\theme\images\REUNION.png" alt="" width="70px" height="70px"></center>
                     <div class="card-boton">
 
 
@@ -437,7 +456,7 @@ margin-top: 0%;
                   </div>
                 </div>
             </div>
-        </div>
+
             <br><br>
             <p style="text-align: center; aline-contents: center; style="color:rgb(0, 0, 0)"; ><i class="fa fa-copyright" aria-hidden="true" ;>Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>
 
