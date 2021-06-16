@@ -141,15 +141,7 @@
               <img class="card-img-top" src="\theme\images\isotipo-slogan.png" alt="Card image cap">
               <div class="card-body">
 
-                <p><body input type = "time" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)"></p>
-                    <p><e><div style="font-size: 50px" id="contenedor_reloj"></div></e></p>
-                    <p><link rel="shortcut icon" href="" ></p>
-                    <script>
-                        var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                        var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
-                        var f=new Date();
-                        document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-                    </script>
+
               </div>
             </div>
 
@@ -157,8 +149,18 @@
               <img class="card-img-top" src="..." alt="">
               <div class="card-body">
                 <p><h2 style="text-transform: capitalize" class="title"></h2></p>
-                <br>
-                <div></div>
+
+                <div>
+                    <p><body input type = "time" onload="HoraActual(<?php echo date("H").", ".date("i").", ".date("s"); ?>)"></p>
+                        <p><e><div style="font-size: 50px" id="contenedor_reloj"></div></e></p>
+                        <p><link rel="shortcut icon" href="" ></p>
+                        <script>
+                            var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+                            var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+                            var f=new Date();
+                            document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                        </script>
+                </div>
 
               </div>
             </div>
@@ -215,17 +217,9 @@
             <div><input type="hidden" id="hora" name"hora" value="{{ $hora }}"> </div>
             <div><input type="hidden" id= "nombre" name="nombre" value=" {{$user_nombre}}"></div>
             <div><input type="hidden" id= "cedula" name="cedula" value=" {{$user_cedula}}"></div>
-            <div><input type="hidden" name="breakin" id="breakin"></div>
-            <div><input type="hidden" name="breakout" id="breakout"></div>
-            <div><input type="hidden" name="almuerzoin" id="almuerzoin"></div>
-            <div><input type="hidden" name="almuerzoout" id="almuerzoout"></div>
-            <div><input type="hidden" name="capacitacion" id="capacitacion"></div>
-            <div><input type="hidden" name="pausas" id="pausas"></div>
-            <div><input type="hidden" name="daño" id="daño"></div>
-            <div><input type="hidden" name="evaluacion"   id="evaluacion"></div>
-            <div><input type="hidden" name="retro" id="retro"></div>
-            <div><input type="hidden" name="reunion" id="reunion"></div>
-            <div><input type="hidden" name="reunion" id="reunion" value="{{ $llave }}"></div>
+            <input type="hidden"  id="hoy"  name="hoy" value="{{ $hoy }}">
+
+            <div><input type="hidden" name="llave" id="llave" value="{{ $llave }}"></div>
 
 
 

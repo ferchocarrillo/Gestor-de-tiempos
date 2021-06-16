@@ -63,60 +63,60 @@ class CicloBreakOutController extends Controller
         $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
 
 
-        // $date1 = $ciclosos->breakin;
-        // $date2 = $ciclosos->breakout;
-        // $tiempoA = $carbon1->diffInMinutes($date1);
-        // $tiempoB = $carbon1->diffInMinutes($date2);
-        // $timebreak = ($tiempoB - $tiempoA);
+        $date1 = $ciclosos->breakin;
+        $date2 = $ciclosos->breakout;
+        $tiempoA = $carbon1->diffInMinutes($date1);
+        $tiempoB = $carbon1->diffInMinutes($date2);
+        $timebreak = ($tiempoB - $tiempoA);
 
-        $date3 = $ciclosos->almuerzo;
-        $date4 = $ciclosos->almuerzoout;
-        $tiempoC = $carbon1->floatDiffInHours($date3);
-        $tiempoD = $carbon1->floatDiffInHours($date4);
-        $timelunch = ($tiempoD - $tiempoC);
-        $timelunch = number_format($timelunch,1,'.',',');
+        // $date3 = $ciclosos->almuerzo;
+        // $date4 = $ciclosos->almuerzoout;
+        // $tiempoC = $carbon1->floatDiffInHours($date3);
+        // $tiempoD = $carbon1->floatDiffInHours($date4);
+        // $timelunch = ($tiempoD - $tiempoC);
+        // $timelunch = number_format($timelunch,1,'.',',');
 
-        $date5 = $ciclosos->capacitacion;
-        $date6 = $ciclosos->capout;
-        $tiempoE = $carbon1->diffInMinutes($date5);
-        $tiempoF = $carbon1->diffInMinutes($date6);
-        $timecapa = ($tiempoF - $tiempoE);
+        // $date5 = $ciclosos->capacitacion;
+        // $date6 = $ciclosos->capout;
+        // $tiempoE = $carbon1->diffInMinutes($date5);
+        // $tiempoF = $carbon1->diffInMinutes($date6);
+        // $timecapa = ($tiempoF - $tiempoE);
 
-        $date7 = $ciclosos->pausas;
-        $date8 = $ciclosos->pausasout;
-        $tiempoG = $carbon1->diffInMinutes($date7);
-        $tiempoH = $carbon1->diffInMinutes($date8);
-        $timepausas = ($tiempoH - $tiempoG);
+        // $date7 = $ciclosos->pausas;
+        // $date8 = $ciclosos->pausasout;
+        // $tiempoG = $carbon1->diffInMinutes($date7);
+        // $tiempoH = $carbon1->diffInMinutes($date8);
+        // $timepausas = ($tiempoH - $tiempoG);
 
-        $date9 = $ciclosos->daño;
-        $date10 = $ciclosos->dañoout;
-        $tiempoI = $carbon1->diffInMinutes($date9);
-        $tiempoJ = $carbon1->diffInMinutes($date10);
-        $timedaño = ($tiempoJ - $tiempoI);
+        // $date9 = $ciclosos->daño;
+        // $date10 = $ciclosos->dañoout;
+        // $tiempoI = $carbon1->diffInMinutes($date9);
+        // $tiempoJ = $carbon1->diffInMinutes($date10);
+        // $timedaño = ($tiempoJ - $tiempoI);
 
-        $date11 = $ciclosos->evaluacion;
-        $date12 = $ciclosos->evaluacionout;
-        $tiempoK = $carbon1->diffInMinutes($date11);
-        $tiempoL = $carbon1->diffInMinutes($date12);
-        $timeeva = ($tiempoL - $tiempoK);
+        // $date11 = $ciclosos->evaluacion;
+        // $date12 = $ciclosos->evaluacionout;
+        // $tiempoK = $carbon1->diffInMinutes($date11);
+        // $tiempoL = $carbon1->diffInMinutes($date12);
+        // $timeeva = ($tiempoL - $tiempoK);
 
-        $date13 = $ciclosos->retro;
-        $date14 = $ciclosos->retroout;
-        $tiempoM = $carbon1->diffInMinutes($date13);
-        $tiempoN = $carbon1->diffInMinutes($date14);
-        $timeretro = ($tiempoN - $tiempoM);
+        // $date13 = $ciclosos->retro;
+        // $date14 = $ciclosos->retroout;
+        // $tiempoM = $carbon1->diffInMinutes($date13);
+        // $tiempoN = $carbon1->diffInMinutes($date14);
+        // $timeretro = ($tiempoN - $tiempoM);
 
-        $date15 = $ciclosos->reunion;
-        $date16 = $ciclosos->reunionout;
-        $tiempoO = $carbon1->diffInMinutes($date15);
-        $tiempoP = $carbon1->diffInMinutes($date16);
-        $timereunion = ($tiempoP - $tiempoO);
+        // $date15 = $ciclosos->reunion;
+        // $date16 = $ciclosos->reunionout;
+        // $tiempoO = $carbon1->diffInMinutes($date15);
+        // $tiempoP = $carbon1->diffInMinutes($date16);
+        // $timereunion = ($tiempoP - $tiempoO);
 
-        $ingreso =$ciclosos->ingreso;
-        $salida  =$ciclosos->salida;
-        $ingresoA = $carbon1->diffInHours($ingreso);
-        $salidaB = $carbon1->diffInHours($salida);
-        $total = ($salidaB - $ingresoA)-$timelunch;
+        // $ingreso =$ciclosos->ingreso;
+        // $salida  =$ciclosos->salida;
+        // $ingresoA = $carbon1->diffInHours($ingreso);
+        // $salidaB = $carbon1->diffInHours($salida);
+        // $total = ($salidaB - $ingresoA)-$timelunch;
         $validatedData = $request->validate([
             'breakout'          => ['required|unique:ciclos,breakout'],
         ]);
@@ -167,8 +167,6 @@ class CicloBreakOutController extends Controller
         $carbon1 = new \Carbon\Carbon("2021-01-01 00:00:00");
         $ciclosos=Ciclo::findOrFail($id);
 
-
-
         $date3 = $ciclosos->almuerzo;
         $date4 = $ciclosos->almuerzoout;
         $tiempoC = $carbon1->floatDiffInHours($date3);
@@ -176,47 +174,47 @@ class CicloBreakOutController extends Controller
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
-        $date5 = $ciclosos->capacitacion;
-        $date6 = $ciclosos->capout;
-        $tiempoE = $carbon1->diffInMinutes($date5);
-        $tiempoF = $carbon1->diffInMinutes($date6);
-        $timecapa = ($tiempoF - $tiempoE);
+        // $date5 = $ciclosos->capacitacion;
+        // $date6 = $ciclosos->capout;
+        // $tiempoE = $carbon1->diffInMinutes($date5);
+        // $tiempoF = $carbon1->diffInMinutes($date6);
+        // $timecapa = ($tiempoF - $tiempoE);
 
-        $date7 = $ciclosos->pausas;
-        $date8 = $ciclosos->pausasout;
-        $tiempoG = $carbon1->diffInMinutes($date7);
-        $tiempoH = $carbon1->diffInMinutes($date8);
-        $timepausas = ($tiempoH - $tiempoG);
+        // $date7 = $ciclosos->pausas;
+        // $date8 = $ciclosos->pausasout;
+        // $tiempoG = $carbon1->diffInMinutes($date7);
+        // $tiempoH = $carbon1->diffInMinutes($date8);
+        // $timepausas = ($tiempoH - $tiempoG);
 
-        $date9 = $ciclosos->daño;
-        $date10 = $ciclosos->dañoout;
-        $tiempoI = $carbon1->diffInMinutes($date9);
-        $tiempoJ = $carbon1->diffInMinutes($date10);
-        $timedaño = ($tiempoJ - $tiempoI);
+        // $date9 = $ciclosos->daño;
+        // $date10 = $ciclosos->dañoout;
+        // $tiempoI = $carbon1->diffInMinutes($date9);
+        // $tiempoJ = $carbon1->diffInMinutes($date10);
+        // $timedaño = ($tiempoJ - $tiempoI);
 
-        $date11 = $ciclosos->evaluacion;
-        $date12 = $ciclosos->evaluacionout;
-        $tiempoK = $carbon1->diffInMinutes($date11);
-        $tiempoL = $carbon1->diffInMinutes($date12);
-        $timeeva = ($tiempoL - $tiempoK);
+        // $date11 = $ciclosos->evaluacion;
+        // $date12 = $ciclosos->evaluacionout;
+        // $tiempoK = $carbon1->diffInMinutes($date11);
+        // $tiempoL = $carbon1->diffInMinutes($date12);
+        // $timeeva = ($tiempoL - $tiempoK);
 
-        $date13 = $ciclosos->retro;
-        $date14 = $ciclosos->retroout;
-        $tiempoM = $carbon1->diffInMinutes($date13);
-        $tiempoN = $carbon1->diffInMinutes($date14);
-        $timeretro = ($tiempoN - $tiempoM);
+        // $date13 = $ciclosos->retro;
+        // $date14 = $ciclosos->retroout;
+        // $tiempoM = $carbon1->diffInMinutes($date13);
+        // $tiempoN = $carbon1->diffInMinutes($date14);
+        // $timeretro = ($tiempoN - $tiempoM);
 
-        $date15 = $ciclosos->reunion;
-        $date16 = $ciclosos->reunionout;
-        $tiempoO = $carbon1->diffInMinutes($date15);
-        $tiempoP = $carbon1->diffInMinutes($date16);
-        $timereunion = ($tiempoP - $tiempoO);
+        // $date15 = $ciclosos->reunion;
+        // $date16 = $ciclosos->reunionout;
+        // $tiempoO = $carbon1->diffInMinutes($date15);
+        // $tiempoP = $carbon1->diffInMinutes($date16);
+        // $timereunion = ($tiempoP - $tiempoO);
 
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
         $ingresoA = $carbon1->diffInHours($ingreso);
         $salidaB = $carbon1->diffInHours($salida);
-        $total = ($salidaB - $ingresoA);
+        $total = ($salidaB - $ingresoA)-$timelunch;
 
         $date1 = $ciclosos->breakin;
         $date2 = $ciclosos->breakout;
@@ -225,7 +223,7 @@ class CicloBreakOutController extends Controller
         $timebreak = ($tiempoB - $tiempoA);
         $timebreak = number_format($timebreak,1,'.',',');
 
-        return view('ciclobreakout.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
+        return view('ciclobreakout.edit', compact('ciclosos','date1','date2','total','date3','date4','timelunch','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak'));
     }
 
     /**
@@ -264,41 +262,41 @@ class CicloBreakOutController extends Controller
         $timelunch = ($tiempoD - $tiempoC);
         $timelunch = number_format($timelunch,1,'.',',');
 
-        $date5 = $ciclosos->capacitacion;
-        $date6 = $ciclosos->capout;
-        $tiempoE = $carbon1->diffInMinutes($date5);
-        $tiempoF = $carbon1->diffInMinutes($date6);
-        $timecapa = ($tiempoF - $tiempoE);
+        // $date5 = $ciclosos->capacitacion;
+        // $date6 = $ciclosos->capout;
+        // $tiempoE = $carbon1->diffInMinutes($date5);
+        // $tiempoF = $carbon1->diffInMinutes($date6);
+        // $timecapa = ($tiempoF - $tiempoE);
 
-        $date7 = $ciclosos->pausas;
-        $date8 = $ciclosos->pausasout;
-        $tiempoG = $carbon1->diffInMinutes($date7);
-        $tiempoH = $carbon1->diffInMinutes($date8);
-        $timepausas = ($tiempoH - $tiempoG);
+        // $date7 = $ciclosos->pausas;
+        // $date8 = $ciclosos->pausasout;
+        // $tiempoG = $carbon1->diffInMinutes($date7);
+        // $tiempoH = $carbon1->diffInMinutes($date8);
+        // $timepausas = ($tiempoH - $tiempoG);
 
-        $date9 = $ciclosos->daño;
-        $date10 = $ciclosos->dañoout;
-        $tiempoI = $carbon1->diffInMinutes($date9);
-        $tiempoJ = $carbon1->diffInMinutes($date10);
-        $timedaño = ($tiempoJ - $tiempoI);
+        // $date9 = $ciclosos->daño;
+        // $date10 = $ciclosos->dañoout;
+        // $tiempoI = $carbon1->diffInMinutes($date9);
+        // $tiempoJ = $carbon1->diffInMinutes($date10);
+        // $timedaño = ($tiempoJ - $tiempoI);
 
-        $date11 = $ciclosos->evaluacion;
-        $date12 = $ciclosos->evaluacionout;
-        $tiempoK = $carbon1->diffInMinutes($date11);
-        $tiempoL = $carbon1->diffInMinutes($date12);
-        $timeeva = ($tiempoL - $tiempoK);
+        // $date11 = $ciclosos->evaluacion;
+        // $date12 = $ciclosos->evaluacionout;
+        // $tiempoK = $carbon1->diffInMinutes($date11);
+        // $tiempoL = $carbon1->diffInMinutes($date12);
+        // $timeeva = ($tiempoL - $tiempoK);
 
-        $date13 = $ciclosos->retro;
-        $date14 = $ciclosos->retroout;
-        $tiempoM = $carbon1->diffInMinutes($date13);
-        $tiempoN = $carbon1->diffInMinutes($date14);
-        $timeretro = ($tiempoN - $tiempoM);
+        // $date13 = $ciclosos->retro;
+        // $date14 = $ciclosos->retroout;
+        // $tiempoM = $carbon1->diffInMinutes($date13);
+        // $tiempoN = $carbon1->diffInMinutes($date14);
+        // $timeretro = ($tiempoN - $tiempoM);
 
-        $date15 = $ciclosos->reunion;
-        $date16 = $ciclosos->reunionout;
-        $tiempoO = $carbon1->diffInMinutes($date15);
-        $tiempoP = $carbon1->diffInMinutes($date16);
-        $timereunion = ($tiempoP - $tiempoO);
+        // $date15 = $ciclosos->reunion;
+        // $date16 = $ciclosos->reunionout;
+        // $tiempoO = $carbon1->diffInMinutes($date15);
+        // $tiempoP = $carbon1->diffInMinutes($date16);
+        // $timereunion = ($tiempoP - $tiempoO);
 
         $ingreso =$ciclosos->ingreso;
         $salida  =$ciclosos->salida;
@@ -309,7 +307,7 @@ class CicloBreakOutController extends Controller
         $datosCiclo =request()->except(['_token','_method']);
         Ciclo::where('id','=',$id)->update($datosCiclo);
        // return response()->json($ciclosos);
-     return view('ciclosalida.edit', compact('total','ciclosos','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak','timelunch','timecapa','timepausas','timedaño','timeeva', 'timeretro','timereunion'));
+     return view('ciclosalida.edit', compact('ciclosos','date1','date2','date3','date4','total','timelunch','ciclosos','hoy','hora','llave','user_nombre','user_cedula','timebreak'));
 
     }
 

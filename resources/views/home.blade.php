@@ -9,7 +9,7 @@
             <center style="background-image: linear-gradient(#EAF2F8, #AAB7B8);">
             <img src="\theme\images\isotipo-slogan.png" float="left" height="120" width="300">
             <h1 align="center">Registrar Tiempos</h1>
-            <h3 align="center">  BIENVENIDO {{ Auth::user()->name }}</h3>
+            <h3 align="center">  BIENVENIDO {{ Auth::user()->name }} </h3>
         </center>
             <div class="row">
                 &nbsp;&nbsp;&nbsp;
@@ -52,6 +52,7 @@
 <input type="hidden"  id="hoy"  name="hoy" value="{{ $hoy }}">
 <input type="hidden"  id="hora"  name="hora" value="{{ $hora}}">
 <input type="hidden"  id="ago"  name="ago" value="{{ $ago}}">
+<input type="hidden"  id="fecha"  name="fecha" value="{{ $fecha }}">
 </div>
 
 <div class="card-header">

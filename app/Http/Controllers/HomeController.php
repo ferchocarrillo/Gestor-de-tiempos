@@ -70,10 +70,11 @@ class HomeController extends Controller
         $user_id = Auth::user()->cedula;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
+        $fecha= Carbon::now()->format('Y-m-d');
         $llave = $user_cedula. $hoy;
         $ciclosos= Ciclo::all();
 
-        return view('ciclo..create', compact('hoy','hora','ago','user_id','user_nombre','user_cedula','llave','ciclosos'));
+        return view('ciclo.create', compact('fecha','hoy','hora','ago','user_id','user_nombre','user_cedula','llave','ciclosos'));
 
 
          }
@@ -87,6 +88,7 @@ class HomeController extends Controller
         $user_ced = Auth::user()->cedula;
         $user_id = Auth::user()->id;
         $user_nombre = Auth::user()->name;
+        $fecha = Carbon::now()->format('Y-m-d');
         // $request->validate([
         //      'llave' => 'required|unique:entrada,llave',
         //  ]);
@@ -103,6 +105,30 @@ class HomeController extends Controller
         return response()->json($registro);
 
       // return back();
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Ciclo  $ciclo
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $ciclosos = Ciclo::findOrFail($id);
+        $user_id = Auth::user()->cedula;
+        $user_nombre = Auth::user()->name;
+        $user_cedula = Auth::user()->cedula;
+        $hoy = Carbon::now()->format('Y-m-d');
+        $hora = Carbon::now()->format('H:i:s');
+        $fecha = Carbon::now()->format('Y-m-d');
+        $llave = $user_cedula. $hoy;
+
+
+
+
+
+        return view('ciclo.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','fecha'));
     }
 
 

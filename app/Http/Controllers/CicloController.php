@@ -25,8 +25,7 @@ class CicloController extends Controller
      */
     public function index()
     {
-
-        $user_id = Auth::user()->cedula;
+        $user_id = Auth::user()->id;
         $user_nombre = Auth::user()->name;
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('d-m-Y');
@@ -38,7 +37,7 @@ class CicloController extends Controller
 
 
         //return back();
-        return view ('ciclo.edit',compact('ciclosos','hoy','hora','user_id','user_nombre','user_cedula','llave','today','fecha'));
+        return view ('ciclo.index',compact('ciclosos','hoy','hora','user_id','user_nombre','user_cedula','llave','today','fecha'));
     }
 
     /**
@@ -64,7 +63,6 @@ class CicloController extends Controller
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
-        $fecha = Carbon::now()->format('Y-m-d');
         $llave = $user_cedula. $hoy;
         $request->validate([
             'llave'          => ['required|unique:ciclos,llave'],
@@ -118,14 +116,11 @@ class CicloController extends Controller
         $user_cedula = Auth::user()->cedula;
         $hoy = Carbon::now()->format('Y-m-d');
         $hora = Carbon::now()->format('H:i:s');
-        $fecha = Carbon::now()->format('Y-m-d');
         $llave = $user_cedula. $hoy;
         $ciclosos = Ciclo::findOrFail($id);
+        $fecha = Carbon::now()->format('Y-m-d');
 
-
-
-
-        return view('ciclo.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','fecha'));
+        return view('ciclosalida.edit' ,compact('ciclosos','hoy','hora','llave','user_nombre','user_cedula','fecha'));
     }
 
     /**
