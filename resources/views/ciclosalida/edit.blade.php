@@ -207,36 +207,60 @@ iconos{
     Height= 70px;
 
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-@font-face{
-    font-family:alarm;
-    src:url(alarm.ttf);
-
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	overflow: hidden;
 }
-.cronometro{
-    width:100px;
-    height:50px;
-    top:50%;
-    left:50%;
-    position:absolute;
-    margin-top:-90px;
-    margin-left:-65px;
-    text-align:center;
-
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100vw;
+	height: 100vh;
 }
-.boton{display:inline-block;width:32px;height:32px;position:relative;}
-#hms{
-    height:68px;
-    padding:5px 0;
-    font-size:25px;
-    color:#000;
-    font-family: alarm;
-    border-color: #000;
+#screen {
+	font-family:sans-serif;
+	font-weight: 300;
+	font-size: 22px;
+	width: 140px;
+	height: 50px;
+	color: rgb(0, 0, 0);
+	letter-spacing: 1px;
+}
+.buttons {
+width: 150px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 12px;
+}
+.emerald {
+	border-radius: 5px;
+	width: 50px;
+	height: 30px;
+	margin: 5px;
+	border: 1px solid #384049;
+  color: white;
+  cursor: pointer;
+  font-family: Calibri,Arial;
+  font-weight: 200;
+  outline: none;
+  text-shadow: 0px -1px 1px black;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
 
- }
-    .start{img src="\theme\images\turno.png"}
-    .stop{background:url(\theme\images\fondo.jpg) 0 0 no-repeat;}
-    .reiniciar{background:url(delete.png)0 0 no-repeat;}
+.emerald{
+   background-image: linear-gradient(#0299ad,#05666f);
+}
+.emerald:active{
+   background-image: linear-gradient(#0299ad,#05666f);
+   text-shadow:      0px 1px 1px rgb(3, 0, 0);
+}
 </style>
 
 <div class="row">
@@ -325,7 +349,22 @@ iconos{
             </div>
             <div class="col-sm-6">
 
+                <body>
+                    <div class="chronometer">
+                        <div id="screen"> 00 : 00 : 00</div>
+                        <div class="buttons">
+                            <form action="{{url('/ciclobreakin/'.$ciclosos->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                {{csrf_field()}}
+                                @method('PATCH')
+                            <button class="emerald" onclick="start()">START &#9658;</button>
+                        </form>
 
+                            <button class="emerald" onclick="stop()">STOP &#8718;</button>
+                            {{-- <button class="emerald" onclick="resume()" >RESUME &#8634;</button>
+                            <button class="emerald" onclick="reset()">RESET &#8635;</button> --}}
+                        </div>
+                    </div>
+                </body>
 
 
 
@@ -348,14 +387,7 @@ iconos{
 @if(empty($ciclosos->breakin))
 <br><br><br>
 
-<div class="auto">
-    <div class="cronometro">
-        <div id="hms"></div>
-        <div class="boton start"></div>
-        <div class="boton stop"></div>
-        <div class="boton reiniciar"></div>
-    </div>
-</div>
+
 
 
 <button class="botones" name="start" id="start" ><a href="{{url('/ciclobreakin/'.$ciclosos->id.'/edit')}}">Registrar Break</a></button>
@@ -448,88 +480,88 @@ iconos{
 <div class="row">
 <div class="col-sm-6">
     <br>
-                    <img src="\theme\images\pausas.png"  style="width: 100px; heigth:80px; margen-left: 23rem;">
-                </div>
-                <div class="col-sm-6">
-                    <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('capacitacion', $ciclosos->capacitacion)}} </e></small></p>
-                    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('capout', $ciclosos->capout)}}</e> </small></p>
+         <img src="\theme\images\pausas.png"  style="width: 100px; heigth:80px; margen-left: 23rem;">
+     </div>
+     <div class="col-sm-6">
+         <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('capacitacion', $ciclosos->capacitacion)}} </e></small></p>
+         <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('capout', $ciclosos->capout)}}</e> </small></p>
 
 
-                            @if (empty($ciclosos->pausasout))
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>0</rem> </small></p>
-                            @else
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>  {{ $timepausas }}</rem> </small></p>
-                            @endif
+                 @if (empty($ciclosos->pausasout))
+                 <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>0</rem> </small></p>
+                 @else
+                 <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>  {{ $timepausas }}</rem> </small></p>
+                 @endif
 
-                            @if(empty($ciclosos->pausasout))
-                            <button class="botones"><a href="{{url('/ciclopausas/'.$ciclosos->id.'/edit')}}">Registrar Pausas</a></button>
-                                @else
-                                <input type='submit' class="botonesinactivos"  value='PAUSA REGISTRADA'  disabled>
-                               @endif
-                               <br>
-                            </div>
+                 @if(empty($ciclosos->pausasout))
+                 <button class="botones"><a href="{{url('/ciclopausas/'.$ciclosos->id.'/edit')}}">Registrar Pausas</a></button>
+                     @else
+                     <input type='submit' class="botonesinactivos"  value='PAUSA REGISTRADA'  disabled>
+                    @endif
+                    <br>
+                 </div>
 
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="card-space">
-                            <div class="card-bodyNew">
-                    <strong><p class="card-text" style="color:rgb(0, 0, 0)">Daño Tecnico</p></strong>
-                    <div class="row">
-                    <div class="col-sm-6">
-                        <br>
-                        <img src="\theme\images\dañado.png" style="width: 100px; heigth:90px; margen-left: 23rem;">
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card-space">
+                <div class="card-bodyNew">
+        <strong><p class="card-text" style="color:rgb(0, 0, 0)">Daño Tecnico</p></strong>
+        <div class="row">
+        <div class="col-sm-6">
+            <br>
+            <img src="\theme\images\dañado.png" style="width: 100px; heigth:90px; margen-left: 23rem;">
 
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('daño', $ciclosos->daño)}} </e></small></p>
-                        <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('dañoout', $ciclosos->dañoout)}}</e> </small></p>
+        </div>
+        <div class="col-sm-6">
+            <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('daño', $ciclosos->daño)}} </e></small></p>
+            <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('dañoout', $ciclosos->dañoout)}}</e> </small></p>
 
 
 
-                                @if (empty($ciclosos->dañoout))
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem> 0 </rem> </small></p>
-                            @else
-                            <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>  {{ $timedaño }}</rem> </small></p>
-                            @endif
-                            @if(empty($ciclosos->dañoout))
-                            <button class="botones"><a href="{{url('/cicloaveria/'.$ciclosos->id.'/edit')}}">Registrar Daño</a></button>
-                            @else
-                            <input type='submit' class="botonesinactivos"  value='AVERIA REGISTRADA'  disabled>
-                            @endif
-                        </div>
+            @if (empty($ciclosos->dañoout))
+        <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem> 0 </rem> </small></p>
+        @else
+        <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>  {{ $timedaño }}</rem> </small></p>
+        @endif
+        @if(empty($ciclosos->dañoout))
+        <button class="botones"><a href="{{url('/cicloaveria/'.$ciclosos->id.'/edit')}}">Registrar Daño</a></button>
+        @else
+        <input type='submit' class="botonesinactivos"  value='AVERIA REGISTRADA'  disabled>
+        @endif
+    </div>
 
-                    </div>
-                    </div>
-                    </div>
-                    </div>
+    </div>
+    </div>
+    </div>
+    </div>
         </div>
         <div class="row">
             <div class="col-sm-4">
                 <div class="card-space">
                     <div class="card-bodyNew">
-            <strong><p class="card-text" style="color:rgb(0, 0, 0)">Evaluación</p></strong>
-            <div class="row">
-            <div class="col-sm-6">
-                <img src="\theme\images\evalluaciones.png" alt="" style="width: 100px; heigth:90px; margen-left: 23rem;">
-            </div>
-            <div class="col-sm-6">
-                <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('evaluacion', $ciclosos->evaluacion)}} </e></small></p>
-                <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('evaluacionout', $ciclosos->evaluacionout)}}</e> </small></p>
-                    @if (empty($ciclosos->evaluacionout))
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem> 0 </rem> </small></p>
-                    @else
-                    <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem>  {{ $timeeva }}</rem> </small></p>
-                    @endif
-                    @if(empty($ciclosos->evaluacionout))
-                    <button class="botones"><a href="{{url('/cicloeva/'.$ciclosos->id.'/edit')}}">Registrar Evaluación</a></button>
-                    @else
-                    <input type='submit' class="botonesinactivos"  value='EVALUACION REGISTRADA'  disabled>
-                    @endif
+    <strong><p class="card-text" style="color:rgb(0, 0, 0)">Evaluación</p></strong>
+    <div class="row">
+    <div class="col-sm-6">
+        <img src="\theme\images\evalluaciones.png" alt="" style="width: 100px; heigth:90px; margen-left: 23rem;">
+    </div>
+    <div class="col-sm-6">
+    <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('evaluacion', $ciclosos->evaluacion)}} </e></small></p>
+    <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('evaluacionout', $ciclosos->evaluacionout)}}</e> </small></p>
+        @if (empty($ciclosos->evaluacionout))
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem> 0 </rem> </small></p>
+        @else
+        <p class="card-text"><small class="text-muted2"><b>Tiempo de Evaluación: </b><rem>  {{ $timeeva }}</rem> </small></p>
+        @endif
+        @if(empty($ciclosos->evaluacionout))
+        <button class="botones"><a href="{{url('/cicloeva/'.$ciclosos->id.'/edit')}}">Registrar Evaluación</a></button>
+        @else
+        <input type='submit' class="botonesinactivos"  value='EVALUACION REGISTRADA'  disabled>
+        @endif
 
-                </div>
+    </div>
             </div>
             </div>
             </div>
@@ -547,51 +579,45 @@ iconos{
         <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('retro', $ciclosos->retro)}} </e></small></p>
         <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('retroout', $ciclosos->retroout)}}</e> </small></p>
 
-                                    @if (empty($ciclosos->retroout))
-                                   <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem> 0 </rem> </small></p>
-                                   @else
-                                   <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>  {{ $timeretro }}</rem> </small></p>
-                                   @endif
+         @if (empty($ciclosos->retroout))
+        <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem> 0 </rem> </small></p>
+        @else
+        <p class="card-text"><small class="text-muted2"><b>Tiempo: </b><rem>  {{ $timeretro }}</rem> </small></p>
+        @endif
 
-                                   @if(empty($ciclosos->retroout))
-                                   <button class="botones"><a href="{{url('/cicloretro/'.$ciclosos->id.'/edit')}}">Registrar Retro</a></button>
-                                       @else
-                                       <input type='submit' class="botonesinactivos"  value=' RETROALIMENTACION REGISTRADA'  disabled>
-                                      @endif
-                                    </div>
-                                </div>
+        @if(empty($ciclosos->retroout))
+        <button class="botones"><a href="{{url('/cicloretro/'.$ciclosos->id.'/edit')}}">Registrar Retro</a></button>
+            @else
+            <input type='submit' class="botonesinactivos"  value=' RETROALIMENTACION REGISTRADA'  disabled>
+           @endif
+         </div>
+     </div>
 
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-                        <div class="col-sm-4">
-                            <div class="card-space">
-                                <div class="card-bodyNew">
-                        <strong><p class="card-text" style="color:rgb(0, 0, 0)">Reunión</p></strong>
-                        <div class="row">
-                        <div class="col-sm-6">
-                            <img src="\theme\images\REUNION.png" alt="" style="width: 100px; heigth:90px; margen-left: 23rem;">
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('reunion', $ciclosos->reunion)}} </e></small></p>
-                            <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('reunionout', $ciclosos->reunionout)}}</e> </small></p>
+            </div>
+        </div>
+    </div>
+     <div class="col-sm-4">
+         <div class="card-space">
+             <div class="card-bodyNew">
+     <strong><p class="card-text" style="color:rgb(0, 0, 0)">Reunión</p></strong>
+     <div class="row">
+     <div class="col-sm-6">
+         <img src="\theme\images\REUNION.png" alt="" style="width: 100px; heigth:90px; margen-left: 23rem;">
+     </div>
+     <div class="col-sm-6">
+         <p class="card-text"><small class="text-muted2">Ingreso&nbsp;&nbsp; <e> {{ old('reunion', $ciclosos->reunion)}} </e></small></p>
+         <p class="card-text"><small class="text-muted2">Salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<e>{{ old('reunionout', $ciclosos->reunionout)}}</e> </small></p>
 
 
 
-                        @if (empty($ciclosos->reunionout))
-                        <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem>0</rem> </small></p>
-                        @else
-                        <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem> {{ $timereunion }} </rem></small></p>
-                        @endif
+     @if (empty($ciclosos->reunionout))
+     <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem>0</rem> </small></p>
+     @else
+     <p class="card-text"><small class="text-muted2"><b>Tiempo de Reunión: </b><rem> {{ $timereunion }} </rem></small></p>
+     @endif
 
-                        @if(empty($ciclosos->reunionout))
-                        <button class="botones"><a href="{{url('/cicloreunion/'.$ciclosos->id.'/edit')}}">Registrar Reunión</a></button>
+     @if(empty($ciclosos->reunionout))
+     <button class="botones"><a href="{{url('/cicloreunion/'.$ciclosos->id.'/edit')}}">Registrar Reunión</a></button>
                             @else
                             <input type='submit' class="botonesinactivos"  value=' REUNION REGISTRADA'  disabled>
                            @endif
@@ -702,46 +728,61 @@ iconos{
                         </div>
 <script>
 
-    window.onload = init;
-    function init(){
-        document.querySelector(".start").addEventListener("click",cronometrar);
-        document.querySelector(".stop").addEventListener("click",parar);
-        document.querySelector(".reiniciar").addEventListener("click",reiniciar);
-        h = 0;
-        m = 0;
-        s = 0;
-        document.getElementById("hms").innerHTML="00:00:00";
-    }
-    function cronometrar(){
-        escribir();
-        id = setInterval(escribir,1);
-        document.querySelector(".start").removeEventListener("click",cronometrar);
-    }
-    function escribir(){
-        var hAux, mAux, sAux;
-        s++;
-        if (s>59){m++;s=0;}
-        if (m>59){h++;m=0;}
-        if (h>24){h=0;}
+window.onload = function() {
+   pantalla = document.getElementById("screen");
+}
+var isMarch = false;
+var acumularTime = 0;
+function start () {
+         if (isMarch == false) {
+            timeInicial = new Date();
+            control = setInterval(cronometro,10);
+            isMarch = true;
+            }
+         }
+function cronometro () {
+         timeActual = new Date();
+         acumularTime = timeActual - timeInicial;
+         acumularTime2 = new Date();
+         acumularTime2.setTime(acumularTime);
+        cc = Math.round(acumularTime2.getMilliseconds()/10);
+         ss = acumularTime2.getSeconds();
+         mm = acumularTime2.getMinutes();
+         hh = acumularTime2.getHours()-18;
+         if (cc < 10) {cc = "0"+cc;}
+         if (ss < 10) {ss = "0"+ss;}
+         if (mm < 10) {mm = "0"+mm;}
+         if (hh < 10) {hh = "0"+hh;}
+         pantalla.innerHTML = mm+" : "+ss+" : "+cc;
+         }
 
-        if (s<10){sAux="0"+s;}else{sAux=s;}
-        if (m<10){mAux="0"+m;}else{mAux=m;}
-        if (h<10){hAux="0"+h;}else{hAux=h;}
+function stop () {
+         if (isMarch == true) {
+            clearInterval(control);
+            isMarch = false;
+            }
+         }
 
-        document.getElementById("hms").innerHTML = hAux + ":" + mAux + ":" + sAux;
-    }
-    function parar(){
-        clearInterval(id);
-        document.querySelector(".start").addEventListener("click",cronometrar);
+function resume () {
+         if (isMarch == false) {
+            timeActu2 = new Date();
+            timeActu2 = timeActu2.getTime();
+            acumularResume = timeActu2-acumularTime;
 
-    }
-    function reiniciar(){
-        clearInterval(id);
-        document.getElementById("hms").innerHTML="00:00:00";
-        h=0;m=0;s=0;
-        document.querySelector(".start").addEventListener("click",cronometrar);
-    }
+            timeInicial.setTime(acumularResume);
+            control = setInterval(cronometro,10);
+            isMarch = true;
+            }
+         }
 
+function reset () {
+         if (isMarch == true) {
+            clearInterval(control);
+            isMarch = false;
+            }
+         acumularTime = 0;
+         pantalla.innerHTML = "00 : 00 : 00 : 00";
+         }
 </script>
             <br><br>
             <p style="text-align: center; aline-contents: center; style="color:rgb(0, 0, 0)"; ><i class="fa fa-copyright" aria-hidden="true" ;>Todos los Derechos Reservados, Elaborado para Mentius S.A. Colombia 2021</i></p>

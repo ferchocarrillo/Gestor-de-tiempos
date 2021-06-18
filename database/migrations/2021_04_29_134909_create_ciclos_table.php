@@ -35,6 +35,10 @@ class CreateCiclosTable extends Migration
             $table->integer('timepausas');
             $table->time('daño');
             $table->time('dañoout');
+            $table->time('daño2');
+            $table->time('dañoout2');
+            $table->time('daño3');
+            $table->time('dañoout3');
             $table->integer('timedaño');
             $table->time('evaluacion');
             $table->time('evaluacionout');
@@ -45,6 +49,14 @@ class CreateCiclosTable extends Migration
             $table->time('reunion');
             $table->time('reunionout');
             $table->integer('timereunion');
+            $table->time('baño1');
+            $table->integer('timewater1');
+            $table->time('baño2');
+            $table->integer('timewater2');
+            $table->time('baño3');
+            $table->integer('timewater3');
+            $table->time('calamidad');
+            $table->time('emeMedica');
             $table->integer('total');
             $table->timestamps();
         });
