@@ -219,8 +219,8 @@ iconos{
     top:50%;
     left:50%;
     position:absolute;
-    margin-top:-50px;
-    margin-left:-50px;
+    margin-top:-90px;
+    margin-left:-65px;
     text-align:center;
 
 }
@@ -231,10 +231,11 @@ iconos{
     font-size:25px;
     color:#000;
     font-family: alarm;
+    border-color: #000;
 
  }
-    .start{background: 20, 218, 191;}
-    .stop{background:url(pause.png) 0 0 no-repeat;}
+    .start{img src="\theme\images\turno.png"}
+    .stop{background:url(\theme\images\fondo.jpg) 0 0 no-repeat;}
     .reiniciar{background:url(delete.png)0 0 no-repeat;}
 </style>
 
@@ -346,8 +347,8 @@ iconos{
 
 @if(empty($ciclosos->breakin))
 <br><br><br>
-<button class="botones" name="boton start" id="boton start" ><a href="{{url('/ciclobreakin/'.$ciclosos->id.'/edit')}}">Registrar Break</a></button>
-<div class="col-sm-4">
+
+<div class="auto">
     <div class="cronometro">
         <div id="hms"></div>
         <div class="boton start"></div>
@@ -355,6 +356,9 @@ iconos{
         <div class="boton reiniciar"></div>
     </div>
 </div>
+
+
+<button class="botones" name="start" id="start" ><a href="{{url('/ciclobreakin/'.$ciclosos->id.'/edit')}}">Registrar Break</a></button>
 @else
 <input type='submit' class="botonesinactivos"  value='BREAK YA REGISTRADO'  disabled>
 
@@ -710,7 +714,7 @@ iconos{
     }
     function cronometrar(){
         escribir();
-        id = setInterval(escribir,1000);
+        id = setInterval(escribir,1);
         document.querySelector(".start").removeEventListener("click",cronometrar);
     }
     function escribir(){
